@@ -39,17 +39,12 @@ export default function About() {
               conforto e elegância do traje.
             </p>
 
-            {/* Mini stats — provisórias, apenas estruturais */}
-            <div className="grid grid-cols-2 gap-6 border-t border-champagne pt-6">
-              <div>
-                <p className="font-heading text-2xl text-graphite mb-1">Adulto</p>
-                <p className="font-body text-sm text-graphite/60 tracking-wide">e Infantil</p>
-              </div>
-              <div>
-                <p className="font-heading text-2xl text-graphite mb-1">Centro</p>
-                <p className="font-body text-sm text-graphite/60 tracking-wide">Patrocínio-MG</p>
-              </div>
-            </div>
+            <a
+              href="#servicos"
+              className="btn-secondary self-start"
+            >
+              Ver serviços
+            </a>
           </div>
         </div>
       </div>

@@ -25,15 +25,15 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 bg-black text-offwhite font-body font-medium tracking-wide px-8 py-4 transition-all duration-300 hover:bg-gold hover:text-black;
+    @apply inline-flex items-center justify-center gap-2 bg-black text-offwhite font-body font-medium tracking-wide px-8 py-4 transition-all duration-300 hover:bg-gold hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 border border-graphite text-graphite font-body font-medium tracking-wide px-8 py-4 transition-all duration-300 hover:border-gold hover:text-gold;
+    @apply inline-flex items-center justify-center gap-2 border border-graphite text-graphite font-body font-medium tracking-wide px-8 py-4 transition-all duration-300 hover:border-gold hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2;
   }
 
   .btn-whatsapp {
-    @apply inline-flex items-center justify-center gap-2 bg-[#25D366] text-white font-body font-medium tracking-wide px-8 py-4 transition-all duration-300 hover:bg-[#1ebe5d];
+    @apply inline-flex items-center justify-center gap-2 bg-[#25D366] text-offwhite font-body font-medium tracking-wide px-8 py-4 transition-all duration-300 hover:bg-[#1ebe5d] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2;
   }
 
   .section-label {

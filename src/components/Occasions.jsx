@@ -51,7 +51,7 @@ function OccasionCard({ occasion }) {
 
       {/* Label */}
       <div className="absolute bottom-0 left-0 right-0 p-4">
-        <p className="font-heading text-offwhite text-base leading-tight">{occasion.label}</p>
+        <p className="font-heading text-offwhite text-sm leading-tight line-clamp-2">{occasion.label}</p>
         <span className="block w-8 h-px bg-gold mt-2" />
       </div>
     </div>

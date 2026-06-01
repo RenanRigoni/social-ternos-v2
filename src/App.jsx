@@ -13,16 +13,24 @@ import WhatsAppFloat from './components/WhatsAppFloat'
 export default function App() {
   return (
     <>
-      <Hero />
-      <About />
-      <Services />
-      <Occasions />
-      <Differentials />
-      <Gallery />
-      <HowItWorks />
-      <Location />
-      <FAQ />
-      <FinalCTA />
+      <a
+        href="#servicos"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-black focus:text-offwhite focus:px-4 focus:py-2 focus:text-sm focus:font-body"
+      >
+        Pular para o conteúdo
+      </a>
+      <main>
+        <Hero />
+        <About />
+        <Services />
+        <Occasions />
+        <Differentials />
+        <Gallery />
+        <HowItWorks />
+        <Location />
+        <FAQ />
+        <FinalCTA />
+      </main>
       <WhatsAppFloat />
     </>
   )

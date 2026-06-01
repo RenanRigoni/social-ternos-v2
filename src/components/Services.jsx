@@ -1,20 +1,12 @@
 import { SERVICES, WHATSAPP } from '../constants'
 import { useFadeIn } from '../hooks/useFadeIn'
-import {
-  ShoppingBag, Shirt, Baby, Heart, GraduationCap, Layers
-} from 'lucide-react'
-
-const ICONS = {
-  suit:       <ShoppingBag size={28} strokeWidth={1.5} />,
-  hanger:     <Shirt size={28} strokeWidth={1.5} />,
-  child:      <Baby size={28} strokeWidth={1.5} />,
-  rings:      <Heart size={28} strokeWidth={1.5} />,
-  graduation: <GraduationCap size={28} strokeWidth={1.5} />,
-  tie:        <Layers size={28} strokeWidth={1.5} />,
-}
 
 export default function Services() {
   const ref = useFadeIn()
+
+  // Dois serviços principais: destaque visual separado
+  const featured = SERVICES.slice(0, 2)
+  const rest = SERVICES.slice(2)
 
   return (
     <section id="servicos" className="bg-champagne py-20 md:py-28">
@@ -24,16 +16,19 @@ export default function Services() {
           <p className="section-label">O que oferecemos</p>
           <h2 className="section-title">Serviços da Social Ternos</h2>
           <span className="gold-line mx-auto" />
-          <p className="font-body text-graphite/70 max-w-xl mx-auto leading-relaxed">
-            Do terno adulto ao infantil, da venda ao aluguel — encontre a solução certa
-            para o seu evento.
-          </p>
         </div>
 
-        {/* Grid de cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {SERVICES.map((service) => (
-            <ServiceCard key={service.id} service={service} />
+        {/* Featured: 2 serviços principais lado a lado, horizontal */}
+        <div className="grid md:grid-cols-2 gap-px bg-gold/20 mb-px">
+          {featured.map((service, i) => (
+            <FeaturedServiceItem key={service.id} service={service} index={i} />
+          ))}
+        </div>
+
+        {/* Restante: lista numerada com divisores */}
+        <div className="divide-y divide-gold/20 bg-offwhite">
+          {rest.map((service, i) => (
+            <CompactServiceItem key={service.id} service={service} number={i + 3} />
           ))}
         </div>
       </div>
@@ -41,35 +36,67 @@ export default function Services() {
   )
 }
 
-function ServiceCard({ service }) {
+function FeaturedServiceItem({ service, index }) {
   const ref = useFadeIn()
   const whatsappLink = WHATSAPP.getLink(WHATSAPP.messages.service(service.title))
 
   return (
     <div
       ref={ref}
-      className="fade-in bg-offwhite p-8 flex flex-col group hover:shadow-md transition-shadow duration-300"
+      className="fade-in bg-offwhite p-10 md:p-12 flex flex-col gap-6 group"
     >
-      {/* Ícone */}
-      <div className="text-gold mb-5 w-10">
-        {ICONS[service.icon]}
+      <div className="flex items-start justify-between gap-4">
+        <span className="font-heading text-4xl text-gold/30 leading-none select-none">
+          0{index + 1}
+        </span>
       </div>
-
-      {/* Conteúdo */}
-      <h3 className="font-heading text-xl text-graphite mb-3">{service.title}</h3>
-      <p className="font-body text-sm text-graphite/70 leading-relaxed flex-1 mb-6">
-        {service.description}
-      </p>
-
-      {/* CTA */}
+      <div>
+        <h3 className="font-heading text-2xl text-graphite mb-3 leading-snug">
+          {service.title}
+        </h3>
+        <p className="font-body text-sm text-graphite/70 leading-relaxed">
+          {service.description}
+        </p>
+      </div>
       <a
         href={whatsappLink}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-sm font-body font-medium text-graphite border-b border-gold pb-0.5 w-fit transition-colors duration-200 hover:text-gold"
+        className="text-sm font-body font-medium text-graphite border-b border-gold pb-0.5 w-fit transition-colors duration-200 hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2"
         aria-label={`Consultar sobre ${service.title} pelo WhatsApp`}
       >
         Consultar pelo WhatsApp →
+      </a>
+    </div>
+  )
+}
+
+function CompactServiceItem({ service, number }) {
+  const ref = useFadeIn()
+  const whatsappLink = WHATSAPP.getLink(WHATSAPP.messages.service(service.title))
+
+  return (
+    <div
+      ref={ref}
+      className="fade-in flex items-center gap-6 px-8 py-6 group hover:bg-champagne/60 transition-colors duration-200"
+    >
+      <span className="font-heading text-lg text-gold/40 w-8 flex-shrink-0 select-none">
+        {String(number).padStart(2, '0')}
+      </span>
+      <div className="flex-1 min-w-0">
+        <h3 className="font-heading text-lg text-graphite">{service.title}</h3>
+        <p className="font-body text-sm text-graphite/60 leading-relaxed mt-1 hidden sm:block">
+          {service.description}
+        </p>
+      </div>
+      <a
+        href={whatsappLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex-shrink-0 text-xs font-body font-medium text-graphite/50 group-hover:text-gold transition-colors duration-200 hidden md:block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2"
+        aria-label={`Consultar sobre ${service.title} pelo WhatsApp`}
+      >
+        Consultar →
       </a>
     </div>
   )
