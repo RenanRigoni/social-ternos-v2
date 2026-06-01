@@ -3,30 +3,29 @@ import { useFadeIn } from '../hooks/useFadeIn'
 
 export default function Services() {
   const ref = useFadeIn()
-
-  // Dois serviços principais: destaque visual separado
   const featured = SERVICES.slice(0, 2)
   const rest = SERVICES.slice(2)
 
   return (
-    <section id="servicos" className="bg-champagne py-20 md:py-28">
+    <section id="servicos" className="bg-black py-24 md:py-32">
       <div className="max-w-6xl mx-auto px-6">
-        {/* Header */}
-        <div ref={ref} className="fade-in text-center mb-14">
-          <p className="section-label">O que oferecemos</p>
-          <h2 className="section-title">Serviços da Social Ternos</h2>
-          <span className="gold-line mx-auto" />
+        {/* Header — sem eyebrow, direto ao título */}
+        <div ref={ref} className="fade-in mb-16">
+          <h2 className="font-heading text-4xl md:text-5xl text-offwhite leading-tight">
+            Serviços da Social Ternos
+          </h2>
+          <span className="block w-12 h-px bg-gold mt-6" />
         </div>
 
-        {/* Featured: 2 serviços principais lado a lado, horizontal */}
+        {/* Featured: 2 principais */}
         <div className="grid md:grid-cols-2 gap-px bg-gold/20 mb-px">
           {featured.map((service, i) => (
             <FeaturedServiceItem key={service.id} service={service} index={i} />
           ))}
         </div>
 
-        {/* Restante: lista numerada com divisores */}
-        <div className="divide-y divide-gold/20 bg-offwhite">
+        {/* Restante: lista numerada escura */}
+        <div className="divide-y divide-white/10">
           {rest.map((service, i) => (
             <CompactServiceItem key={service.id} service={service} number={i + 3} />
           ))}
@@ -43,18 +42,16 @@ function FeaturedServiceItem({ service, index }) {
   return (
     <div
       ref={ref}
-      className="fade-in bg-offwhite p-10 md:p-12 flex flex-col gap-6 group"
+      className="fade-in bg-[#0a0a0a] p-10 md:p-14 flex flex-col gap-6 group border-t-2 border-transparent hover:border-gold transition-colors duration-300"
     >
-      <div className="flex items-start justify-between gap-4">
-        <span className="font-heading text-4xl text-gold/30 leading-none select-none">
-          0{index + 1}
-        </span>
-      </div>
+      <span className="font-heading text-7xl text-gold/10 leading-none select-none">
+        0{index + 1}
+      </span>
       <div>
-        <h3 className="font-heading text-2xl text-graphite mb-3 leading-snug">
+        <h3 className="font-heading text-2xl text-offwhite mb-3 leading-snug">
           {service.title}
         </h3>
-        <p className="font-body text-sm text-graphite/70 leading-relaxed">
+        <p className="font-body text-sm text-offwhite/50 leading-relaxed">
           {service.description}
         </p>
       </div>
@@ -62,10 +59,10 @@ function FeaturedServiceItem({ service, index }) {
         href={whatsappLink}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-sm font-body font-medium text-graphite border-b border-gold pb-0.5 w-fit transition-colors duration-200 hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2"
+        className="text-sm font-body font-medium text-gold/60 group-hover:text-gold transition-colors duration-200 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-black"
         aria-label={`Consultar sobre ${service.title} pelo WhatsApp`}
       >
-        Consultar pelo WhatsApp →
+        Consultar pelo WhatsApp &rarr;
       </a>
     </div>
   )
@@ -78,14 +75,16 @@ function CompactServiceItem({ service, number }) {
   return (
     <div
       ref={ref}
-      className="fade-in flex items-center gap-6 px-8 py-6 group hover:bg-champagne/60 transition-colors duration-200"
+      className="fade-in flex items-center gap-6 px-2 py-6 group hover:bg-white/5 transition-colors duration-200"
     >
-      <span className="font-heading text-lg text-gold/40 w-8 flex-shrink-0 select-none">
+      <span className="font-heading text-lg text-gold/25 w-8 flex-shrink-0 select-none">
         {String(number).padStart(2, '0')}
       </span>
       <div className="flex-1 min-w-0">
-        <h3 className="font-heading text-lg text-graphite">{service.title}</h3>
-        <p className="font-body text-sm text-graphite/60 leading-relaxed mt-1 hidden sm:block">
+        <h3 className="font-heading text-lg text-offwhite/75 group-hover:text-offwhite transition-colors duration-200">
+          {service.title}
+        </h3>
+        <p className="font-body text-sm text-offwhite/40 leading-relaxed mt-1 hidden sm:block">
           {service.description}
         </p>
       </div>
@@ -93,10 +92,10 @@ function CompactServiceItem({ service, number }) {
         href={whatsappLink}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex-shrink-0 text-xs font-body font-medium text-graphite/50 group-hover:text-gold transition-colors duration-200 hidden md:block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2"
+        className="flex-shrink-0 text-xs font-body font-medium text-white/30 group-hover:text-gold transition-colors duration-200 hidden md:block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-black"
         aria-label={`Consultar sobre ${service.title} pelo WhatsApp`}
       >
-        Consultar →
+        Consultar &rarr;
       </a>
     </div>
   )

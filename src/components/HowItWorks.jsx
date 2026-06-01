@@ -6,27 +6,25 @@ export default function HowItWorks() {
   const whatsappLink = WHATSAPP.getLink(WHATSAPP.messages.default)
 
   return (
-    <section className="bg-offwhite py-20 md:py-28">
+    <section className="bg-white py-24 md:py-32">
       <div className="max-w-5xl mx-auto px-6">
-        {/* Header */}
-        <div ref={ref} className="fade-in text-center mb-16">
-          <p className="section-label">Simples assim</p>
-          <h2 className="section-title">Como funciona</h2>
-          <span className="gold-line mx-auto" />
+        {/* Header — sem eyebrow */}
+        <div ref={ref} className="fade-in mb-20">
+          <h2 className="font-heading text-4xl md:text-5xl text-graphite leading-tight">
+            Como funciona
+          </h2>
+          <span className="block w-12 h-px bg-gold mt-6" />
         </div>
 
-        {/* Passos */}
-        <div className="grid md:grid-cols-4 gap-8 md:gap-4 relative">
-          {/* Linha conectora (desktop) */}
-          <div className="hidden md:block absolute top-8 left-[12.5%] right-[12.5%] h-px bg-champagne z-0" />
-
-          {HOW_IT_WORKS.map((step, index) => (
-            <StepItem key={step.step} step={step} isLast={index === HOW_IT_WORKS.length - 1} />
+        {/* Passos com número tipográfico grande */}
+        <div className="grid md:grid-cols-4 gap-12 md:gap-8">
+          {HOW_IT_WORKS.map((step) => (
+            <StepItem key={step.step} step={step} />
           ))}
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-14">
+        <div className="mt-20">
           <a
             href={whatsappLink}
             target="_blank"
@@ -47,16 +45,21 @@ function StepItem({ step }) {
   const ref = useFadeIn()
 
   return (
-    <div ref={ref} className="fade-in flex flex-col items-center text-center relative z-10">
-      {/* Número */}
-      <div className="w-16 h-16 border border-gold flex items-center justify-center mb-6 bg-offwhite">
-        <span className="font-heading text-xl text-gold">{step.step}</span>
-      </div>
+    <div ref={ref} className="fade-in relative">
+      {/* Número gigante — decorativo */}
+      <span
+        className="absolute -top-4 -left-2 font-heading text-[7rem] md:text-[8rem] leading-none text-graphite/[0.06] select-none pointer-events-none"
+        aria-hidden="true"
+      >
+        {step.step}
+      </span>
 
-      <h3 className="font-heading text-lg text-graphite mb-3">{step.title}</h3>
-      <p className="font-body text-sm text-graphite/60 leading-relaxed max-w-[200px]">
-        {step.description}
-      </p>
+      {/* Conteúdo */}
+      <div className="relative pt-14">
+        <div className="w-1.5 h-1.5 bg-gold mb-5" />
+        <h3 className="font-heading text-xl text-graphite mb-3 leading-snug">{step.title}</h3>
+        <p className="font-body text-sm text-graphite/55 leading-relaxed">{step.description}</p>
+      </div>
     </div>
   )
 }

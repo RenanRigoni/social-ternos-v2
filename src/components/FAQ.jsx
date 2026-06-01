@@ -12,15 +12,15 @@ export default function FAQ() {
   }
 
   return (
-    <section className="bg-offwhite py-20 md:py-28">
+    <section className="bg-white py-20 md:py-28">
       <div className="max-w-3xl mx-auto px-6">
-        <div ref={ref} className="fade-in text-center mb-14">
+        <div ref={ref} className="fade-in mb-14">
           <p className="section-label">Dúvidas frequentes</p>
           <h2 className="section-title">Perguntas comuns</h2>
-          <span className="gold-line mx-auto" />
+          <span className="gold-line" />
         </div>
 
-        <div className="divide-y divide-champagne">
+        <div className="divide-y divide-graphite/10">
           {FAQ_DATA.map((item, index) => (
             <FAQItem
               key={index}
@@ -63,7 +63,7 @@ function FAQItem({ item, index, isOpen, onToggle }) {
         aria-labelledby={buttonId}
         hidden={!isOpen}
       >
-        <p className="font-body text-sm text-graphite/70 leading-relaxed pb-4 pr-8">
+        <p className="font-body text-sm text-graphite/65 leading-relaxed pb-5 pr-8">
           {item.answer}
         </p>
       </div>

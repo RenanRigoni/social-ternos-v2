@@ -6,20 +6,15 @@ export default function FinalCTA() {
   const whatsappLink = WHATSAPP.getLink(WHATSAPP.messages.default)
 
   return (
-    <section className="bg-black py-24 md:py-32">
+    <section className="bg-black py-28 md:py-40">
       <div ref={ref} className="fade-in max-w-3xl mx-auto px-6 text-center">
         {/* Linha dourada */}
-        <span className="block w-12 h-px bg-gold mx-auto mb-8" />
+        <span className="block w-16 h-px bg-gold mx-auto mb-10" />
 
-        <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl text-offwhite leading-tight mb-6">
+        <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-offwhite leading-tight mb-10">
           Encontre o traje ideal
-          <span className="block text-gold italic mt-1">para o seu momento especial.</span>
+          <span className="block text-gold italic mt-3">para o seu momento especial.</span>
         </h2>
-
-        <p className="font-body text-offwhite/60 leading-relaxed max-w-xl mx-auto mb-10">
-          A Social Ternos está pronta para te atender. Entre em contato e descubra as
-          opções disponíveis para a sua ocasião.
-        </p>
 
         <a
           href={whatsappLink}
@@ -32,8 +27,8 @@ export default function FinalCTA() {
           Falar com a Social Ternos
         </a>
 
-        <p className="font-body text-xs text-offwhite/30 mt-6 tracking-wide">
-          Seg–Sex: 9h às 18h &nbsp;·&nbsp; Sáb: 8h às 12h
+        <p className="font-body text-xs text-offwhite/30 mt-8 tracking-wide">
+          Seg-Sex: 9h às 18h &nbsp;&middot;&nbsp; Sáb: 8h às 12h
         </p>
       </div>
     </section>

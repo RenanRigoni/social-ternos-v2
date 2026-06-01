@@ -7,7 +7,7 @@ export default function Location() {
   const whatsappLink = WHATSAPP.getLink(WHATSAPP.messages.default)
 
   return (
-    <section className="bg-champagne py-20 md:py-28">
+    <section className="bg-[#f5f4f0] py-20 md:py-28">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Informações */}
@@ -17,7 +17,6 @@ export default function Location() {
             <span className="gold-line" />
 
             <div className="space-y-6 mt-2">
-              {/* Endereço */}
               <div className="flex gap-4">
                 <MapPin size={20} strokeWidth={1.5} className="text-gold flex-shrink-0 mt-1" />
                 <div>
@@ -26,7 +25,6 @@ export default function Location() {
                 </div>
               </div>
 
-              {/* Horários */}
               <div className="flex gap-4">
                 <Clock size={20} strokeWidth={1.5} className="text-gold flex-shrink-0 mt-1" />
                 <div className="space-y-1">
@@ -36,14 +34,12 @@ export default function Location() {
                 </div>
               </div>
 
-              {/* Telefone */}
               <div className="flex gap-4">
                 <Phone size={20} strokeWidth={1.5} className="text-gold flex-shrink-0 mt-1" />
                 <p className="font-body text-graphite">{STORE.phone}</p>
               </div>
             </div>
 
-            {/* Botões */}
             <div className="flex flex-col sm:flex-row gap-3 mt-8">
               <a
                 href={whatsappLink}
@@ -66,8 +62,8 @@ export default function Location() {
             </div>
           </div>
 
-          {/* Mapa embed */}
-          <div className="fade-in rounded-none overflow-hidden h-80 md:h-[400px] border border-champagne">
+          {/* Mapa */}
+          <div className="fade-in overflow-hidden h-80 md:h-[400px] border border-graphite/15">
             <iframe
               title="Localização da Social Ternos no mapa"
               src="https://maps.google.com/maps?q=Rua+Pinto+Dias,207,Patrocínio,MG,Brasil&z=16&output=embed"

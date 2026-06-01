@@ -41,7 +41,7 @@
   }
 
   .section-title {
-    @apply font-heading text-3xl md:text-4xl text-graphite leading-tight;
+    @apply font-heading text-4xl md:text-5xl text-graphite leading-tight;
   }
 
   .gold-line {

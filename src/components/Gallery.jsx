@@ -1,35 +1,33 @@
 import { IMAGES } from '../constants'
 import { useFadeIn } from '../hooks/useFadeIn'
 
-// PLACEHOLDER — todas as imagens abaixo devem ser substituídas por fotos reais da loja
-// Ver src/constants/images.js para trocar as URLs
-
 const ALT_TEXTS = [
-  'Terno masculino em manequim — Social Ternos',
-  'Detalhe de tecido e lapela de terno',
-  'Noivo bem vestido com terno elegante',
+  'Homem com terno escuro — Social Ternos',
+  'Detalhe de lapela e tecido de terno',
+  'Homem jovem em traje social elegante',
   'Grupo de padrinhos com ternos combinando',
-  'Prova de terno com ajuste personalizado',
-  'Cabides com ternos na loja Social Ternos',
-  'Terno infantil para criança em cerimônia',
-  'Detalhes de acessórios: gravata e abotoaduras',
+  'Alfaiate realizando ajuste personalizado em terno',
+  'Homens em trajes sociais em evento formal',
+  'Homem elegante com traje social completo',
+  'Cerimônia com trajes formais e elegantes',
 ]
 
 export default function Gallery() {
   const ref = useFadeIn()
 
   return (
-    <section className="bg-champagne py-20 md:py-28">
+    <section className="bg-[#0c0c0c] py-24 md:py-32">
       <div className="max-w-6xl mx-auto px-6">
-        {/* Header */}
-        <div ref={ref} className="fade-in text-center mb-14">
-          <p className="section-label">Visual</p>
-          <h2 className="section-title">Elegância em cada detalhe</h2>
-          <span className="gold-line mx-auto" />
+        {/* Header — sem eyebrow */}
+        <div ref={ref} className="fade-in mb-12">
+          <h2 className="font-heading text-4xl md:text-5xl text-offwhite leading-tight">
+            Elegância em cada detalhe
+          </h2>
+          <span className="block w-12 h-px bg-gold mt-6" />
         </div>
 
-        {/* Grid assimétrico */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 auto-rows-[180px] md:auto-rows-[220px]">
+        {/* Grid assimétrico — fotos sobre fundo escuro */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 auto-rows-[200px] md:auto-rows-[240px]">
           {IMAGES.gallery.map((src, i) => (
             <GalleryItem
               key={i}
@@ -49,14 +47,13 @@ function GalleryItem({ src, alt, span }) {
 
   return (
     <div ref={ref} className={`fade-in relative overflow-hidden group ${span}`}>
-      {/* PLACEHOLDER — substituir src pela URL da foto real */}
       <img
         src={src}
         alt={alt}
-        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         loading="lazy"
       />
-      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-colors duration-500" />
     </div>
   )
 }
