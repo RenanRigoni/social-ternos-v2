@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-body text-graphite bg-offwhite antialiased;
+    margin: 0;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-heading;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-black text-offwhite font-body font-medium tracking-wide px-8 py-4 transition-all duration-300 hover:bg-gold hover:text-black;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 border border-graphite text-graphite font-body font-medium tracking-wide px-8 py-4 transition-all duration-300 hover:border-gold hover:text-gold;
+  }
+
+  .btn-whatsapp {
+    @apply inline-flex items-center justify-center gap-2 bg-[#25D366] text-white font-body font-medium tracking-wide px-8 py-4 transition-all duration-300 hover:bg-[#1ebe5d];
+  }
+
+  .section-label {
+    @apply text-gold font-body text-xs tracking-widest uppercase mb-3;
+  }
+
+  .section-title {
+    @apply font-heading text-3xl md:text-4xl text-graphite leading-tight;
+  }
+
+  .gold-line {
+    @apply block w-12 h-px bg-gold my-4;
+  }
+}
+
+@layer utilities {
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
