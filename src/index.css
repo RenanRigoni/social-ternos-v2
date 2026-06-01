@@ -10,7 +10,7 @@
   }
 
   body {
-    @apply font-body text-graphite bg-offwhite antialiased;
+    @apply font-body text-offwhite bg-black antialiased;
     margin: 0;
   }
 
@@ -24,36 +24,39 @@
 }
 
 @layer components {
+  /* Primary: gold fill — visível em fundos escuros */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 bg-black text-offwhite font-body font-medium tracking-wide px-8 py-4 transition-all duration-300 hover:bg-gold hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2;
+    @apply inline-flex items-center justify-center gap-2 bg-gold text-black font-body font-semibold tracking-wide px-8 py-4 transition-all duration-300 hover:bg-gold-light active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-black;
   }
 
+  /* Secondary: borda dourada */
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 border border-graphite text-graphite font-body font-medium tracking-wide px-8 py-4 transition-all duration-300 hover:border-gold hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2;
+    @apply inline-flex items-center justify-center gap-2 border border-gold/40 text-gold/80 font-body font-medium tracking-wide px-8 py-4 transition-all duration-300 hover:border-gold hover:text-gold active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-black;
   }
 
+  /* WhatsApp: verde */
   .btn-whatsapp {
-    @apply inline-flex items-center justify-center gap-2 bg-[#25D366] text-offwhite font-body font-medium tracking-wide px-8 py-4 transition-all duration-300 hover:bg-[#1ebe5d] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2;
+    @apply inline-flex items-center justify-center gap-2 bg-[#25D366] text-white font-body font-semibold tracking-wide px-8 py-4 transition-all duration-300 hover:bg-[#1ebe5d] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 focus-visible:ring-offset-black;
   }
 
   .section-label {
-    @apply text-gold font-body text-xs tracking-widest uppercase mb-3;
+    @apply text-gold font-body text-[10px] tracking-[0.25em] uppercase mb-4;
   }
 
   .section-title {
-    @apply font-heading text-4xl md:text-5xl text-graphite leading-tight;
+    @apply font-heading text-4xl md:text-5xl text-offwhite leading-tight;
   }
 
   .gold-line {
-    @apply block w-12 h-px bg-gold my-4;
+    @apply block w-12 h-px bg-gold my-5;
   }
 }
 
 @layer utilities {
   .fade-in {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transform: translateY(20px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .fade-in.visible {

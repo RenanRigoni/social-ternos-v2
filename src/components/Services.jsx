@@ -3,31 +3,23 @@ import { useFadeIn } from '../hooks/useFadeIn'
 
 export default function Services() {
   const ref = useFadeIn()
-  const featured = SERVICES.slice(0, 2)
-  const rest = SERVICES.slice(2)
 
   return (
-    <section id="servicos" className="bg-black py-24 md:py-32">
+    <section id="servicos" className="bg-[#0a0a0a] py-24 md:py-32">
       <div className="max-w-6xl mx-auto px-6">
-        {/* Header — sem eyebrow, direto ao título */}
+
+        {/* Header */}
         <div ref={ref} className="fade-in mb-16">
           <h2 className="font-heading text-4xl md:text-5xl text-offwhite leading-tight">
-            Serviços da Social Ternos
+            Para cada ocasião, um traje à altura
           </h2>
           <span className="block w-12 h-px bg-gold mt-6" />
         </div>
 
-        {/* Featured: 2 principais */}
-        <div className="grid md:grid-cols-2 gap-px bg-gold/20 mb-px">
-          {featured.map((service, i) => (
-            <FeaturedServiceItem key={service.id} service={service} index={i} />
-          ))}
-        </div>
-
-        {/* Restante: lista numerada escura */}
-        <div className="divide-y divide-white/10">
-          {rest.map((service, i) => (
-            <CompactServiceItem key={service.id} service={service} number={i + 3} />
+        {/* Lista editorial — hover revela descrição */}
+        <div className="border-t border-white/[0.08]">
+          {SERVICES.map((service, i) => (
+            <ServiceRow key={service.id} service={service} index={i} />
           ))}
         </div>
       </div>
@@ -35,68 +27,38 @@ export default function Services() {
   )
 }
 
-function FeaturedServiceItem({ service, index }) {
+function ServiceRow({ service, index }) {
   const ref = useFadeIn()
   const whatsappLink = WHATSAPP.getLink(WHATSAPP.messages.service(service.title))
 
   return (
-    <div
+    <a
       ref={ref}
-      className="fade-in bg-[#0a0a0a] p-10 md:p-14 flex flex-col gap-6 group border-t-2 border-transparent hover:border-gold transition-colors duration-300"
+      href={whatsappLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="fade-in group flex items-start md:items-center gap-6 md:gap-10 py-7 border-b border-white/[0.08] hover:border-gold/30 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
+      aria-label={`Consultar sobre ${service.title} pelo WhatsApp`}
     >
-      <span className="font-heading text-7xl text-gold/10 leading-none select-none">
-        0{index + 1}
+      {/* Número */}
+      <span className="font-body text-xs text-gold/25 group-hover:text-gold/55 transition-colors duration-300 flex-shrink-0 w-6 pt-1 md:pt-0">
+        {String(index + 1).padStart(2, '0')}
       </span>
-      <div>
-        <h3 className="font-heading text-2xl text-offwhite mb-3 leading-snug">
+
+      {/* Título + descrição */}
+      <div className="flex-1 min-w-0 md:flex md:items-center md:gap-10">
+        <h3 className="font-heading text-xl md:text-2xl lg:text-3xl text-offwhite/70 group-hover:text-offwhite group-hover:translate-x-1 transition-all duration-300 md:w-72 lg:w-80 flex-shrink-0">
           {service.title}
         </h3>
-        <p className="font-body text-sm text-offwhite/50 leading-relaxed">
+        <p className="font-body text-sm text-offwhite/0 group-hover:text-offwhite/40 transition-all duration-500 mt-2 md:mt-0 flex-1 leading-relaxed max-w-sm">
           {service.description}
         </p>
       </div>
-      <a
-        href={whatsappLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-sm font-body font-medium text-gold/60 group-hover:text-gold transition-colors duration-200 w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-black"
-        aria-label={`Consultar sobre ${service.title} pelo WhatsApp`}
-      >
-        Consultar pelo WhatsApp &rarr;
-      </a>
-    </div>
-  )
-}
 
-function CompactServiceItem({ service, number }) {
-  const ref = useFadeIn()
-  const whatsappLink = WHATSAPP.getLink(WHATSAPP.messages.service(service.title))
-
-  return (
-    <div
-      ref={ref}
-      className="fade-in flex items-center gap-6 px-2 py-6 group hover:bg-white/5 transition-colors duration-200"
-    >
-      <span className="font-heading text-lg text-gold/25 w-8 flex-shrink-0 select-none">
-        {String(number).padStart(2, '0')}
+      {/* Seta */}
+      <span className="flex-shrink-0 text-gold/0 group-hover:text-gold transition-colors duration-300 text-xl self-center">
+        &rarr;
       </span>
-      <div className="flex-1 min-w-0">
-        <h3 className="font-heading text-lg text-offwhite/75 group-hover:text-offwhite transition-colors duration-200">
-          {service.title}
-        </h3>
-        <p className="font-body text-sm text-offwhite/40 leading-relaxed mt-1 hidden sm:block">
-          {service.description}
-        </p>
-      </div>
-      <a
-        href={whatsappLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex-shrink-0 text-xs font-body font-medium text-white/30 group-hover:text-gold transition-colors duration-200 hidden md:block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-black"
-        aria-label={`Consultar sobre ${service.title} pelo WhatsApp`}
-      >
-        Consultar &rarr;
-      </a>
-    </div>
+    </a>
   )
 }

@@ -6,17 +6,17 @@ export default function HowItWorks() {
   const whatsappLink = WHATSAPP.getLink(WHATSAPP.messages.default)
 
   return (
-    <section className="bg-white py-24 md:py-32">
+    <section className="bg-[#111111] py-24 md:py-32">
       <div className="max-w-5xl mx-auto px-6">
-        {/* Header — sem eyebrow */}
+        {/* Header */}
         <div ref={ref} className="fade-in mb-20">
-          <h2 className="font-heading text-4xl md:text-5xl text-graphite leading-tight">
-            Como funciona
+          <h2 className="font-heading text-4xl md:text-5xl text-offwhite leading-tight">
+            Como funciona o atendimento
           </h2>
           <span className="block w-12 h-px bg-gold mt-6" />
         </div>
 
-        {/* Passos com número tipográfico grande */}
+        {/* Passos com número tipográfico decorativo */}
         <div className="grid md:grid-cols-4 gap-12 md:gap-8">
           {HOW_IT_WORKS.map((step) => (
             <StepItem key={step.step} step={step} />
@@ -29,7 +29,7 @@ export default function HowItWorks() {
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary"
+            className="btn-whatsapp"
             aria-label="Iniciar atendimento pelo WhatsApp"
           >
             <WhatsAppIcon />
@@ -46,19 +46,18 @@ function StepItem({ step }) {
 
   return (
     <div ref={ref} className="fade-in relative">
-      {/* Número gigante — decorativo */}
+      {/* Número gigante decorativo */}
       <span
-        className="absolute -top-4 -left-2 font-heading text-[7rem] md:text-[8rem] leading-none text-graphite/[0.06] select-none pointer-events-none"
+        className="absolute -top-4 -left-2 font-heading text-[6rem] md:text-[7rem] leading-none text-offwhite/[0.04] select-none pointer-events-none"
         aria-hidden="true"
       >
         {step.step}
       </span>
 
-      {/* Conteúdo */}
-      <div className="relative pt-14">
+      <div className="relative pt-12">
         <div className="w-1.5 h-1.5 bg-gold mb-5" />
-        <h3 className="font-heading text-xl text-graphite mb-3 leading-snug">{step.title}</h3>
-        <p className="font-body text-sm text-graphite/55 leading-relaxed">{step.description}</p>
+        <h3 className="font-heading text-xl text-offwhite mb-3 leading-snug">{step.title}</h3>
+        <p className="font-body text-sm text-offwhite/45 leading-relaxed">{step.description}</p>
       </div>
     </div>
   )

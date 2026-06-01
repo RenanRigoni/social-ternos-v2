@@ -8,6 +8,7 @@ import HowItWorks from './components/HowItWorks'
 import Location from './components/Location'
 import FAQ from './components/FAQ'
 import FinalCTA from './components/FinalCTA'
+import Footer from './components/Footer'
 import WhatsAppFloat from './components/WhatsAppFloat'
 
 export default function App() {
@@ -24,13 +25,14 @@ export default function App() {
         <About />
         <Services />
         <Occasions />
-        <Differentials />
         <Gallery />
+        <Differentials />
         <HowItWorks />
         <Location />
         <FAQ />
         <FinalCTA />
       </main>
+      <Footer />
       <WhatsAppFloat />
     </>
   )

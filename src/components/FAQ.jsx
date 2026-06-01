@@ -12,7 +12,7 @@ export default function FAQ() {
   }
 
   return (
-    <section className="bg-white py-20 md:py-28">
+    <section className="bg-[#0f0f0f] py-20 md:py-28">
       <div className="max-w-3xl mx-auto px-6">
         <div ref={ref} className="fade-in mb-14">
           <p className="section-label">Dúvidas frequentes</p>
@@ -20,7 +20,7 @@ export default function FAQ() {
           <span className="gold-line" />
         </div>
 
-        <div className="divide-y divide-graphite/10">
+        <div className="divide-y divide-white/[0.08]">
           {FAQ_DATA.map((item, index) => (
             <FAQItem
               key={index}
@@ -45,14 +45,14 @@ function FAQItem({ item, index, isOpen, onToggle }) {
       <button
         id={buttonId}
         onClick={onToggle}
-        className="w-full flex items-center justify-between gap-4 text-left group py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2"
+        className="w-full flex items-center justify-between gap-4 text-left group py-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f0f0f]"
         aria-expanded={isOpen}
         aria-controls={panelId}
       >
-        <span className="font-body font-medium text-graphite group-hover:text-gold transition-colors duration-200 leading-snug">
+        <span className="font-body font-medium text-offwhite/70 group-hover:text-gold transition-colors duration-200 leading-snug">
           {item.question}
         </span>
-        <span className="text-gold flex-shrink-0" aria-hidden="true">
+        <span className="text-gold/60 flex-shrink-0 group-hover:text-gold transition-colors duration-200" aria-hidden="true">
           {isOpen ? <Minus size={18} strokeWidth={1.5} /> : <Plus size={18} strokeWidth={1.5} />}
         </span>
       </button>
@@ -63,7 +63,7 @@ function FAQItem({ item, index, isOpen, onToggle }) {
         aria-labelledby={buttonId}
         hidden={!isOpen}
       >
-        <p className="font-body text-sm text-graphite/65 leading-relaxed pb-5 pr-8">
+        <p className="font-body text-sm text-offwhite/50 leading-relaxed pb-5 pr-8">
           {item.answer}
         </p>
       </div>

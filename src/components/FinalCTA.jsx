@@ -8,13 +8,14 @@ export default function FinalCTA() {
   return (
     <section className="bg-black py-28 md:py-40">
       <div ref={ref} className="fade-in max-w-3xl mx-auto px-6 text-center">
-        {/* Linha dourada */}
-        <span className="block w-16 h-px bg-gold mx-auto mb-10" />
+        <span className="block w-16 h-px bg-gold/40 mx-auto mb-12" />
 
-        <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-offwhite leading-tight mb-10">
+        <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-offwhite leading-[1.05] mb-4">
           Encontre o traje ideal
-          <span className="block text-gold italic mt-3">para o seu momento especial.</span>
         </h2>
+        <em className="font-heading text-4xl md:text-5xl lg:text-6xl text-gold italic block leading-[1.1] pb-1 mb-12">
+          para o seu momento especial.
+        </em>
 
         <a
           href={whatsappLink}
@@ -24,11 +25,11 @@ export default function FinalCTA() {
           aria-label="Falar com a Social Ternos pelo WhatsApp"
         >
           <WhatsAppIcon />
-          Falar com a Social Ternos
+          Agendar atendimento
         </a>
 
-        <p className="font-body text-xs text-offwhite/30 mt-8 tracking-wide">
-          Seg-Sex: 9h às 18h &nbsp;&middot;&nbsp; Sáb: 8h às 12h
+        <p className="font-body text-xs text-offwhite/25 mt-8 tracking-wide">
+          Seg-Sex: 9h-18h &nbsp;&middot;&nbsp; Sáb: 8h-12h &nbsp;&middot;&nbsp; Patrocínio, MG
         </p>
       </div>
     </section>
