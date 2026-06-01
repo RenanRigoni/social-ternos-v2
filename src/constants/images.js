@@ -16,14 +16,14 @@ export const IMAGES = {
     'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=700&q=85&fit=crop',
     // 3. Homem jovem com terno social
     'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=700&q=85&fit=crop',
-    // 4. Grupo de homens em trajes formais — noivos e padrinhos
-    'https://images.unsplash.com/photo-1511285560929-80b456503681?w=700&q=85&fit=crop',
+    // 4. Grupo em trajes formais — cerimônia social
+    'https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?w=700&q=85&fit=crop',
     // 5. Alfaiate durante prova e ajuste de terno
     'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=700&q=85&fit=crop&crop=right',
     // 6. Homens em trajes sociais em evento formal
     'https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?w=700&q=85&fit=crop',
-    // 7. Homem elegante em traje social completo
-    'https://images.unsplash.com/photo-1621072690822-85f4aa61aa37?w=700&q=85&fit=crop',
+    // 7. Homem em traje social elegante
+    'https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=700&q=85&fit=crop',
     // 8. Cerimônia formal — noivos e convidados bem vestidos
     'https://images.unsplash.com/photo-1606800052052-a08af7148866?w=700&q=85&fit=crop',
   ],
@@ -32,8 +32,8 @@ export const IMAGES = {
   occasions: {
     // Casamento — noivo com terno elegante
     casamento: 'https://images.unsplash.com/photo-1606800052052-a08af7148866?w=600&q=85&fit=crop',
-    // Formatura — homem em traje formal na cerimônia
-    formatura: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&q=85&fit=crop',
+    // Formatura — traje social masculino em cerimônia
+    formatura: 'https://images.unsplash.com/photo-1582966772680-860e372bb558?w=600&q=85&fit=crop',
     // Evento Social — evento formal e elegante
     'evento-social': 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=85&fit=crop',
     // Corporativo — executivo com terno de negócios
@@ -42,9 +42,9 @@ export const IMAGES = {
     batizado: 'https://images.unsplash.com/photo-1529619768328-e37af76c6fe5?w=600&q=85&fit=crop',
     // Pajens — traje social formal para cerimônias
     pajem: 'https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=600&q=85&fit=crop',
-    // Convidados — grupo em trajes formais
-    convidados: 'https://images.unsplash.com/photo-1511285560929-80b456503681?w=600&q=85&fit=crop',
-    // Momentos Especiais — homem em traje impecável
-    especial: 'https://images.unsplash.com/photo-1621072690822-85f4aa61aa37?w=600&q=85&fit=crop',
+    // Convidados — pessoas em trajes sociais
+    convidados: 'https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?w=600&q=85&fit=crop',
+    // Momentos Especiais — elegância masculina
+    especial: 'https://images.unsplash.com/photo-1617127365659-c47fa864d8bc?w=600&q=85&fit=crop',
   },
 }
