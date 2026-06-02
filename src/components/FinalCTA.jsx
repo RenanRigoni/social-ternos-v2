@@ -11,7 +11,6 @@ export default function FinalCTA() {
       <div className="absolute inset-x-0 top-0 mx-auto h-px w-24 bg-gold/40" />
 
       <div data-reveal className="r-up relative mx-auto max-w-3xl px-6 text-center">
-        <p className="eyebrow mb-8">Social Ternos · Patrocínio-MG</p>
         <h2 className="font-display text-[2.6rem] font-medium leading-[1.04] tracking-tight text-bone sm:text-6xl md:text-7xl">
           <Words text="Encontre o traje" step={60} />
           <span className="mt-1 block italic text-gold">

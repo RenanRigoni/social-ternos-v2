@@ -1,4 +1,4 @@
-import { STORE, WHATSAPP, IMAGES, SIZES } from '../constants'
+import { WHATSAPP, IMAGES, SIZES } from '../constants'
 import { useParallax } from '../hooks/useScrollFx'
 import { usePointerSpotlight, useMagnetic } from '../hooks/useInteractive'
 import { WhatsAppIcon } from './Icons'
@@ -44,18 +44,7 @@ export default function Hero() {
         }}
       />
 
-      {/* LATERAL DIREITA — rótulo vertical editorial */}
-      <a
-        href={STORE.instagramUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="absolute right-7 top-1/2 z-20 hidden -translate-y-1/2 rotate-90 items-center gap-3 font-body text-[10px] uppercase tracking-[0.35em] text-bone/55 transition-colors duration-300 hover:text-gold lg:flex"
-      >
-        <span className="h-px w-8 bg-gold/40" />
-        {STORE.instagram}
-      </a>
-
-      {/* CONTEÚDO — base, alinhado à esquerda */}
+{/* CONTEÚDO — base, alinhado à esquerda */}
       <div
         data-reveal
         className="r-up absolute inset-x-0 bottom-0 z-10 px-6 pb-16 md:px-10 md:pb-20 lg:px-14 lg:pb-24"
@@ -103,15 +92,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* SCROLL CUE */}
-      <div className="absolute bottom-7 right-7 z-20 hidden flex-col items-center gap-3 md:flex">
-        <span className="font-body text-[10px] uppercase tracking-[0.3em] text-bone/55 [writing-mode:vertical-rl]">
-          Role
-        </span>
-        <span className="h-12 w-px overflow-hidden bg-bone/15">
-          <span className="block h-1/2 w-full animate-floaty bg-gold" />
-        </span>
-      </div>
     </section>
   )
 }

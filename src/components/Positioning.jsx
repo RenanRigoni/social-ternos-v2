@@ -13,7 +13,7 @@ export default function Positioning() {
               <span className="px-6 font-display text-2xl italic text-bone/25 md:text-3xl">
                 {word}
               </span>
-              <span className="h-1 w-1 rounded-full bg-gold/50" />
+              <span className="h-3.5 w-px bg-gold/30" />
             </span>
           ))}
         </div>

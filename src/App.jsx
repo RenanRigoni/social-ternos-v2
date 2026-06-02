@@ -1,15 +1,13 @@
 import { useRevealObserver } from './hooks/useScrollFx'
 import TopNav from './components/TopNav'
-import CustomCursor from './components/CustomCursor'
 import Hero from './components/Hero'
 import About from './components/About'
-import Services from './components/Services'
 import Kit from './components/Kit'
 import Positioning from './components/Positioning'
 import Editorial from './components/Editorial'
 import Occasions from './components/Occasions'
-import Experience from './components/Experience'
 import Gallery from './components/Gallery'
+import Experience from './components/Experience'
 import Location from './components/Location'
 import FinalCTA from './components/FinalCTA'
 import Footer from './components/Footer'
@@ -26,12 +24,10 @@ export default function App() {
       >
         Pular para o conteúdo
       </a>
-      <CustomCursor />
       <TopNav />
       <main>
         <Hero />
         <About />
-        <Services />
         <Kit />
         <Positioning />
         <Editorial />

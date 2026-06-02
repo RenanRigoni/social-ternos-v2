@@ -102,9 +102,6 @@ export default function Footer() {
           <p className="font-body text-xs text-bone/50">
             &copy; {new Date().getFullYear()} Social Ternos. Todos os direitos reservados.
           </p>
-          <p className="font-body text-xs uppercase tracking-wider text-bone/45">
-            Desenvolvido com elegância para você
-          </p>
         </div>
       </div>
     </footer>

@@ -8,7 +8,6 @@ export default function Editorial() {
       <div className="mx-auto max-w-6xl px-6 lg:px-10">
         {/* CABEÇALHO EDITORIAL */}
         <div className="mb-16 max-w-3xl md:mb-24">
-          <p className="eyebrow mb-6">Venda &amp; Aluguel · Adulto &amp; Infantil</p>
           <h2
             data-reveal
             className="r-up font-display text-[2.2rem] font-medium leading-[1.05] tracking-tight text-bone sm:text-5xl md:text-[3.4rem]"

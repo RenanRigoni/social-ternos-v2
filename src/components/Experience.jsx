@@ -35,7 +35,6 @@ export default function Experience() {
 
         {/* MOTIVOS */}
         <div>
-          <p className="eyebrow mb-6">Nossa Experiência</p>
           <h2
             data-reveal
             className="r-up font-display text-[2.2rem] font-medium leading-[1.06] tracking-tight text-bone sm:text-5xl md:text-[3.2rem]"

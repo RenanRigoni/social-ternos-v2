@@ -11,7 +11,6 @@ export default function Kit() {
 
       <div className="relative mx-auto max-w-6xl px-6 lg:px-10">
         <div className="mb-12 max-w-3xl md:mb-16">
-          <p className="eyebrow mb-5">O kit completo</p>
           <h2
             data-reveal
             className="r-up font-display text-[2rem] font-medium leading-[1.07] tracking-tight text-bone sm:text-4xl md:text-[2.8rem]"

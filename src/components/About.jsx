@@ -22,7 +22,6 @@ export default function About() {
 
         {/* TEXTO */}
         <div>
-          <p className="eyebrow mb-6">{ABOUT.eyebrow}</p>
           <h2
             data-reveal
             className="r-up max-w-2xl font-display text-[2.2rem] font-medium leading-[1.05] tracking-tight text-bone sm:text-5xl md:text-[3.2rem]"
