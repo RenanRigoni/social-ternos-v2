@@ -29,7 +29,7 @@ export default function Hero() {
       {/* TOPO — logo + selo */}
       <header className="absolute inset-x-0 top-0 z-20 flex items-center justify-between px-6 py-6 md:px-10 md:py-8">
         <img
-          src="/logo/social_ternos.svg"
+          src={`${import.meta.env.BASE_URL}logo/social_ternos.svg`}
           alt={`Logo ${STORE.name}`}
           className="h-9 w-auto opacity-90 brightness-0 invert md:h-11"
         />

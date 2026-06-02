@@ -11,7 +11,7 @@ export default function Footer() {
           {/* Marca */}
           <div>
             <img
-              src="/logo/social_ternos.svg"
+              src={`${import.meta.env.BASE_URL}logo/social_ternos.svg`}
               alt="Logo Social Ternos"
               className="h-8 w-auto filter brightness-0 invert opacity-55 mb-6"
             />
