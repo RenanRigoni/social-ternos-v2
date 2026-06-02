@@ -61,7 +61,8 @@ function OccasionTile({ occ, index }) {
         src={IMAGES.occasions[occ.id]}
         alt={occ.label}
         className="img-grade absolute inset-0 h-full w-full object-cover"
-        loading="lazy"
+        loading="eager"
+        decoding="async"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/25 to-transparent" />
       <div className="absolute inset-0 border border-transparent transition-colors duration-500 group-hover:border-gold/40" />

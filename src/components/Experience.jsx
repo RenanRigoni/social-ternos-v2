@@ -19,7 +19,8 @@ export default function Experience() {
                 src={IMAGES.experience}
                 alt="Prova e ajuste de terno com atendimento personalizado na Social Ternos"
                 className="img-grade h-full w-full object-cover"
-                loading="lazy"
+                loading="eager"
+                decoding="async"
               />
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-ink/75 via-transparent to-transparent" />

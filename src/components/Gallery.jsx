@@ -43,7 +43,8 @@ export default function Gallery() {
                 src={src}
                 alt={GALLERY_ALT[i] || 'Traje social masculino — Social Ternos'}
                 className="img-grade absolute inset-0 h-full w-full object-cover"
-                loading="lazy"
+                loading="eager"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-ink/0 transition-colors duration-500 group-hover:bg-ink/15" />
             </figure>

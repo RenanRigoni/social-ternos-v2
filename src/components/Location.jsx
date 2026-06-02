@@ -72,7 +72,7 @@ export default function Location() {
               src={MAPS_EMBED}
               className="absolute inset-0 h-full w-full grayscale-[0.35] contrast-[1.05] transition-[filter] duration-700 group-hover:grayscale-0"
               style={{ border: 0 }}
-              loading="lazy"
+              loading="eager"
               allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
             />

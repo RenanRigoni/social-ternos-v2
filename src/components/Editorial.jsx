@@ -44,7 +44,8 @@ function OfferRow({ offer, flip }) {
               src={IMAGES[offer.image]}
               alt={offer.title}
               className="img-grade h-full w-full object-cover"
-              loading="lazy"
+              loading="eager"
+              decoding="async"
             />
           </div>
           <span className="pointer-events-none absolute left-5 top-4 font-display text-6xl italic text-bone mix-blend-difference md:text-7xl">
