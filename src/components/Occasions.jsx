@@ -1,24 +1,41 @@
-import { OCCASIONS, IMAGES } from '../constants'
-import { useFadeIn } from '../hooks/useFadeIn'
+import { OCCASIONS, IMAGES, WHATSAPP } from '../constants'
+import Words from './Words'
+
+// Spans por índice — grid editorial assimétrico (mobile 2-col, md 12-col).
+function tileClass(occ, i) {
+  if (occ.featured) return 'col-span-2 md:col-span-6 aspect-[4/3] md:aspect-[16/11]'
+  if (i === 1 || i === 2) return 'col-span-1 md:col-span-3 aspect-[3/4]'
+  if (i === 5) return 'col-span-2 md:col-span-4 aspect-[16/10] md:aspect-[5/6]'
+  return 'col-span-1 md:col-span-4 aspect-[3/4] md:aspect-[5/6]'
+}
 
 export default function Occasions() {
-  const ref = useFadeIn()
-
   return (
-    <section id="ocasioes" className="bg-[#111111] py-24 md:py-32">
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Header */}
-        <div ref={ref} className="fade-in mb-14">
-          <h2 className="font-heading text-4xl md:text-5xl text-offwhite leading-tight">
-            Noivos, padrinhos, formandos e eventos sociais
+    <section id="ocasioes" className="relative bg-ink py-24 md:py-36">
+      <div className="mx-auto max-w-6xl px-6 lg:px-10">
+        <div className="mb-14 flex flex-col gap-6 md:mb-20 md:flex-row md:items-end md:justify-between">
+          <h2
+            data-reveal
+            className="r-up max-w-2xl font-display text-[2.2rem] font-medium leading-[1.05] tracking-tight text-bone sm:text-5xl md:text-[3.2rem]"
+          >
+            <Words text="Para cada ocasião," step={50} />{' '}
+            <span className="italic text-gold">
+              <Words text="uma presença à altura." delay={220} step={60} />
+            </span>
           </h2>
-          <span className="block w-12 h-px bg-gold mt-6" />
+          <p
+            data-reveal
+            className="r-blur max-w-xs font-body text-[14px] leading-relaxed text-bone/50"
+            style={{ transitionDelay: '120ms' }}
+          >
+            Casamentos, formaturas, padrinhos, pajens e eventos corporativos — trajes
+            pensados para o seu papel no dia.
+          </p>
         </div>
 
-        {/* Grid de ocasiões */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3">
-          {OCCASIONS.map((occasion) => (
-            <OccasionCard key={occasion.id} occasion={occasion} />
+        <div className="grid grid-cols-2 gap-3 md:grid-cols-12 md:gap-4">
+          {OCCASIONS.map((occ, i) => (
+            <OccasionTile key={occ.id} occ={occ} index={i} />
           ))}
         </div>
       </div>
@@ -26,34 +43,47 @@ export default function Occasions() {
   )
 }
 
-function OccasionCard({ occasion }) {
-  const ref = useFadeIn()
-  const imgSrc = IMAGES.occasions[occasion.id]
+function OccasionTile({ occ, index }) {
+  const wa = WHATSAPP.getLink(WHATSAPP.messages.occasion(occ.label.toLowerCase()))
+  const featured = occ.featured
 
   return (
-    <div
-      ref={ref}
-      className="fade-in relative group overflow-hidden aspect-[3/4] cursor-default"
+    <a
+      href={wa}
+      target="_blank"
+      rel="noopener noreferrer"
+      data-reveal
+      style={{ transitionDelay: `${index * 70}ms` }}
+      className={`r-clip group relative block overflow-hidden bg-graphite ${tileClass(occ, index)}`}
+      aria-label={`Traje para ${occ.label} — falar pelo WhatsApp`}
     >
       <img
-        src={imgSrc}
-        alt={occasion.label}
-        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+        src={IMAGES.occasions[occ.id]}
+        alt={occ.label}
+        className="img-grade absolute inset-0 h-full w-full object-cover"
         loading="lazy"
       />
+      <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/25 to-transparent" />
+      <div className="absolute inset-0 border border-transparent transition-colors duration-500 group-hover:border-gold/40" />
 
-      {/* Overlay base + hover intensifica */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent transition-opacity duration-400" />
-      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-400" />
-
-      {/* Borda dourada no hover */}
-      <div className="absolute inset-0 border border-transparent group-hover:border-gold/40 transition-colors duration-400" />
-
-      {/* Label */}
-      <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5">
-        <p className="font-heading text-offwhite text-sm leading-snug line-clamp-2">{occasion.label}</p>
-        <span className="block h-px bg-gold mt-2.5 transition-all duration-400 w-6 group-hover:w-10" />
+      <div className="absolute inset-x-0 bottom-0 p-4 md:p-5">
+        {featured && occ.note && (
+          <p className="eyebrow mb-2 text-bone/60">{occ.note}</p>
+        )}
+        <div className="flex items-end justify-between gap-2">
+          <h3
+            className={`font-display leading-none text-bone ${
+              featured ? 'text-3xl md:text-5xl' : 'text-lg md:text-xl'
+            }`}
+          >
+            {occ.label}
+          </h3>
+          <span className="translate-x-2 pb-1 text-gold opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+            →
+          </span>
+        </div>
+        <span className="mt-3 block h-px w-6 bg-gold transition-all duration-500 group-hover:w-14" />
       </div>
-    </div>
+    </a>
   )
 }

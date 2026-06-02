@@ -1,83 +1,94 @@
-import { STORE, WHATSAPP, MAPS_URL } from '../constants'
-import { useFadeIn } from '../hooks/useFadeIn'
-import { MapPin, Clock, Phone } from 'lucide-react'
+import { STORE, WHATSAPP, MAPS_URL, MAPS_EMBED } from '../constants'
+import { WhatsAppIcon } from './Icons'
+import Words from './Words'
+import { MapPin, Clock, Phone, Navigation } from 'lucide-react'
 
 export default function Location() {
-  const ref = useFadeIn()
-  const whatsappLink = WHATSAPP.getLink(WHATSAPP.messages.default)
+  const wa = WHATSAPP.getLink(WHATSAPP.messages.default)
 
   return (
-    <section className="bg-[#0a0a0a] py-24 md:py-28">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-12 items-start">
+    <section id="localizacao" className="relative bg-ink py-24 md:py-36">
+      <div className="mx-auto max-w-6xl px-6 lg:px-10">
+        <div className="grid items-stretch gap-10 md:grid-cols-2 md:gap-14">
 
-          {/* Informações */}
-          <div ref={ref} className="fade-in">
-            <p className="section-label">Visite a Social Ternos no Centro de Patrocínio</p>
-            <h2 className="section-title mb-5">Como nos encontrar</h2>
-            <span className="gold-line" />
+          {/* INFORMAÇÕES */}
+          <div data-reveal className="r-right">
+            <p className="eyebrow mb-6">No coração de Patrocínio</p>
+            <h2 className="font-display text-[2.2rem] font-medium leading-[1.06] tracking-tight text-bone sm:text-5xl md:text-[3rem]">
+              <Words text="Venha viver a" step={50} />{' '}
+              <span className="italic text-gold">
+                <Words text="experiência na loja." delay={220} step={60} />
+              </span>
+            </h2>
 
-            <div className="space-y-6 mt-2">
-              <div className="flex gap-4">
-                <MapPin size={18} strokeWidth={1.5} className="text-gold flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="font-body text-sm font-medium text-offwhite">{STORE.address}</p>
-                  <p className="font-body text-offwhite/50 text-sm">{STORE.city}</p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <Clock size={18} strokeWidth={1.5} className="text-gold flex-shrink-0 mt-0.5" />
-                <div className="space-y-1">
-                  <p className="font-body text-offwhite/75 text-sm">{STORE.hours.weekdays}</p>
-                  <p className="font-body text-offwhite/75 text-sm">{STORE.hours.saturday}</p>
-                  <p className="font-body text-offwhite/35 text-sm">{STORE.hours.sunday}</p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <Phone size={18} strokeWidth={1.5} className="text-gold flex-shrink-0 mt-0.5" />
-                <p className="font-body text-offwhite/75 text-sm">{STORE.phone}</p>
-              </div>
+            <div className="mt-10 divide-y divide-bone/10 border-y border-bone/10">
+              <InfoRow icon={MapPin}>
+                <p className="text-bone">{STORE.address}</p>
+                <p className="text-bone/45">{STORE.city}</p>
+              </InfoRow>
+              <InfoRow icon={Clock}>
+                <p className="text-bone/75">{STORE.hours.weekdays}</p>
+                <p className="text-bone/75">{STORE.hours.saturday}</p>
+                <p className="text-bone/35">{STORE.hours.sunday}</p>
+              </InfoRow>
+              <InfoRow icon={Phone}>
+                <a href={wa} className="text-bone/75 transition-colors hover:text-gold">
+                  {STORE.phone}
+                </a>
+              </InfoRow>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3 mt-10">
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <a
-                href={whatsappLink}
+                href={wa}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-whatsapp"
+                className="btn-gold"
                 aria-label="Falar com a Social Ternos pelo WhatsApp"
               >
-                Falar pelo WhatsApp
+                <span><WhatsAppIcon size={16} /></span>
+                <span>Falar pelo WhatsApp</span>
               </a>
               <a
                 href={MAPS_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary"
+                className="btn-ghost"
                 aria-label="Traçar rota no Google Maps"
               >
-                Traçar rota
+                <span><Navigation size={15} /></span>
+                <span>Traçar rota</span>
               </a>
             </div>
           </div>
 
-          {/* Mapa */}
-          <div className="fade-in overflow-hidden h-80 md:h-[420px] border border-white/[0.07]">
+          {/* MAPA INCORPORADO */}
+          <div
+            data-reveal
+            className="r-clip group relative min-h-[340px] overflow-hidden border border-bone/10"
+          >
             <iframe
-              title="Localização da Social Ternos"
-              src="https://maps.google.com/maps?q=Rua+Pinto+Dias,207,Patrocínio,MG,Brasil&z=16&output=embed"
-              width="100%"
-              height="100%"
+              title="Localização da Social Ternos no Centro de Patrocínio-MG"
+              src={MAPS_EMBED}
+              className="absolute inset-0 h-full w-full grayscale-[0.35] contrast-[1.05] transition-[filter] duration-700 group-hover:grayscale-0"
               style={{ border: 0 }}
-              allowFullScreen
               loading="lazy"
+              allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
             />
+            <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-gold/0 transition-all duration-500 group-hover:ring-gold/30" />
           </div>
         </div>
       </div>
     </section>
+  )
+}
+
+function InfoRow({ icon: Icon, children }) {
+  return (
+    <div className="flex gap-4 py-5">
+      <Icon size={18} strokeWidth={1.4} className="mt-0.5 flex-shrink-0 text-gold" />
+      <div className="space-y-1 font-body text-sm">{children}</div>
+    </div>
   )
 }

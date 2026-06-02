@@ -1,142 +1,107 @@
 import { STORE, WHATSAPP, IMAGES } from '../constants'
+import { useParallax } from '../hooks/useScrollFx'
+import { WhatsAppIcon } from './Icons'
+import Words from './Words'
 
 export default function Hero() {
   const whatsappHero = WHATSAPP.getLink(WHATSAPP.messages.hero)
+  const parallax = useParallax(0.12)
 
   return (
-    <section className="flex flex-col md:flex-row min-h-[100dvh]">
+    <section className="relative min-h-[100svh] w-full overflow-hidden bg-ink">
 
-      {/* PAINEL ESQUERDO — preto, apenas desktop */}
-      <div className="hidden md:flex flex-col justify-between bg-[#0a0a0a] md:w-2/5 lg:w-[42%] min-h-[100dvh] px-10 lg:px-14 py-12 flex-shrink-0 border-r border-white/[0.04]">
+      {/* CAMADA DE IMAGEM — full-bleed, ken-burns + parallax */}
+      <div ref={parallax} className="absolute inset-0 -z-0 scale-110">
+        <img
+          src={IMAGES.hero}
+          alt="Terno masculino de alta qualidade — Social Ternos"
+          className="h-full w-full object-cover object-[50%_25%] animate-kenburns"
+          loading="eager"
+          fetchPriority="high"
+        />
+      </div>
 
-        {/* Logo */}
-        <div>
-          <img
-            src="/logo/social_ternos.svg"
-            alt={`Logo ${STORE.name}`}
-            className="h-9 w-auto filter brightness-0 invert opacity-70"
-          />
-        </div>
+      {/* OVERLAYS — vinheta quente + gradiente inferior para legibilidade */}
+      <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/45 to-ink/35" />
+      <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-transparent to-ink/30" />
+      <div className="absolute inset-0 bg-[radial-gradient(120%_90%_at_70%_30%,transparent_45%,rgba(11,10,9,0.7)_100%)]" />
 
-        {/* Conteúdo central */}
-        <div>
-          <div className="flex items-center gap-3 mb-10">
-            <span className="block w-8 h-px bg-gold/50 flex-shrink-0" />
-            <span className="font-body text-[10px] text-gold/70 tracking-[0.3em] uppercase">
-              Patrocínio, MG
-            </span>
+      {/* TOPO — logo + selo */}
+      <header className="absolute inset-x-0 top-0 z-20 flex items-center justify-between px-6 py-6 md:px-10 md:py-8">
+        <img
+          src="/logo/social_ternos.svg"
+          alt={`Logo ${STORE.name}`}
+          className="h-9 w-auto opacity-90 brightness-0 invert md:h-11"
+        />
+        <span className="hidden items-center gap-2.5 sm:flex">
+          <span className="h-px w-7 bg-gold/60" />
+          <span className="font-body text-[10px] uppercase tracking-[0.35em] text-bone/70">
+            Venda &amp; Aluguel
+          </span>
+        </span>
+      </header>
+
+      {/* LATERAL DIREITA — rótulo vertical editorial */}
+      <a
+        href={STORE.instagramUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute right-7 top-1/2 z-20 hidden -translate-y-1/2 rotate-90 items-center gap-3 font-body text-[10px] uppercase tracking-[0.35em] text-bone/45 transition-colors duration-300 hover:text-gold lg:flex"
+      >
+        <span className="h-px w-8 bg-gold/40" />
+        {STORE.instagram}
+      </a>
+
+      {/* CONTEÚDO — base, alinhado à esquerda */}
+      <div
+        data-reveal
+        className="r-up absolute inset-x-0 bottom-0 z-10 px-6 pb-16 md:px-10 md:pb-20 lg:px-14 lg:pb-24"
+      >
+        <div className="max-w-4xl">
+          <div className="mb-6 flex items-center gap-3">
+            <span className="h-px w-8 bg-gold" />
+            <span className="eyebrow text-bone/70">{STORE.city} · Alfaiataria</span>
           </div>
 
-          <h1 className="font-heading text-[2.2rem] lg:text-[2.6rem] xl:text-[3rem] text-offwhite leading-[1.05] tracking-tight mb-2">
-            Elegância para momentos
+          <h1 className="font-display text-[3rem] font-medium leading-[0.92] tracking-tight text-bone sm:text-6xl md:text-7xl lg:text-8xl">
+            <Words text="Vista o seu" step={70} />
+            <span className="mt-1 block italic text-gold">
+              <Words text="grande momento." delay={220} step={80} />
+            </span>
           </h1>
-          <span className="font-heading text-[2.2rem] lg:text-[2.6rem] xl:text-[3rem] text-gold italic block leading-[1.1] pb-1 mb-7">
-            que pedem presença.
-          </span>
 
-          <p className="font-body text-offwhite/50 text-sm leading-relaxed mb-10 max-w-[280px]">
-            Venda e aluguel de ternos adulto e infantil em Patrocínio-MG, com atendimento personalizado para casamentos, formaturas e ocasiões especiais.
+          <p className="mt-7 max-w-md font-body text-[15px] leading-relaxed text-bone/65">
+            Ternos adulto e infantil para casamentos, formaturas e ocasiões que
+            pedem presença — com atendimento personalizado em Patrocínio-MG.
           </p>
 
-          <div className="flex flex-col items-start gap-3">
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
             <a
               href={whatsappHero}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-gold text-black font-body font-semibold text-sm tracking-wide px-7 py-3.5 transition-all duration-300 hover:bg-gold-light active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
+              className="btn-gold"
               aria-label="Agendar atendimento pelo WhatsApp"
             >
-              <WhatsAppIcon />
-              Agendar pelo WhatsApp
+              <span><WhatsAppIcon size={16} /></span>
+              <span>Agendar pelo WhatsApp</span>
             </a>
-            <a
-              href="#ocasioes"
-              className="font-body text-sm text-offwhite/40 hover:text-gold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
-            >
-              Ver opções de trajes &darr;
+            <a href="#colecao" className="btn-ghost" aria-label="Ver a coleção">
+              <span>Ver a coleção</span>
             </a>
-          </div>
-        </div>
-
-        {/* Rodapé sutil */}
-        <div className="flex items-center gap-2.5">
-          <span className="block w-5 h-px bg-gold/20" />
-          <span className="font-body text-[10px] text-offwhite/15 tracking-widest uppercase">Social Ternos</span>
-        </div>
-      </div>
-
-      {/* PAINEL DIREITO — imagem */}
-      <div className="relative flex-1 min-h-[100dvh]">
-        <img
-          src={IMAGES.hero}
-          alt="Terno masculino de alta qualidade — Social Ternos"
-          className="absolute inset-0 w-full h-full object-cover object-center"
-          loading="eager"
-        />
-
-        {/* Sombra esquerda para fundir com painel */}
-        <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#0a0a0a]/60 to-transparent hidden md:block" />
-
-        {/* Overlay gradiente geral */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/40 md:hidden" />
-
-        {/* CONTEÚDO MOBILE — sobre a imagem */}
-        <div className="absolute inset-0 flex flex-col justify-between p-7 md:hidden">
-          <div>
-            <img
-              src="/logo/social_ternos.svg"
-              alt={`Logo ${STORE.name}`}
-              className="h-10 w-auto filter brightness-0 invert opacity-80"
-            />
-          </div>
-
-          <div>
-            <div className="flex items-center gap-3 mb-6">
-              <span className="block w-6 h-px bg-gold/60" />
-              <span className="font-body text-[10px] text-gold/80 tracking-[0.25em] uppercase">Patrocínio, MG</span>
-            </div>
-
-            <h1 className="font-heading text-[2.3rem] text-offwhite leading-[1.05] tracking-tight mb-1.5">
-              Elegância para momentos
-            </h1>
-            <span className="font-heading text-[2.3rem] text-gold italic block leading-[1.1] pb-1 mb-5">
-              que pedem presença.
-            </span>
-
-            <p className="font-body text-offwhite/55 text-sm leading-relaxed mb-7 max-w-xs">
-              Ternos adulto e infantil com atendimento personalizado em Patrocínio-MG.
-            </p>
-
-            <div className="flex flex-col gap-3">
-              <a
-                href={whatsappHero}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-gold text-black font-body font-semibold text-sm tracking-wide px-7 py-4 active:scale-[0.98]"
-                aria-label="Agendar atendimento pelo WhatsApp"
-              >
-                <WhatsAppIcon />
-                Agendar atendimento
-              </a>
-              <a
-                href="#servicos"
-                className="inline-flex items-center justify-center gap-2 border border-offwhite/25 text-offwhite/65 font-body text-sm tracking-wide px-7 py-4"
-              >
-                Ver serviços
-              </a>
-            </div>
           </div>
         </div>
       </div>
 
+      {/* SCROLL CUE */}
+      <div className="absolute bottom-7 right-7 z-20 hidden flex-col items-center gap-3 md:flex">
+        <span className="font-body text-[9px] uppercase tracking-[0.3em] text-bone/40 [writing-mode:vertical-rl]">
+          Role
+        </span>
+        <span className="h-12 w-px overflow-hidden bg-bone/15">
+          <span className="block h-1/2 w-full animate-floaty bg-gold" />
+        </span>
+      </div>
     </section>
-  )
-}
-
-function WhatsAppIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-    </svg>
   )
 }

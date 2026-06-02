@@ -4,7 +4,7 @@ export default function Footer() {
   const whatsappLink = WHATSAPP.getLink(WHATSAPP.messages.default)
 
   return (
-    <footer className="bg-[#080808] border-t border-white/[0.06]">
+    <footer className="bg-ink border-t border-bone/10">
       <div className="max-w-6xl mx-auto px-6 py-16 md:py-20">
         <div className="grid md:grid-cols-3 gap-10 md:gap-16">
 
@@ -73,7 +73,7 @@ export default function Footer() {
         </div>
 
         {/* Linha inferior */}
-        <div className="border-t border-white/[0.05] mt-14 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="border-t border-bone/10 mt-14 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="font-body text-xs text-offwhite/15">
             &copy; {new Date().getFullYear()} Social Ternos. Todos os direitos reservados.
           </p>
