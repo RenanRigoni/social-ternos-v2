@@ -71,7 +71,7 @@ export const OCCASIONS = [
   { id: 'casamento', label: 'Casamento', note: 'Noivos & padrinhos', featured: true },
   { id: 'formatura', label: 'Formatura' },
   { id: 'corporativo', label: 'Corporativo' },
-  { id: 'pajem', label: 'Pajens' },
+  { id: 'padrinhos', label: 'Padrinhos' },
   { id: 'evento-social', label: 'Evento Social' },
   { id: 'batizado', label: 'Cerimônias' },
 ]
@@ -129,6 +129,15 @@ export const SERVICES = [
   { icon: 'rings', title: 'Casamentos', text: 'Do noivo aos padrinhos, a elegância que marca o grande dia.' },
   { icon: 'cap', title: 'Formaturas', text: 'Conquiste esse momento com estilo e personalidade.' },
   { icon: 'bowtie', title: 'Ocasiões especiais', text: 'Eventos sociais, jantares, aniversários e muito mais.' },
+]
+
+// Kit completo — o terno sai pronto, da cabeça aos pés
+export const KIT = [
+  { icon: 'jacket', label: 'Paletó' },
+  { icon: 'pants', label: 'Calça social' },
+  { icon: 'shirt', label: 'Camisa social' },
+  { icon: 'tie', label: 'Gravata' },
+  { icon: 'shoe', label: 'Sapato' },
 ]
 
 // Seção "O que nos torna a escolha certa"

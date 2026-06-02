@@ -1,38 +1,35 @@
-// IMAGENS PLACEHOLDER — todas do Unsplash (licença livre para uso comercial).
-// IDs verificados (HTTP 200) e curados visualmente para moda masculina/alfaiataria.
-// Substituir por fotos reais da loja antes do lançamento: basta trocar o ID em IDS
-// mantendo a chave. Foto vertical (3:4) e bem iluminada — o tratamento editorial
-// escuro é aplicado via CSS (.img-grade).
+// IMAGENS PLACEHOLDER — Unsplash (licença livre p/ uso comercial), curadas
+// VISUALMENTE para o nicho: só ternos, alfaiataria e menswear. Sem alianças,
+// sem jeans, sem flatlay casual. IDs conferidos olhando cada foto.
 //
-// Cada imagem expõe { src, srcSet }. O srcSet entrega larguras múltiplas e o
-// browser escolhe a menor que serve o slot (ver SIZES) conforme viewport/DPR —
-// no mobile (público primário) isso corta metade do peso.
+// Reuso entre seções é permitido; dentro de um mesmo grid não há repetição.
+// Substituir por fotos reais da loja antes do lançamento: troque o ID em IDS
+// mantendo a chave. Foto vertical (3:4) bem iluminada — o grading escuro é CSS.
 //
-// ⚠️ TROCAR POR FOTO REAL (não há bom stock gratuito de criança de terno):
-//   - IMAGES.infantil  (Bloco editorial "Infantil")
-//   - IMAGES.occasions.pajem  (Ocasião "Pajens")
-// Hoje usam um detalhe de moda masculina neutro como placeholder.
+// ⚠️ ÚNICO SLOT SEM FOTO DE NICHO (não há bom stock gratuito de criança de terno):
+//   - IMAGES.infantil  → hoje usa um terno adulto; trocar por foto real de
+//     criança/adolescente de terno da própria loja.
 
 const IDS = {
-  hero: '1507679799987-c73779587ccf',         // homem ajustando o paletó, luz dramática
-  adulto: '1594938298603-c8148c4dae35',        // terno azul de corte impecável
-  infantil: '1602810318383-e386cc2a3ccf',      // ⚠ placeholder neutro — trocar por menino de terno
-  experience: '1598808503746-f34c53b9323e',    // alfaiataria (atelier/prova)
+  hero: '1507679799987-c73779587ccf',          // homem ajustando paletó navy
+  adulto: '1594938298603-c8148c4dae35',         // terno azul de 3 peças (paletó+colete+calça)
+  infantil: '1593030103066-0093718efeb9',       // ⚠ terno azul adulto — trocar por criança real
+  experience: '1598808503746-f34c53b9323e',     // terno em manequim no ateliê
   // Ocasiões
-  casamento: '1606800052052-a08af7148866',     // alianças / casamento
-  formatura: '1543132220-3ec99c6094dc',        // jovem em terno
-  corporativo: '1560250097-0b93528c311a',      // executivo de terno
-  pajem: '1490114538077-0a7f8cb49891',         // ⚠ placeholder neutro — trocar por pajem real
-  'evento-social': '1593030103066-0093718efeb9', // homem em terno azul
-  batizado: '1592878904946-b3cd8ae243d0',      // homem em terno marinho (cerimônias)
-  // Galeria magazine
-  g1: '1507679799987-c73779587ccf',
-  g2: '1594938298603-c8148c4dae35',
-  g3: '1519085360753-af0119f7cbe7',
-  g4: '1593030761757-71fae45fa0e7',
-  g5: '1490114538077-0a7f8cb49891',
-  g6: '1606800052052-a08af7148866',
-  g7: '1617127365659-c47fa864d8bc',
+  casamento: '1519085360753-af0119f7cbe7',      // terno preto + gravata vermelha (noivo)
+  formatura: '1617127365659-c47fa864d8bc',      // terno preto, estilo formando
+  corporativo: '1560250097-0b93528c311a',       // blazer escuro corporativo
+  padrinhos: '1592878904946-b3cd8ae243d0',      // blazer windowpane marinho
+  'evento-social': '1507679799987-c73779587ccf', // homem de terno navy
+  batizado: '1594938298603-c8148c4dae35',       // terno azul (cerimônias)
+  // Galeria — 7 (todas terno/menswear, distintas entre si)
+  g1: '1519085360753-af0119f7cbe7',             // terno preto, gravata vermelha
+  g2: '1594938298603-c8148c4dae35',             // terno azul 3 peças
+  g3: '1617127365659-c47fa864d8bc',             // terno preto moderno
+  g4: '1593030103066-0093718efeb9',             // ajuste do punho, terno azul
+  g5: '1592878904946-b3cd8ae243d0',             // blazer windowpane marinho
+  g6: '1560250097-0b93528c311a',                // blazer corporativo
+  g7: '1490114538077-0a7f8cb49891',             // composição: paletó, gravata, sapato, relógio
 }
 
 const u = (id, w) =>
@@ -67,12 +64,12 @@ export const IMAGES = {
     casamento: make(IDS.casamento, 1300),
     formatura: make(IDS.formatura, 800),
     corporativo: make(IDS.corporativo, 800),
-    pajem: make(IDS.pajem, 800),
+    padrinhos: make(IDS.padrinhos, 800),
     'evento-social': make(IDS['evento-social'], 800),
     batizado: make(IDS.batizado, 800),
   },
 
-  // Galeria magazine — 7 imagens (layout assimétrico), todas moda masculina
+  // Galeria magazine — 7 imagens (layout assimétrico), todas terno/menswear
   gallery: [
     make(IDS.g1, 900),
     make(IDS.g2, 900),
@@ -85,11 +82,11 @@ export const IMAGES = {
 }
 
 export const GALLERY_ALT = [
-  'Homem ajustando o paletó de um terno escuro, Social Ternos',
-  'Terno azul masculino de corte impecável',
-  'Jovem em traje social completo e elegante',
-  'Composição de camisa, gravata e sapatos sociais',
-  'Detalhe de tecido e textura de terno premium',
-  'Alianças em cerimônia de casamento',
-  'Homem em terno preto elegante, Social Ternos',
+  'Homem em terno preto com gravata vermelha, Social Ternos',
+  'Terno azul masculino de três peças com colete',
+  'Homem em terno preto de corte moderno',
+  'Homem ajustando o punho de um terno azul',
+  'Blazer azul-marinho de padronagem windowpane',
+  'Homem de blazer escuro em ambiente corporativo',
+  'Composição de paletó, gravata, sapato e relógio',
 ]

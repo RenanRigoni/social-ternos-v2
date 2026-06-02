@@ -68,6 +68,30 @@ const SHAPES = {
       <path pathLength="1" d="M10 19.5V15h4v4.5" />
     </>
   ),
+  shirt: (
+    <>
+      <path pathLength="1" d="M8 3 5 7l2.5 2.5L8 8.5V21h8V8.5l.5 1L19 7l-3-4-4 3z" />
+      <path pathLength="1" d="M12 6v14" />
+    </>
+  ),
+  pants: (
+    <>
+      <path pathLength="1" d="M7 3h10l-1.2 18h-3.3L12 9.5 11.5 21H8.2z" />
+      <path pathLength="1" d="M7 3v3.5h10V3" />
+    </>
+  ),
+  tie: (
+    <>
+      <path pathLength="1" d="M10.5 3h3l-.7 4 1.8 8.5-2.6 3.5-2.6-3.5L9.2 7z" />
+      <path pathLength="1" d="M10.5 3 12 5l1.5-2" />
+    </>
+  ),
+  shoe: (
+    <>
+      <path pathLength="1" d="M3 16h6l4.5-2.2c2.5 0 6.5.6 7.5 2.7.3 1.4-.7 2.5-2.5 2.5H4a1 1 0 0 1-1-1z" />
+      <path pathLength="1" d="M4.5 16l1-3" />
+    </>
+  ),
 }
 
 export default function LineIcon({ name, size = 30, className = '' }) {

@@ -4,6 +4,7 @@ import CustomCursor from './components/CustomCursor'
 import Hero from './components/Hero'
 import About from './components/About'
 import Services from './components/Services'
+import Kit from './components/Kit'
 import Positioning from './components/Positioning'
 import Editorial from './components/Editorial'
 import Occasions from './components/Occasions'
@@ -31,6 +32,7 @@ export default function App() {
         <Hero />
         <About />
         <Services />
+        <Kit />
         <Positioning />
         <Editorial />
         <Occasions />

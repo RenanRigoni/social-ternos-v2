@@ -23,7 +23,7 @@ export default function Hero() {
           src={IMAGES.hero.src}
           srcSet={IMAGES.hero.srcSet}
           sizes={SIZES.full}
-          alt="Atendimento de alfaiataria na Social Ternos: cliente provando terno com auxílio do alfaiate"
+          alt="Homem ajustando o paletó de um terno azul-marinho, Social Ternos"
           className="h-full w-full object-cover object-[50%_25%] animate-kenburns"
           loading="eager"
           fetchPriority="high"
