@@ -11,9 +11,9 @@ export default function Footer() {
           {/* Marca */}
           <div>
             <img
-              src={`${import.meta.env.BASE_URL}logo/social_ternos.svg`}
+              src={`${import.meta.env.BASE_URL}logo/logo_hor_w.svg`}
               alt="Logo Social Ternos"
-              className="h-8 w-auto filter brightness-0 invert opacity-55 mb-6"
+              className="h-7 w-auto opacity-60 mb-6"
             />
             <p className="font-body text-sm text-offwhite/40 leading-relaxed max-w-[220px]">
               Loja especializada em trajes masculinos adulto e infantil. Venda e aluguel com atendimento personalizado em Patrocínio-MG.

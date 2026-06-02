@@ -29,9 +29,9 @@ export default function Hero() {
       {/* TOPO — logo + selo */}
       <header className="absolute inset-x-0 top-0 z-20 flex items-center justify-between px-6 py-6 md:px-10 md:py-8">
         <img
-          src={`${import.meta.env.BASE_URL}logo/social_ternos.svg`}
+          src={`${import.meta.env.BASE_URL}logo/logo_hor_w.svg`}
           alt={`Logo ${STORE.name}`}
-          className="h-9 w-auto opacity-90 brightness-0 invert md:h-11"
+          className="h-7 w-auto opacity-90 md:h-9"
         />
         <span className="hidden items-center gap-2.5 sm:flex">
           <span className="h-px w-7 bg-gold/60" />
