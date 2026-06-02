@@ -60,7 +60,7 @@ export const OFFERS = [
     n: '02',
     kicker: 'Infantil',
     title: 'Pequenos cavalheiros, grandes presenças',
-    text: 'Trajes para crianças e pajens em casamentos, batizados e cerimônias de família — conforto e elegância sob medida para eles.',
+    text: 'Trajes para crianças e pajens em casamentos, batizados e cerimônias de família: conforto e elegância sob medida para eles.',
     image: 'infantil',
     span: 'narrow',
   },
@@ -99,6 +99,62 @@ export const EXPERIENCE = [
     text: 'Camisa, gravata, colete e acessórios combinados em um visual completo e coerente.',
   },
 ]
+
+// Navegação do topo — âncoras para as seções
+export const NAV = [
+  { label: 'Início', href: '#inicio' },
+  { label: 'Sobre', href: '#sobre' },
+  { label: 'Ternos', href: '#colecao' },
+  { label: 'Ocasiões', href: '#ocasioes' },
+  { label: 'Lookbook', href: '#galeria' },
+  { label: 'Contato', href: '#contato' },
+]
+
+// Bloco "Sobre" — momento de marca
+export const ABOUT = {
+  eyebrow: 'Sobre a Social Ternos',
+  title: 'Mais que ternos, criamos experiências.',
+  paragraphs: [
+    'Loja especializada em trajes masculinos no Centro de Patrocínio-MG, referência em venda e aluguel de ternos adulto e infantil.',
+    'Atendimento personalizado para o seu maior conforto. No nosso acervo você encontra ternos com acabamento premium e caimento impecável, num ambiente agradável e exclusivo.',
+  ],
+}
+
+// Seção "Soluções para cada ocasião" — ícones desenháveis (ver LineIcons.jsx)
+export const SERVICES = [
+  { icon: 'jacket', title: 'Venda', text: 'Ternos e acessórios com design sofisticado e caimento perfeito.' },
+  { icon: 'hanger', title: 'Aluguel', text: 'Trajes para todas as ocasiões, com praticidade e ótimo custo-benefício.' },
+  { icon: 'adult', title: 'Adulto', text: 'Modelagens modernas e clássicas para todos os estilos.' },
+  { icon: 'child', title: 'Infantil', text: 'Elegância também para os pequenos grandes momentos.' },
+  { icon: 'rings', title: 'Casamentos', text: 'Do noivo aos padrinhos, a elegância que marca o grande dia.' },
+  { icon: 'cap', title: 'Formaturas', text: 'Conquiste esse momento com estilo e personalidade.' },
+  { icon: 'bowtie', title: 'Ocasiões especiais', text: 'Eventos sociais, jantares, aniversários e muito mais.' },
+]
+
+// Seção "O que nos torna a escolha certa"
+export const REASONS = [
+  { icon: 'care', title: 'Atendimento personalizado' },
+  { icon: 'scissors', title: 'Caimento impecável' },
+  { icon: 'medal', title: 'Acabamento premium' },
+  { icon: 'comfort', title: 'Conforto em cada detalhe' },
+  { icon: 'store', title: 'Ambiente exclusivo' },
+]
+
+// Horário de funcionamento estruturado (para status em tempo real)
+const SCHEDULE = {
+  1: [540, 1080], 2: [540, 1080], 3: [540, 1080], 4: [540, 1080], 5: [540, 1080], // seg–sex 9h–18h
+  6: [480, 720], // sáb 8h–12h
+  // domingo (0): fechado
+}
+
+// Calcula se a loja está aberta agora (horário local do visitante).
+export function storeStatus(now = new Date()) {
+  const day = now.getDay()
+  const mins = now.getHours() * 60 + now.getMinutes()
+  const window = SCHEDULE[day]
+  const open = !!window && mins >= window[0] && mins < window[1]
+  return { open, label: open ? 'Aberto agora' : 'Fechado agora' }
+}
 
 export const MAPS_URL =
   'https://www.google.com/maps/search/Rua+Pinto+Dias,+207,+Centro,+Patroc%C3%ADnio,+MG'

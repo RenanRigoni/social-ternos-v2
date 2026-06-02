@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..600&family=Inter:wght@300;400;500;600;700&display=swap');
-
+/* Fontes carregadas via <link> no index.html (não @import — evita render-block serializado). */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -63,7 +62,7 @@
 
   /* ---------- Editorial primitives ---------- */
   .eyebrow {
-    @apply font-body text-[10px] text-gold/80 tracking-[0.35em] uppercase;
+    @apply font-body text-[11px] text-gold/80 tracking-[0.35em] uppercase;
   }
   .hairline {
     @apply block w-12 h-px bg-gold/70;
@@ -71,7 +70,7 @@
 
   /* Animated underline link */
   .link-sweep {
-    @apply relative font-body text-sm text-bone/55 transition-colors duration-300 hover:text-bone;
+    @apply relative inline-block py-1.5 font-body text-sm text-bone/60 transition-colors duration-300 hover:text-bone focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink;
   }
   .link-sweep::after {
     content: '';
@@ -148,8 +147,36 @@
   .lift      { transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
   .lift:hover{ transform: translateY(-6px); }
 
-  /* Anchored sections breathe under smooth-scroll */
-  section[id]{ scroll-margin-top: 1.5rem; }
+  /* Anchored sections breathe under smooth-scroll (offset p/ nav fixa) */
+  section[id]{ scroll-margin-top: 5rem; }
+
+  /* Cursor custom (posição via transform em JS; estado ativo via classe .on) */
+  .cursor-ring {
+    position: absolute; top: 0; left: 0;
+    height: 2rem; width: 2rem; margin: -1rem 0 0 -1rem;
+    border: 1px solid rgba(197, 162, 88, 0.7); border-radius: 9999px;
+    transition: width .3s ease, height .3s ease, margin .3s ease, background-color .3s ease, border-color .3s ease;
+  }
+  .cursor-ring.on {
+    height: 3rem; width: 3rem; margin: -1.5rem 0 0 -1.5rem;
+    background: rgba(197, 162, 88, 0.10); border-color: #c5a258;
+  }
+  .cursor-dot {
+    position: absolute; top: 0; left: 0;
+    height: .25rem; width: .25rem; margin: -.125rem 0 0 -.125rem;
+    border-radius: 9999px; background: #c5a258;
+  }
+
+  /* Ícones que se desenham quando o container ganha .in */
+  .draw path, .draw circle, .draw rect, .draw line, .draw polyline, .draw polygon {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    transition: stroke-dashoffset 1.2s cubic-bezier(0.16,1,0.3,1);
+  }
+  .in .draw path, .in .draw circle, .in .draw rect,
+  .in .draw line, .in .draw polyline, .in .draw polygon {
+    stroke-dashoffset: 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -161,4 +188,5 @@
   }
   .r-up, .r-right, .r-left, .r-blur, .r-scale, .r-clip { opacity: 1 !important; transform: none !important; filter: none !important; }
   .word > span { transform: none !important; }
+  .draw path, .draw circle, .draw rect, .draw line, .draw polyline, .draw polygon { stroke-dashoffset: 0 !important; }
 }

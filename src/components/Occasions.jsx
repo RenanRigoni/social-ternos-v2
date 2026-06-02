@@ -1,4 +1,4 @@
-import { OCCASIONS, IMAGES, WHATSAPP } from '../constants'
+import { OCCASIONS, IMAGES, WHATSAPP, SIZES } from '../constants'
 import Words from './Words'
 
 // Spans por índice — grid editorial assimétrico (mobile 2-col, md 12-col).
@@ -28,7 +28,7 @@ export default function Occasions() {
             className="r-blur max-w-xs font-body text-[14px] leading-relaxed text-bone/50"
             style={{ transitionDelay: '120ms' }}
           >
-            Casamentos, formaturas, padrinhos, pajens e eventos corporativos — trajes
+            Casamentos, formaturas, padrinhos, pajens e eventos corporativos. Trajes
             pensados para o seu papel no dia.
           </p>
         </div>
@@ -54,14 +54,16 @@ function OccasionTile({ occ, index }) {
       rel="noopener noreferrer"
       data-reveal
       style={{ transitionDelay: `${index * 70}ms` }}
-      className={`r-clip group relative block overflow-hidden bg-graphite ${tileClass(occ, index)}`}
+      className={`r-clip group relative block overflow-hidden bg-graphite focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink ${tileClass(occ, index)}`}
       aria-label={`Traje para ${occ.label} — falar pelo WhatsApp`}
     >
       <img
-        src={IMAGES.occasions[occ.id]}
+        src={IMAGES.occasions[occ.id].src}
+        srcSet={IMAGES.occasions[occ.id].srcSet}
+        sizes={SIZES.tile}
         alt={occ.label}
         className="img-grade absolute inset-0 h-full w-full object-cover"
-        loading="eager"
+        loading="lazy"
         decoding="async"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/25 to-transparent" />

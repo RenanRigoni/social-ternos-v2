@@ -34,8 +34,41 @@ export function useRevealObserver() {
 }
 
 /**
+ * Shared scroll manager: ONE scroll/resize listener + ONE rAF drive every
+ * parallax element on the page, instead of one pair per instance. Each
+ * useParallax registers an update fn; the listeners bind on the first
+ * subscriber and unbind when the last one leaves.
+ */
+const subscribers = new Set()
+let raf = 0
+let bound = false
+
+function runAll() {
+  raf = 0
+  for (const fn of subscribers) fn()
+}
+function onScroll() {
+  if (!raf) raf = requestAnimationFrame(runAll)
+}
+function ensureBound() {
+  if (bound || typeof window === 'undefined') return
+  window.addEventListener('scroll', onScroll, { passive: true })
+  window.addEventListener('resize', onScroll)
+  bound = true
+}
+function maybeUnbind() {
+  if (!bound || subscribers.size > 0) return
+  window.removeEventListener('scroll', onScroll)
+  window.removeEventListener('resize', onScroll)
+  if (raf) cancelAnimationFrame(raf)
+  raf = 0
+  bound = false
+}
+
+/**
  * Subtle scroll parallax. Returns a ref; element translates on the Y axis as it
- * moves through the viewport. `speed` ~0.1–0.3 stays tasteful.
+ * moves through the viewport. `speed` ~0.1–0.3 stays tasteful. All instances
+ * share a single listener + rAF via the manager above.
  */
 export function useParallax(speed = 0.16) {
   const ref = useRef(null)
@@ -44,26 +77,21 @@ export function useParallax(speed = 0.16) {
     const el = ref.current
     if (!el || prefersReduced()) return
 
-    let raf = 0
     const update = () => {
-      raf = 0
       const rect = el.getBoundingClientRect()
       const vh = window.innerHeight || 1
       // -1 (below) → 0 (centered) → 1 (above)
       const progress = (rect.top + rect.height / 2 - vh / 2) / vh
       el.style.transform = `translate3d(0, ${(progress * speed * 100).toFixed(2)}px, 0)`
     }
-    const onScroll = () => {
-      if (!raf) raf = requestAnimationFrame(update)
-    }
 
-    update()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll)
+    subscribers.add(update)
+    ensureBound()
+    update() // set initial position
+
     return () => {
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', onScroll)
-      if (raf) cancelAnimationFrame(raf)
+      subscribers.delete(update)
+      maybeUnbind()
     }
   }, [speed])
 

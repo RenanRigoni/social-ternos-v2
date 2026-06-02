@@ -1,4 +1,4 @@
-import { OFFERS, IMAGES, WHATSAPP } from '../constants'
+import { OFFERS, IMAGES, WHATSAPP, SIZES } from '../constants'
 import { useParallax } from '../hooks/useScrollFx'
 import Words from './Words'
 
@@ -41,10 +41,12 @@ function OfferRow({ offer, flip }) {
         <div className="group relative aspect-[4/5] overflow-hidden bg-graphite">
           <div ref={parallax} className="absolute inset-0 scale-110">
             <img
-              src={IMAGES[offer.image]}
+              src={IMAGES[offer.image].src}
+              srcSet={IMAGES[offer.image].srcSet}
+              sizes={SIZES.half}
               alt={offer.title}
               className="img-grade h-full w-full object-cover"
-              loading="eager"
+              loading="lazy"
               decoding="async"
             />
           </div>

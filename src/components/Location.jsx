@@ -1,10 +1,17 @@
-import { STORE, WHATSAPP, MAPS_URL, MAPS_EMBED } from '../constants'
+import { useEffect, useState } from 'react'
+import { STORE, WHATSAPP, MAPS_URL, MAPS_EMBED, storeStatus } from '../constants'
 import { WhatsAppIcon } from './Icons'
 import Words from './Words'
 import { MapPin, Clock, Phone, Navigation } from 'lucide-react'
 
 export default function Location() {
   const wa = WHATSAPP.getLink(WHATSAPP.messages.default)
+  const [status, setStatus] = useState(() => storeStatus())
+
+  useEffect(() => {
+    const t = setInterval(() => setStatus(storeStatus()), 60000)
+    return () => clearInterval(t)
+  }, [])
 
   return (
     <section id="localizacao" className="relative bg-ink py-24 md:py-36">
@@ -13,23 +20,33 @@ export default function Location() {
 
           {/* INFORMAÇÕES */}
           <div data-reveal className="r-right">
-            <p className="eyebrow mb-6">No coração de Patrocínio</p>
+            <p className="eyebrow mb-6">Onde estamos</p>
             <h2 className="font-display text-[2.2rem] font-medium leading-[1.06] tracking-tight text-bone sm:text-5xl md:text-[3rem]">
-              <Words text="Venha viver a" step={50} />{' '}
+              <Words text="Visite" step={60} />{' '}
               <span className="italic text-gold">
-                <Words text="experiência na loja." delay={220} step={60} />
+                <Words text="nossa loja." delay={180} step={70} />
               </span>
             </h2>
 
             <div className="mt-10 divide-y divide-bone/10 border-y border-bone/10">
               <InfoRow icon={MapPin}>
                 <p className="text-bone">{STORE.address}</p>
-                <p className="text-bone/45">{STORE.city}</p>
+                <p className="text-bone/55">{STORE.city}</p>
               </InfoRow>
               <InfoRow icon={Clock}>
+                <div className="mb-2 flex items-center gap-2.5">
+                  <span
+                    className={`h-2 w-2 rounded-full ${
+                      status.open ? 'bg-[#23a259] motion-safe:animate-pulse' : 'bg-bone/40'
+                    }`}
+                  />
+                  <span className={`font-body text-[13px] font-semibold tracking-wide ${status.open ? 'text-[#36c172]' : 'text-bone/55'}`}>
+                    {status.label}
+                  </span>
+                </div>
                 <p className="text-bone/75">{STORE.hours.weekdays}</p>
                 <p className="text-bone/75">{STORE.hours.saturday}</p>
-                <p className="text-bone/35">{STORE.hours.sunday}</p>
+                <p className="text-bone/55">{STORE.hours.sunday}</p>
               </InfoRow>
               <InfoRow icon={Phone}>
                 <a href={wa} className="text-bone/75 transition-colors hover:text-gold">
@@ -72,7 +89,7 @@ export default function Location() {
               src={MAPS_EMBED}
               className="absolute inset-0 h-full w-full grayscale-[0.35] contrast-[1.05] transition-[filter] duration-700 group-hover:grayscale-0"
               style={{ border: 0 }}
-              loading="eager"
+              loading="lazy"
               allowFullScreen
               referrerPolicy="no-referrer-when-downgrade"
             />

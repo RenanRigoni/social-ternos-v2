@@ -1,71 +1,96 @@
-import { STORE, WHATSAPP, MAPS_URL } from '../constants'
+import { STORE, WHATSAPP, MAPS_URL, NAV } from '../constants'
+import { WhatsAppIcon, InstagramIcon } from './Icons'
 
 export default function Footer() {
   const whatsappLink = WHATSAPP.getLink(WHATSAPP.messages.default)
+  const logo = `${import.meta.env.BASE_URL}logo/logo_hor_w.svg`
 
   return (
-    <footer className="bg-ink border-t border-bone/10">
-      <div className="max-w-6xl mx-auto px-6 py-16 md:py-20">
-        <div className="grid md:grid-cols-3 gap-10 md:gap-16">
+    <footer className="border-t border-bone/10 bg-ink">
+      <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
+        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-4 md:gap-12">
 
           {/* Marca */}
           <div>
-            <img
-              src={`${import.meta.env.BASE_URL}logo/logo_hor_w.svg`}
-              alt="Logo Social Ternos"
-              className="h-7 w-auto opacity-60 mb-6"
-            />
-            <p className="font-body text-sm text-offwhite/40 leading-relaxed max-w-[220px]">
-              Loja especializada em trajes masculinos adulto e infantil. Venda e aluguel com atendimento personalizado em Patrocínio-MG.
+            <img src={logo} alt="Social Ternos" className="mb-6 h-7 w-auto opacity-70" />
+            <p className="max-w-[220px] font-body text-sm leading-relaxed text-bone/55">
+              Elegância, qualidade e atendimento que fazem a diferença.
             </p>
+            <a
+              href={STORE.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex min-h-11 items-center gap-3 text-sm text-bone/65 transition-colors duration-200 hover:text-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold"
+              aria-label="Instagram da Social Ternos"
+            >
+              <InstagramIcon size={16} />
+              {STORE.instagram}
+            </a>
           </div>
 
-          {/* Contato */}
+          {/* Navegação */}
+          <nav>
+            <p className="mb-5 font-body text-[10px] uppercase tracking-[0.22em] text-gold/75">Navegação</p>
+            <ul className="space-y-1">
+              {NAV.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    className="inline-block py-1.5 font-body text-sm text-bone/65 transition-colors duration-200 hover:text-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Informações */}
           <div>
-            <p className="font-body text-[10px] text-gold/60 tracking-[0.22em] uppercase mb-5">Contato</p>
-            <div className="space-y-3.5">
+            <p className="mb-5 font-body text-[10px] uppercase tracking-[0.22em] text-gold/75">Informações</p>
+            <address className="not-italic">
+              <p className="mb-4 font-body text-sm leading-relaxed text-bone/65">
+                {STORE.address}<br />
+                {STORE.city}
+              </p>
               <a
                 href={whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 text-sm text-offwhite/55 hover:text-gold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold"
+                className="flex min-h-11 items-center gap-2.5 font-body text-sm text-bone/65 transition-colors duration-200 hover:text-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold"
                 aria-label="WhatsApp da Social Ternos"
               >
-                <WhatsAppIconSmall />
+                <WhatsAppIcon size={15} />
                 {STORE.phone}
               </a>
-              <a
-                href={STORE.instagramUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 text-sm text-offwhite/55 hover:text-gold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold"
-                aria-label="Instagram da Social Ternos"
-              >
-                <InstagramIcon />
-                {STORE.instagram}
-              </a>
-            </div>
-          </div>
-
-          {/* Endereço e horários */}
-          <div>
-            <p className="font-body text-[10px] text-gold/60 tracking-[0.22em] uppercase mb-5">Endereço</p>
-            <address className="not-italic">
-              <p className="font-body text-sm text-offwhite/55 leading-relaxed mb-4">
-                {STORE.address}<br />
-                {STORE.city}
-              </p>
-              <div className="space-y-1 mb-5">
-                <p className="font-body text-xs text-offwhite/35">{STORE.hours.weekdays}</p>
-                <p className="font-body text-xs text-offwhite/35">{STORE.hours.saturday}</p>
-                <p className="font-body text-xs text-offwhite/20">{STORE.hours.sunday}</p>
+              <div className="mt-3 space-y-1">
+                <p className="font-body text-xs text-bone/55">{STORE.hours.weekdays}</p>
+                <p className="font-body text-xs text-bone/55">{STORE.hours.saturday}</p>
               </div>
             </address>
+          </div>
+
+          {/* Fale Conosco */}
+          <div>
+            <p className="mb-5 font-body text-[10px] uppercase tracking-[0.22em] text-gold/75">Fale Conosco</p>
+            <p className="mb-5 max-w-[220px] font-body text-sm leading-relaxed text-bone/55">
+              Entre em contato pelo WhatsApp e encontre o terno ideal para o seu momento.
+            </p>
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-whatsapp"
+              aria-label="Chamar no WhatsApp"
+            >
+              <span><WhatsAppIcon size={16} /></span>
+              <span>Chamar no WhatsApp</span>
+            </a>
             <a
               href={MAPS_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-body text-[10px] tracking-[0.18em] uppercase text-gold/50 hover:text-gold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold"
+              className="mt-5 inline-block py-2 font-body text-[10px] uppercase tracking-[0.18em] text-gold/70 transition-colors duration-200 hover:text-gold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold"
             >
               Traçar rota no Google Maps &rarr;
             </a>
@@ -73,33 +98,15 @@ export default function Footer() {
         </div>
 
         {/* Linha inferior */}
-        <div className="border-t border-bone/10 mt-14 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="font-body text-xs text-offwhite/15">
+        <div className="mt-14 flex flex-col items-center justify-between gap-3 border-t border-bone/10 pt-6 sm:flex-row">
+          <p className="font-body text-xs text-bone/50">
             &copy; {new Date().getFullYear()} Social Ternos. Todos os direitos reservados.
           </p>
-          <p className="font-body text-xs text-offwhite/10 tracking-wider uppercase">
-            Patrocínio, MG
+          <p className="font-body text-xs uppercase tracking-wider text-bone/45">
+            Desenvolvido com elegância para você
           </p>
         </div>
       </div>
     </footer>
-  )
-}
-
-function InstagramIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-      <circle cx="12" cy="12" r="4"/>
-      <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
-    </svg>
-  )
-}
-
-function WhatsAppIconSmall() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-    </svg>
   )
 }

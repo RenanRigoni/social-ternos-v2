@@ -1,6 +1,7 @@
-import { EXPERIENCE, IMAGES, WHATSAPP } from '../constants'
+import { REASONS, IMAGES, WHATSAPP, SIZES } from '../constants'
 import { useParallax } from '../hooks/useScrollFx'
 import { WhatsAppIcon } from './Icons'
+import LineIcon from './LineIcons'
 import Words from './Words'
 
 export default function Experience() {
@@ -16,10 +17,12 @@ export default function Experience() {
           <div className="group relative aspect-[3/4] overflow-hidden bg-graphite">
             <div ref={parallax} className="absolute inset-0 scale-110">
               <img
-                src={IMAGES.experience}
+                src={IMAGES.experience.src}
+                srcSet={IMAGES.experience.srcSet}
+                sizes={SIZES.half}
                 alt="Prova e ajuste de terno com atendimento personalizado na Social Ternos"
                 className="img-grade h-full w-full object-cover"
-                loading="eager"
+                loading="lazy"
                 decoding="async"
               />
             </div>
@@ -30,38 +33,37 @@ export default function Experience() {
           </div>
         </div>
 
-        {/* PASSOS */}
+        {/* MOTIVOS */}
         <div>
+          <p className="eyebrow mb-6">Nossa Experiência</p>
           <h2
             data-reveal
-            className="r-up mb-12 font-display text-[2.2rem] font-medium leading-[1.06] tracking-tight text-bone sm:text-5xl md:text-[3.2rem]"
+            className="r-up font-display text-[2.2rem] font-medium leading-[1.06] tracking-tight text-bone sm:text-5xl md:text-[3.2rem]"
           >
-            <Words text="Do primeiro aperto de" step={45} />{' '}
+            <Words text="O que nos torna a" step={50} />{' '}
             <span className="italic text-gold">
-              <Words text="mão ao último ajuste." delay={260} step={60} />
+              <Words text="escolha certa." delay={240} step={70} />
             </span>
           </h2>
 
-          <ol className="border-t border-bone/10">
-            {EXPERIENCE.map((step, i) => (
+          <ul className="mt-10 border-t border-bone/10">
+            {REASONS.map((r, i) => (
               <li
-                key={step.n}
+                key={r.title}
                 data-reveal
-                className="r-up group flex gap-6 border-b border-bone/10 py-7"
+                className="r-up group flex items-center gap-5 border-b border-bone/10 py-6"
                 style={{ transitionDelay: `${i * 90}ms` }}
               >
-                <span className="font-display text-2xl italic leading-none text-gold/70 transition-colors duration-300 group-hover:text-gold">
-                  {step.n}
+                <span className="text-gold/80 transition-colors duration-300 group-hover:text-gold">
+                  <LineIcon name={r.icon} size={30} />
                 </span>
-                <div>
-                  <h3 className="font-display text-xl text-bone md:text-2xl">{step.title}</h3>
-                  <p className="mt-2 max-w-md font-body text-[14px] leading-relaxed text-bone/55">
-                    {step.text}
-                  </p>
-                </div>
+                <h3 className="font-display text-xl text-bone md:text-2xl">{r.title}</h3>
+                <span className="ml-auto text-gold opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+                  →
+                </span>
               </li>
             ))}
-          </ol>
+          </ul>
 
           <a
             href={wa}

@@ -17,12 +17,25 @@
     <meta property="og:description" content="Venda e aluguel de ternos adulto e infantil com atendimento personalizado em Patrocínio-MG." />
     <meta property="og:locale" content="pt_BR" />
 
-    <!-- Preload hero image (LCP) — atualizar URL se trocar imagem do hero -->
-    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1600&q=80&fit=crop" fetchpriority="high" />
+    <!-- Preload hero image (LCP) — atualizar IDs se trocar imagem do hero.
+         imagesrcset espelha o srcSet de IMAGES.hero para o preload deduplicar com
+         a candidata que o browser escolhe. -->
+    <link
+      rel="preload"
+      as="image"
+      href="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1920&q=80&auto=format&fit=crop"
+      imagesrcset="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=480&q=80&auto=format&fit=crop 480w, https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=768&q=80&auto=format&fit=crop 768w, https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1100&q=80&auto=format&fit=crop 1100w, https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1600&q=80&auto=format&fit=crop 1600w, https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1920&q=80&auto=format&fit=crop 1920w"
+      imagesizes="100vw"
+      fetchpriority="high"
+    />
 
-    <!-- Preconnect para Google Fonts (performance) -->
+    <!-- Google Fonts via <link> (não @import: @import serializa load→parse→descobre→baixa). -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..600&family=Inter:wght@300;400;500;600;700&display=swap"
+    />
   </head>
   <body>
     <div id="root"></div>
