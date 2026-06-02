@@ -13,7 +13,7 @@ const prefersReduced = () =>
 export function useRevealObserver() {
   useEffect(() => {
     const els = Array.from(document.querySelectorAll('[data-reveal]'))
-    if (prefersReduced()) {
+    if (prefersReduced() || !('IntersectionObserver' in window)) {
       els.forEach((el) => el.classList.add('in'))
       return
     }
