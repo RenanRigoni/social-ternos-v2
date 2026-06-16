@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/SocialTernos/',
+  base: '/social-ternos-v2/',
 })
