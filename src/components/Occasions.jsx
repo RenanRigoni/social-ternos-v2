@@ -1,4 +1,4 @@
-import { OCCASIONS, IMAGES, WHATSAPP, SIZES } from '../constants'
+import { OCCASIONS, IMAGES, WHATSAPP, SIZES, OCCASION_BADGES, BADGE_LABEL } from '../constants'
 import Words from './Words'
 
 // Spans por índice — grid editorial assimétrico (mobile 2-col, md 12-col).
@@ -69,6 +69,17 @@ function OccasionTile({ occ, index }) {
       <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/25 to-transparent" />
       <div className="absolute inset-0 border border-transparent transition-colors duration-500 group-hover:border-gold/40" />
 
+      <div className="absolute left-3 top-3 flex flex-wrap gap-1.5 md:left-4 md:top-4">
+        {(OCCASION_BADGES[occ.id] || []).map((b) => (
+          <span
+            key={b}
+            className="bg-ink/70 px-2.5 py-1 font-body text-[10px] uppercase tracking-[0.12em] text-bone/85 backdrop-blur-sm"
+          >
+            {BADGE_LABEL[b]}
+          </span>
+        ))}
+      </div>
+
       <div className="absolute inset-x-0 bottom-0 p-4 md:p-5">
         {featured && occ.note && (
           <p className="eyebrow mb-2 text-bone/60">{occ.note}</p>
@@ -81,7 +92,8 @@ function OccasionTile({ occ, index }) {
           >
             {occ.label}
           </h3>
-          <span className="translate-x-2 pb-1 text-gold opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+          <span className="flex items-center gap-1.5 translate-x-2 pb-1 text-gold opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">
+            <span className="font-body text-[11px] uppercase tracking-[0.1em] hidden sm:inline">Consultar opções</span>
             →
           </span>
         </div>

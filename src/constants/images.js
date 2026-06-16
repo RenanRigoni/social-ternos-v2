@@ -81,6 +81,18 @@ export const IMAGES = {
   ],
 }
 
+// Acesso por chave (g1..g7) — usado pelo catálogo interativo (SUITS em content.js),
+// que reaproveita as mesmas fotos da galeria por id semântico em vez de índice.
+export const GALLERY_BY_KEY = {
+  g1: IMAGES.gallery[0],
+  g2: IMAGES.gallery[1],
+  g3: IMAGES.gallery[2],
+  g4: IMAGES.gallery[3],
+  g5: IMAGES.gallery[4],
+  g6: IMAGES.gallery[5],
+  g7: IMAGES.gallery[6],
+}
+
 export const GALLERY_ALT = [
   'Homem em terno preto com gravata vermelha, Social Ternos',
   'Terno azul masculino de três peças com colete',

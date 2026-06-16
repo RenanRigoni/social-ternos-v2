@@ -4,6 +4,7 @@ import Words from './Words'
 
 export default function FinalCTA() {
   const wa = WHATSAPP.getLink(WHATSAPP.messages.default)
+  const waFitting = WHATSAPP.getLink(WHATSAPP.messages.fittingFinal)
 
   return (
     <section id="contato" className="relative overflow-hidden bg-ink py-28 md:py-44">
@@ -18,19 +19,30 @@ export default function FinalCTA() {
           </span>
         </h2>
 
+        <p className="mx-auto mt-6 max-w-md font-body text-[15px] leading-relaxed text-bone/55">
+          Conte sua ocasião e receba uma orientação personalizada para escolher entre
+          aluguel, compra e modelos disponíveis.
+        </p>
+
         <div className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
             href={wa}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-gold"
-            aria-label="Agendar atendimento pelo WhatsApp"
+            className="btn-gold w-full sm:w-auto"
+            aria-label="Falar com especialista pelo WhatsApp"
           >
             <span><WhatsAppIcon size={16} /></span>
-            <span>Agendar atendimento</span>
+            <span>Falar com especialista</span>
           </a>
-          <a href="#localizacao" className="btn-ghost">
-            <span>Ver localização</span>
+          <a
+            href={waFitting}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-ghost w-full sm:w-auto"
+            aria-label="Agendar prova pelo WhatsApp"
+          >
+            <span>Agendar prova</span>
           </a>
         </div>
 

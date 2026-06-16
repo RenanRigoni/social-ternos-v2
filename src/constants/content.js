@@ -28,11 +28,155 @@ export const WHATSAPP = {
     hero: 'Olá! Vim pelo site da Social Ternos e gostaria de agendar um atendimento.',
     occasion: (label) =>
       `Olá! Vim pelo site da Social Ternos e tenho interesse em traje para ${label}. Poderia me ajudar?`,
+    // Suit finder — gera mensagem a partir das seleções do widget "Encontre o traje ideal"
+    finder: ({ occasion, intent, style, deadline } = {}) => {
+      if (!occasion || !intent) {
+        return 'Olá! Gostaria de ajuda para encontrar o terno ideal para uma ocasião especial.'
+      }
+      const stylePart = style ? `, prefiro um estilo ${style.toLowerCase()}` : ''
+      const deadlinePart = deadline ? ` e preciso para ${deadline.toLowerCase()}` : ''
+      return `Olá! Estou procurando um terno para ${occasion.toLowerCase()}. Tenho interesse em ${intent.toLowerCase()}${stylePart}${deadlinePart}. Pode me ajudar com opções?`
+    },
+    // Agendamento de prova — inclui o horário escolhido quando houver
+    appointment: (slot) =>
+      slot
+        ? `Olá! Gostaria de agendar uma prova de terno no horário "${slot}". Vi a disponibilidade no site.`
+        : 'Olá! Gostaria de agendar uma prova de terno. Vi alguns horários disponíveis no site.',
+    suitModel: (name, occasion) =>
+      `Olá! Gostaria de consultar disponibilidade do modelo ${name} para ${occasion}.`,
+    rentHelp: 'Olá! Quero ajuda para alugar um terno para minha ocasião.',
+    buyHelp: 'Olá! Quero ajuda para comprar um terno.',
+    decideHelp:
+      'Olá! Estou em dúvida entre alugar ou comprar um terno. Pode me ajudar a decidir?',
+    fittingFinal: 'Olá! Gostaria de agendar uma prova de terno.',
   },
   getLink(message) {
     return `${this.baseUrl}&text=${encodeURIComponent(message)}`
   },
 }
+
+// Opções selecionáveis do widget "Encontre o traje ideal"
+export const FINDER_OPTIONS = {
+  occasion: ['Casamento', 'Formatura', 'Corporativo', 'Padrinho', 'Noivo', 'Gala / evento especial'],
+  intent: ['Alugar', 'Comprar', 'Ainda não sei'],
+  style: ['Clássico', 'Slim', 'Moderno', 'Premium'],
+  deadline: ['Esta semana', 'Este mês', 'Estou pesquisando'],
+}
+
+// Horários de prova disponíveis (widget de agendamento)
+export const FITTING_SLOTS = ['Hoje — 15:30', 'Amanhã — 09:00', 'Amanhã — 16:00', 'Sábado — 10:30']
+
+// Mapa de badges de disponibilidade por ocasião (Occasions.jsx)
+export const OCCASION_BADGES = {
+  casamento: ['aluguel', 'venda'],
+  formatura: ['aluguel', 'venda'],
+  corporativo: ['venda'],
+  padrinhos: ['aluguel', 'venda'],
+  'evento-social': ['sob consulta'],
+  batizado: ['aluguel'],
+}
+
+export const BADGE_LABEL = {
+  aluguel: 'Aluguel',
+  venda: 'Venda',
+  'sob consulta': 'Sob consulta',
+}
+
+// Modelos do catálogo interativo ("Modelos em destaque")
+export const SUITS = [
+  {
+    id: 'classic-black',
+    name: 'Classic Black',
+    occasion: ['casamento', 'gala'],
+    availability: ['aluguel', 'venda'],
+    style: 'clássico',
+    image: 'g1',
+    description: 'Elegância atemporal para cerimônias e eventos formais.',
+  },
+  {
+    id: 'azul-tres-pecas',
+    name: 'Azul Três-Peças',
+    occasion: ['casamento', 'corporativo'],
+    availability: ['venda'],
+    style: 'premium',
+    image: 'g2',
+    description: 'Paletó, colete e calça em composição completa, acabamento premium.',
+  },
+  {
+    id: 'moderno-black',
+    name: 'Moderno Black',
+    occasion: ['formatura', 'gala'],
+    availability: ['aluguel'],
+    style: 'moderno',
+    image: 'g3',
+    description: 'Corte contemporâneo para quem busca presença sem exagero.',
+  },
+  {
+    id: 'windowpane-marinho',
+    name: 'Windowpane Marinho',
+    occasion: ['padrinho', 'corporativo'],
+    availability: ['aluguel', 'venda'],
+    style: 'slim',
+    image: 'g5',
+    description: 'Padronagem discreta e modelagem slim para o dia a dia profissional.',
+  },
+  {
+    id: 'corporativo-grafite',
+    name: 'Corporativo Grafite',
+    occasion: ['corporativo'],
+    availability: ['venda'],
+    style: 'clássico',
+    image: 'g6',
+    description: 'Sobriedade e caimento perfeito para reuniões e apresentações.',
+  },
+  {
+    id: 'composicao-completa',
+    name: 'Composição Completa',
+    occasion: ['noivo', 'gala'],
+    availability: ['sob consulta'],
+    style: 'premium',
+    image: 'g7',
+    description: 'Paletó, gravata, sapato e acessórios combinados para o noivo.',
+  },
+]
+
+export const CATALOG_FILTERS = [
+  { id: 'todos', label: 'Todos' },
+  { id: 'casamento', label: 'Casamento' },
+  { id: 'formatura', label: 'Formatura' },
+  { id: 'corporativo', label: 'Corporativo' },
+  { id: 'padrinho', label: 'Padrinho' },
+  { id: 'noivo', label: 'Noivo' },
+  { id: 'venda', label: 'Venda' },
+  { id: 'aluguel', label: 'Aluguel' },
+]
+
+// Aluguel vs compra
+export const COMPARISON = {
+  rent: {
+    title: 'Aluguel',
+    points: ['Ideal para evento único', 'Casamento', 'Formatura', 'Padrinho', 'Menor investimento inicial', 'Praticidade'],
+    cta: 'Quero ajuda para alugar',
+  },
+  buy: {
+    title: 'Compra',
+    points: ['Ideal para uso recorrente', 'Eventos profissionais', 'Reuniões', 'Imagem pessoal', 'Longo prazo', 'Versatilidade'],
+    cta: 'Quero ajuda para comprar',
+  },
+  helper: {
+    title: 'Ainda em dúvida?',
+    text: 'Conte sua ocasião e te ajudamos a decidir entre aluguel e compra.',
+    cta: 'Me ajude a escolher',
+  },
+}
+
+// Guia rápido de estilo
+export const STYLE_GUIDE = [
+  { id: 'classico', icon: 'crown', title: 'Clássico', text: 'Corte tradicional, linhas retas e atemporais. Para quem busca elegância sem pressa.' },
+  { id: 'slim', icon: 'zap', title: 'Slim', text: 'Modelagem ajustada ao corpo, silhueta mais contemporânea e definida.' },
+  { id: 'premium', icon: 'gem', title: 'Premium', text: 'Tecidos e acabamentos superiores para ocasiões que pedem o melhor.' },
+  { id: 'corporativo', icon: 'briefcase', title: 'Corporativo', text: 'Sobriedade pensada para reuniões, apresentações e o dia a dia profissional.' },
+]
 
 // Palavras que correm na divisória editorial (marquee)
 export const MARQUEE = [
