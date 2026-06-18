@@ -211,7 +211,10 @@ function Appointment() {
       </div>
 
       {/* Cards de dias */}
-      <div className="mt-3 flex gap-1.5 overflow-x-auto pb-1">
+      <div
+        className="mt-3 grid gap-1"
+        style={{ gridTemplateColumns: `repeat(${visibleDays.length || 1}, 1fr)` }}
+      >
         {visibleDays.length === 0 ? (
           <p className="font-body text-[12.5px] text-bone/35">
             Sem dias nesta semana — avance para a próxima.
@@ -227,7 +230,7 @@ function Appointment() {
                 type="button"
                 aria-pressed={isSel}
                 onClick={() => pickDay(d)}
-                className={`flex shrink-0 flex-col items-center border px-3 py-2 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink ${
+                className={`flex flex-col items-center justify-center border py-2.5 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink ${
                   isSel
                     ? 'border-gold bg-gold/10 text-bone'
                     : 'border-bone/15 text-bone/55 hover:border-bone/35 hover:text-bone'
