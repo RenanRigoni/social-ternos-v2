@@ -6,6 +6,7 @@ import Kit from './components/Kit'
 import Journey from './components/Journey'
 import Editorial from './components/Editorial'
 import Occasions from './components/Occasions'
+import MarqueeDivider from './components/MarqueeDivider'
 import Catalog from './components/Catalog'
 import StorePhotos from './components/StorePhotos'
 import Concierge from './components/Concierge'
@@ -33,6 +34,7 @@ export default function App() {
         <Journey />
         <Editorial />
         <Occasions />
+        <MarqueeDivider />
         <Catalog />
         <StorePhotos />
         <Concierge />
