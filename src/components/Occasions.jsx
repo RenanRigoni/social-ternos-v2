@@ -1,4 +1,4 @@
-import { OCCASIONS, IMAGES, WHATSAPP, OCCASION_BADGES, BADGE_LABEL } from '../constants'
+import { OCCASIONS, IMAGES, WHATSAPP } from '../constants'
 import Words from './Words'
 
 // Asymmetric editorial grid spans — mobile 2-col, md 12-col
@@ -75,19 +75,7 @@ function OccasionTile({ occ, index }) {
       <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/25 to-transparent" />
       <div className="absolute inset-0 border border-transparent transition-colors duration-500 group-hover:border-gold/40" />
 
-      {/* Availability badges — top left */}
-      <div className="absolute left-3 top-3 flex flex-wrap gap-1.5 md:left-4 md:top-4">
-        {(OCCASION_BADGES[occ.id] || []).map((b) => (
-          <span
-            key={b}
-            className="bg-ink/70 px-2.5 py-1 font-body text-[10px] uppercase tracking-[0.12em] text-bone/85 backdrop-blur-sm"
-          >
-            {BADGE_LABEL[b]}
-          </span>
-        ))}
-      </div>
-
-      <div className="absolute inset-x-0 bottom-0 p-4 md:p-5">
+<div className="absolute inset-x-0 bottom-0 p-4 md:p-5">
         {/* Note visible on all tiles */}
         {occ.note && (
           <p className="eyebrow mb-2 text-bone/60">{occ.note}</p>
