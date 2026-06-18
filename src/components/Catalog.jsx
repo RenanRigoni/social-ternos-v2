@@ -82,11 +82,15 @@ function SuitCard({ suit, index }) {
           src={`${base}${suit.localImage}`}
           alt={`${suit.name} — Social Ternos`}
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+          style={{ objectPosition: suit.imgPosition || 'center center' }}
           loading="lazy"
           decoding="async"
           onError={handleImgError}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/10 to-transparent" />
+        <div className={`absolute inset-0 bg-gradient-to-t ${suit.overlayClass || 'from-ink/85 via-ink/10 to-transparent'}`} />
+        {suit.leftOverlay && (
+          <div className="absolute inset-0 bg-gradient-to-r from-ink/65 via-transparent to-transparent" />
+        )}
 
       </div>
 

@@ -153,6 +153,8 @@ export const SUITS = [
     availability: ['sob consulta'],
     image: 'g7',
     localImage: 'images/modelo-verde-oliva.png',
+    overlayClass: 'from-ink/90 via-ink/20 to-ink/5',
+    leftOverlay: true,
     description: 'Uma proposta elegante e diferenciada para quem busca estilo com personalidade.',
   },
   {
@@ -163,6 +165,7 @@ export const SUITS = [
     availability: ['sob consulta'],
     image: 'g8',
     localImage: 'images/modelo-marrom-cafe.png',
+    imgPosition: 'center top',
     description: 'Tonalidade marcante e sofisticada para composições sociais e cerimônias especiais.',
   },
   {
@@ -173,6 +176,7 @@ export const SUITS = [
     availability: ['sob consulta'],
     image: 'g9',
     localImage: 'images/modelo-smoking-marsala.png',
+    overlayClass: 'from-ink/95 via-ink/55 to-ink/25',
     description: 'Smoking com lapela acetinada e gravata borboleta para cerimônias noturnas e ocasiões especiais.',
   },
   {
@@ -183,6 +187,7 @@ export const SUITS = [
     availability: ['sob consulta'],
     image: 'g10',
     localImage: 'images/modelo-cerimonia-black-tie.png',
+    overlayClass: 'from-ink/85 via-ink/15 to-transparent',
     description: 'Visual black tie com lapela refinada e acabamento de gala para presença impecável.',
   },
   {
@@ -193,6 +198,7 @@ export const SUITS = [
     availability: ['aluguel', 'venda'],
     image: 'g11',
     localImage: 'images/modelo-azul-vivo-cerimonia.png',
+    overlayClass: 'from-ink/90 via-ink/25 to-ink/5',
     description: 'Azul marcante em composição formal para noivos, padrinhos e cerimônias sociais.',
   },
   {
@@ -205,16 +211,6 @@ export const SUITS = [
     localImage: 'images/loja-acessorios.png',
     description: 'Blazer, camisa, gravata, sapato e acessórios combinados para sair com o visual pronto.',
   },
-  {
-    id: 'infantil-pajem',
-    name: 'Infantil / Pajem',
-    style: 'Infantil',
-    occasion: ['infantil'],
-    availability: ['aluguel'],
-    image: 'g13',
-    localImage: 'images/modelo-infantil-pajem.png',
-    description: 'Trajes infantis para pajens, batizados e cerimônias de família.',
-  },
 ]
 
 export const CATALOG_FILTERS = [
@@ -225,7 +221,6 @@ export const CATALOG_FILTERS = [
   { id: 'formatura', label: 'Formatura' },
   { id: 'corporativo', label: 'Corporativo' },
   { id: 'premium', label: 'Premium' },
-  { id: 'infantil', label: 'Infantil' },
 ]
 
 // Aluguel vs compra
