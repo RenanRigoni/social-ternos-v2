@@ -292,12 +292,12 @@ export const OFFERS = [
 // Ocasiões — primeira é destaque (featured), demais formam grid assimétrico
 // localImage: path inside /public — fallback to Unsplash when file missing
 export const OCCASIONS = [
-  { id: 'casamento', label: 'Casamento', note: 'Noivos & Padrinhos', description: 'Trajes elegantes para cerimônias, padrinhos e convidados.', localImage: 'images/ocasiao-casamento.png', featured: true },
-  { id: 'formatura', label: 'Formatura', note: 'Presença marcante', description: 'Modelos clássicos e modernos para uma noite especial.', localImage: 'images/ocasiao-formatura.png' },
-  { id: 'corporativo', label: 'Corporativo', note: 'Evento profissional', description: 'Visual sóbrio para reuniões, apresentações e eventos empresariais.', localImage: 'images/ocasiao-corporativo.png' },
-  { id: 'padrinhos', label: 'Padrinhos', note: 'Composição alinhada', description: 'Cores e modelos pensados para harmonizar com a cerimônia.', localImage: 'images/ocasiao-padrinhos.png' },
-  { id: 'noivo', label: 'Noivo', note: 'Destaque da cerimônia', description: 'Opções clássicas, claras e premium para um visual completo e memorável.', localImage: 'images/ocasiao-noivo.png' },
-  { id: 'cerimonia-premium', label: 'Cerimônia Premium', note: 'Black Tie', description: 'Smoking, lapela acetinada, borboleta e composições sofisticadas para ocasiões especiais.', localImage: 'images/ocasiao-smoking-premium.png' },
+  { id: 'casamento',        label: 'Casamento',        note: 'Noivos & Padrinhos',      description: 'Trajes elegantes para cerimônias, padrinhos e convidados.',                                        localImage: 'images/modelo-azul-marinho-premium.png', imgPosition: 'center 15%', featured: true },
+  { id: 'formatura',        label: 'Formatura',        note: 'Presença marcante',        description: 'Modelos clássicos e modernos para uma noite especial.',                                             localImage: 'images/ocasiao-formatura.png' },
+  { id: 'corporativo',      label: 'Corporativo',      note: 'Evento profissional',      description: 'Visual sóbrio para reuniões, apresentações e eventos empresariais.',                                localImage: 'images/ocasiao-corporativo.png',         imgPosition: 'center 10%' },
+  { id: 'padrinhos',        label: 'Padrinhos',        note: 'Composição alinhada',      description: 'Cores e modelos pensados para harmonizar com a cerimônia.',                                        localImage: 'images/extra-azul-medio.png' },
+  { id: 'noivo',            label: 'Noivo',            note: 'Destaque da cerimônia',    description: 'Opções clássicas, claras e premium para um visual completo e memorável.',                          localImage: 'images/ocasiao-noivo.png' },
+  { id: 'cerimonia-premium',label: 'Smoking Premium',  note: 'Black Tie',               description: 'Smoking, lapela acetinada, borboleta e composições sofisticadas para ocasiões especiais.',         localImage: 'images/extra-smoking-preto.png',         imgPosition: 'center 20%' },
 ]
 
 // Seção de experiência — atendimento, prova, escolha, orientação

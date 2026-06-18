@@ -68,11 +68,16 @@ function OccasionTile({ occ, index }) {
         src={`${base}${occ.localImage}`}
         alt={occ.label}
         className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+        style={{ objectPosition: occ.imgPosition || 'center center' }}
         loading="lazy"
         decoding="async"
         onError={handleImgError}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/25 to-transparent" />
+      <div className={`absolute inset-0 bg-gradient-to-t ${
+        occ.id === 'cerimonia-premium'
+          ? 'from-ink/95 via-ink/55 to-ink/25'
+          : 'from-ink/90 via-ink/25 to-transparent'
+      }`} />
       <div className="absolute inset-0 border border-transparent transition-colors duration-500 group-hover:border-gold/40" />
 
 <div className="absolute inset-x-0 bottom-0 p-4 md:p-5">
