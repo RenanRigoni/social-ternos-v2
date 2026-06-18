@@ -153,8 +153,7 @@ export const SUITS = [
     availability: ['sob consulta'],
     image: 'g7',
     localImage: 'images/modelo-verde-oliva.png',
-    overlayClass: 'from-ink/90 via-ink/20 to-ink/5',
-    imgTransform: 'scale(1.12) translateX(5%)',
+    imgPosition: 'center 15%',
     description: 'Uma proposta elegante e diferenciada para quem busca estilo com personalidade.',
   },
   {
