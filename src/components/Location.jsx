@@ -14,13 +14,13 @@ export default function Location() {
   }, [])
 
   return (
-    <section id="localizacao" className="relative bg-ink py-24 md:py-36">
+    <section id="como-chegar" className="relative bg-ink py-24 md:py-36">
       <div className="mx-auto max-w-6xl px-6 lg:px-10">
         <div className="grid items-stretch gap-10 md:grid-cols-2 md:gap-14">
 
           {/* INFORMAÇÕES */}
           <div data-reveal className="r-right">
-            <p className="eyebrow mb-6">Onde estamos</p>
+            <p className="eyebrow mb-6">Como chegar</p>
             <h2 className="font-display text-[2.2rem] font-medium leading-[1.06] tracking-tight text-bone sm:text-5xl md:text-[3rem]">
               <Words text="Visite" step={60} />{' '}
               <span className="italic text-gold">

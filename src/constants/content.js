@@ -100,7 +100,7 @@ export const SUITS = [
     availability: ['venda'],
     style: 'premium',
     image: 'g2',
-    description: 'Paletó, colete e calça em composição completa, acabamento premium.',
+    description: 'Blazer, colete e calça em composição completa, acabamento premium.',
   },
   {
     id: 'moderno-black',
@@ -136,7 +136,7 @@ export const SUITS = [
     availability: ['sob consulta'],
     style: 'premium',
     image: 'g7',
-    description: 'Paletó, gravata, sapato e acessórios combinados para o noivo.',
+    description: 'Blazer, gravata, sapato e acessórios combinados para o noivo.',
   },
 ]
 
@@ -251,6 +251,7 @@ export const NAV = [
   { label: 'Ternos', href: '#colecao' },
   { label: 'Ocasiões', href: '#ocasioes' },
   { label: 'Lookbook', href: '#galeria' },
+  { label: 'Como chegar', href: '#como-chegar' },
   { label: 'Contato', href: '#contato' },
 ]
 
@@ -277,7 +278,7 @@ export const SERVICES = [
 
 // Kit completo — o terno sai pronto, da cabeça aos pés
 export const KIT = [
-  { icon: 'jacket', label: 'Paletó' },
+  { icon: 'jacket', label: 'Blazer' },
   { icon: 'pants', label: 'Calça social' },
   { icon: 'shirt', label: 'Camisa social' },
   { icon: 'tie', label: 'Gravata' },

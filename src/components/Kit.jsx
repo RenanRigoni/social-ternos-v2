@@ -26,7 +26,7 @@ export default function Kit() {
             style={{ transitionDelay: '120ms' }}
           >
             Você não monta nada por conta. O look já vai completo e combinado para
-            a ocasião, do paletó ao sapato.
+            a ocasião, do blazer ao sapato.
           </p>
         </div>
 

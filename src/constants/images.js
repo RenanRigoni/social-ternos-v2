@@ -100,5 +100,5 @@ export const GALLERY_ALT = [
   'Homem ajustando o punho de um terno azul',
   'Blazer azul-marinho de padronagem windowpane',
   'Homem de blazer escuro em ambiente corporativo',
-  'Composição de paletó, gravata, sapato e relógio',
+  'Composição de blazer, gravata, sapato e relógio',
 ]
