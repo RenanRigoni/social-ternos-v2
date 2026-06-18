@@ -67,9 +67,8 @@ function SuitCard({ suit, index }) {
 
   return (
     <div
-      data-reveal
-      style={{ transitionDelay: `${index * 70}ms` }}
-      className="r-up group relative flex flex-col overflow-hidden border border-bone/10 bg-graphite/40 transition-colors duration-500 hover:border-gold/30"
+      style={{ animationDelay: `${index * 70}ms` }}
+      className="card-in group relative flex flex-col overflow-hidden border border-bone/10 bg-graphite/40 transition-colors duration-500 hover:border-gold/30"
     >
       <div className="relative aspect-[4/5] overflow-hidden bg-graphite">
         <img
