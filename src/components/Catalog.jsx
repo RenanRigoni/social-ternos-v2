@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { SUITS, CATALOG_FILTERS, WHATSAPP } from '../constants'
-import { GALLERY_BY_KEY, SIZES } from '../constants/images'
+import { GALLERY_BY_KEY } from '../constants/images'
 import Words from './Words'
 
 // Filter matches only on occasion array — availability is shown as badges, not filters
@@ -80,8 +80,6 @@ function SuitCard({ suit, index }) {
       <div className="relative aspect-[4/5] overflow-hidden bg-graphite">
         <img
           src={`${base}${suit.localImage}`}
-          srcSet={fallbackImg?.srcSet}
-          sizes={SIZES.tile}
           alt={`${suit.name} — Social Ternos`}
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
           loading="lazy"

@@ -19,8 +19,6 @@ export default function Hero() {
       <div ref={parallax} className="absolute inset-0 -z-0 scale-110">
         <img
           src={`${import.meta.env.BASE_URL}images/hero-social-ternos.png`}
-          srcSet={IMAGES.hero.srcSet}
-          sizes={SIZES.full}
           alt="Homem ajustando o blazer de um terno azul-marinho, Social Ternos"
           className="h-full w-full object-cover object-[50%_25%] animate-kenburns"
           loading="eager"

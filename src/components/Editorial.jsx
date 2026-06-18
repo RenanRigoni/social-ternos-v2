@@ -1,4 +1,4 @@
-import { OFFERS, IMAGES, WHATSAPP, SIZES } from '../constants'
+import { OFFERS, IMAGES, WHATSAPP } from '../constants'
 import { useParallax } from '../hooks/useScrollFx'
 import Words from './Words'
 
@@ -48,8 +48,6 @@ function OfferRow({ offer, flip }) {
           <div ref={parallax} className="absolute inset-0 scale-110">
             <img
               src={`${base}${offer.localImage}`}
-              srcSet={fallbackImg?.srcSet}
-              sizes={SIZES.half}
               alt={offer.title}
               className="img-grade h-full w-full object-cover"
               loading="lazy"

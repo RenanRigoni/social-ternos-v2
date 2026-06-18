@@ -1,4 +1,4 @@
-import { OCCASIONS, IMAGES, WHATSAPP, SIZES, OCCASION_BADGES, BADGE_LABEL } from '../constants'
+import { OCCASIONS, IMAGES, WHATSAPP, OCCASION_BADGES, BADGE_LABEL } from '../constants'
 import Words from './Words'
 
 // Asymmetric editorial grid spans — mobile 2-col, md 12-col
@@ -66,8 +66,6 @@ function OccasionTile({ occ, index }) {
     >
       <img
         src={`${base}${occ.localImage}`}
-        srcSet={fallbackImg?.srcSet}
-        sizes={SIZES.tile}
         alt={occ.label}
         className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
         loading="lazy"
