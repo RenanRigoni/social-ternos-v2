@@ -37,7 +37,7 @@ export default function Location() {
                 <div className="mb-2 flex items-center gap-2.5">
                   <span
                     className={`h-2 w-2 rounded-full ${
-                      status.open ? 'bg-[#23a259] motion-safe:animate-pulse' : 'bg-bone/40'
+                      status.open ? 'bg-whatsapp-hover motion-safe:animate-pulse' : 'bg-bone/40'
                     }`}
                   />
                   <span className={`font-body text-[13px] font-semibold tracking-wide ${status.open ? 'text-[#36c172]' : 'text-bone/55'}`}>

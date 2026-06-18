@@ -18,6 +18,8 @@ export default {
         offwhite:   '#efe9dd', // alias (compat)
         black:      '#0b0a09', // alias (compat)
         navy:       '#1a2744',
+        whatsapp:        '#1f8f4e',
+        'whatsapp-hover': '#23a259',
       },
       fontFamily: {
         display: ['"Bodoni Moda"', 'Georgia', 'serif'],

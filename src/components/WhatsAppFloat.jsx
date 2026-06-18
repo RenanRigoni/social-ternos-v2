@@ -18,8 +18,8 @@ export default function WhatsAppFloat() {
       </span>
 
       {/* Botão */}
-      <span className="relative flex h-14 w-14 items-center justify-center rounded-full bg-[#1f8f4e] text-bone shadow-lg shadow-black/40 ring-1 ring-bone/10 transition-all duration-300 group-hover:scale-105 group-hover:bg-[#23a259] group-active:scale-95">
-        <span className="absolute inset-0 rounded-full bg-[#1f8f4e]/60 motion-safe:animate-ping" aria-hidden="true" />
+      <span className="relative flex h-14 w-14 items-center justify-center rounded-full bg-whatsapp text-bone shadow-lg shadow-black/40 ring-1 ring-bone/10 transition-all duration-300 group-hover:scale-105 group-hover:bg-whatsapp-hover group-active:scale-95">
+        <span className="absolute inset-0 rounded-full bg-whatsapp/60 motion-safe:animate-ping" aria-hidden="true" />
         <span className="relative"><WhatsAppIcon size={26} /></span>
       </span>
     </a>

@@ -22,9 +22,10 @@ function Pill({ active, onClick, children }) {
 }
 
 function PillGroup({ label, options, value, onChange }) {
+  const groupId = `pg-${label.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`
   return (
-    <div>
-      <p className="eyebrow mb-3 text-bone/55">{label}</p>
+    <div role="group" aria-labelledby={groupId}>
+      <p id={groupId} className="eyebrow mb-3 text-bone/55">{label}</p>
       <div className="flex flex-wrap gap-2">
         {options.map((opt) => (
           <Pill key={opt} active={value === opt} onClick={() => onChange(opt === value ? '' : opt)}>
@@ -192,7 +193,7 @@ function Appointment() {
           onClick={() => navWeek(-1)}
           disabled={weekOffset === 0}
           aria-label="Semana anterior"
-          className="flex h-7 w-7 items-center justify-center font-body text-lg leading-none text-bone/40 transition-colors hover:text-bone/80 disabled:cursor-not-allowed disabled:opacity-25"
+          className="flex h-11 w-11 items-center justify-center font-body text-lg leading-none text-bone/40 transition-colors hover:text-bone/80 disabled:cursor-not-allowed disabled:opacity-25"
         >
           ‹
         </button>
@@ -204,7 +205,7 @@ function Appointment() {
           onClick={() => navWeek(1)}
           disabled={weekOffset >= 4}
           aria-label="Próxima semana"
-          className="flex h-7 w-7 items-center justify-center font-body text-lg leading-none text-bone/40 transition-colors hover:text-bone/80 disabled:cursor-not-allowed disabled:opacity-25"
+          className="flex h-11 w-11 items-center justify-center font-body text-lg leading-none text-bone/40 transition-colors hover:text-bone/80 disabled:cursor-not-allowed disabled:opacity-25"
         >
           ›
         </button>
@@ -230,7 +231,7 @@ function Appointment() {
                 type="button"
                 aria-pressed={isSel}
                 onClick={() => pickDay(d)}
-                className={`flex flex-col items-center justify-center border py-2.5 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink ${
+                className={`flex flex-col items-center justify-center border py-3 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink ${
                   isSel
                     ? 'border-gold bg-gold/10 text-bone'
                     : 'border-bone/15 text-bone/55 hover:border-bone/35 hover:text-bone'
@@ -266,7 +267,7 @@ function Appointment() {
                   type="button"
                   aria-pressed={selTime === t}
                   onClick={() => setSelTime(prev => prev === t ? null : t)}
-                  className={`border py-2 font-body text-[12px] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink ${
+                  className={`border py-3 font-body text-[12px] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink ${
                     selTime === t
                       ? 'border-gold bg-gold/10 text-bone'
                       : 'border-bone/15 text-bone/50 hover:border-bone/30 hover:text-bone'
@@ -285,7 +286,6 @@ function Appointment() {
         href={waHref}
         target={ready ? '_blank' : undefined}
         rel="noopener noreferrer"
-        aria-disabled={!ready}
         className={`btn-gold mt-7 w-full sm:w-auto ${!ready ? 'pointer-events-none opacity-40' : ''}`}
         aria-label="Solicitar agendamento pelo WhatsApp"
       >

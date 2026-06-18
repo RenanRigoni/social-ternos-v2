@@ -32,7 +32,7 @@ export default function Gallery() {
 
         <div className="grid grid-cols-2 gap-2 md:grid-cols-12 md:gap-3">
           {IMAGES.gallery.map((image, i) => (
-            <GalleryTile key={i} image={image} alt={GALLERY_ALT[i]} span={SPANS[i]} delay={i * 60} />
+            <GalleryTile key={image.src} image={image} alt={GALLERY_ALT[i]} span={SPANS[i]} delay={i * 60} />
           ))}
         </div>
 

@@ -57,7 +57,7 @@
 
   /* WhatsApp */
   .btn-whatsapp {
-    @apply inline-flex items-center justify-center gap-2.5 bg-[#1f8f4e] text-bone font-body font-semibold text-sm tracking-[0.06em] px-8 py-4 transition-colors duration-300 hover:bg-[#23a259] active:scale-[0.985] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#23a259] focus-visible:ring-offset-2 focus-visible:ring-offset-ink;
+    @apply inline-flex items-center justify-center gap-2.5 bg-whatsapp text-bone font-body font-semibold text-sm tracking-[0.06em] px-8 py-4 transition-colors duration-300 hover:bg-whatsapp-hover active:scale-[0.985] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-whatsapp-hover focus-visible:ring-offset-2 focus-visible:ring-offset-ink;
   }
 
   /* ---------- Editorial primitives ---------- */
@@ -90,14 +90,6 @@
     pointer-events: none;
     opacity: 0.045;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-  .grain::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    z-index: 69;
-    pointer-events: none;
-    background: radial-gradient(120% 80% at 50% 0%, transparent 55%, rgba(0,0,0,0.45) 100%);
   }
 
   /* Editorial image treatment — unifies any stock into moody, graded look */

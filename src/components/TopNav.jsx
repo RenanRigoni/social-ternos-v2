@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { NAV, STORE, WHATSAPP } from '../constants'
 import { useScrollSpy, useMagnetic } from '../hooks/useInteractive'
 import { WhatsAppIcon } from './Icons'
@@ -11,6 +11,7 @@ export default function TopNav() {
   const [progress, setProgress] = useState(0)
   const active = useScrollSpy(IDS)
   const phoneRef = useMagnetic(0.4)
+  const overlayRef = useRef(null)
   const wa = WHATSAPP.getLink(WHATSAPP.messages.default)
   const logo = `${import.meta.env.BASE_URL}logo/logo_hor_w.svg`
 
@@ -32,6 +33,31 @@ export default function TopNav() {
       document.body.style.overflow = ''
     }
   }, [open])
+
+  useEffect(() => {
+    if (open && overlayRef.current) {
+      overlayRef.current.querySelector('a, button')?.focus()
+    }
+  }, [open])
+
+  function handleOverlayKey(e) {
+    if (e.key === 'Escape') {
+      setOpen(false)
+      return
+    }
+    if (e.key === 'Tab' && overlayRef.current) {
+      const focusable = [...overlayRef.current.querySelectorAll('a, button')]
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault()
+        last.focus()
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault()
+        first.focus()
+      }
+    }
+  }
 
   return (
     <header
@@ -60,7 +86,7 @@ export default function TopNav() {
               <a
                 key={item.href}
                 href={item.href}
-                className={`relative font-body text-[13px] uppercase tracking-[0.14em] transition-colors duration-300 ${
+                className={`relative font-body text-[13px] uppercase tracking-[0.14em] transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink ${
                   isActive ? 'text-gold' : 'text-bone/70 hover:text-bone'
                 }`}
               >
@@ -109,6 +135,11 @@ export default function TopNav() {
 
       {/* Overlay mobile */}
       <div
+        ref={overlayRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu de navegação"
+        onKeyDown={handleOverlayKey}
         className={`fixed inset-0 z-[70] flex flex-col justify-center bg-ink px-8 transition-all duration-500 lg:hidden ${
           open ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
         }`}

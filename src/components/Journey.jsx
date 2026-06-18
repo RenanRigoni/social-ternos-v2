@@ -25,8 +25,8 @@ export default function Journey() {
           {EXPERIENCE.map((step, i) => {
             const isActive = active === step.n
             const revealClass = isActive
-              ? 'grid-rows-[1fr] opacity-100'
-              : 'grid-rows-[0fr] opacity-0 group-hover:grid-rows-[1fr] group-hover:opacity-100'
+              ? 'max-h-96 opacity-100'
+              : 'max-h-0 opacity-0 group-hover:max-h-96 group-hover:opacity-100'
             const numClass = isActive
               ? 'text-gold'
               : 'text-gold/70 group-hover:text-gold'
@@ -48,9 +48,8 @@ export default function Journey() {
                 <h3 className="font-display text-xl text-bone md:text-[1.4rem]">{step.title}</h3>
                 <p className="font-body text-[13.5px] leading-relaxed text-bone/55">{step.text}</p>
 
-                <div className={`grid transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${revealClass}`}>
-                  <div className="overflow-hidden">
-                    <div className="border-t border-bone/10 pt-4">
+                <div className={`overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${revealClass}`}>
+                  <div className="border-t border-bone/10 pt-4">
                       <p className="font-body text-[13px] leading-relaxed text-bone/65">
                         {step.detail}
                       </p>
@@ -62,7 +61,6 @@ export default function Journey() {
                           </li>
                         ))}
                       </ul>
-                    </div>
                   </div>
                 </div>
               </div>
