@@ -1,6 +1,8 @@
 import { useState } from 'react'
-import { WHATSAPP, FINDER_OPTIONS, FITTING_SLOTS } from '../constants'
+import { WHATSAPP, FINDER_OPTIONS } from '../constants'
 import { WhatsAppIcon } from './Icons'
+
+/* ─── Pill + PillGroup (SuitFinder) ─────────────────────────────────── */
 
 function Pill({ active, onClick, children }) {
   return (
@@ -76,52 +78,225 @@ function SuitFinder() {
   )
 }
 
+/* ─── Appointment helpers ────────────────────────────────────────────── */
+
+const DAYS_PT = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb']
+const MONTHS_PT = [
+  'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',
+  'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro',
+]
+
+function getThisMonday(fromDate) {
+  const d = new Date(fromDate)
+  d.setHours(0, 0, 0, 0)
+  const dow = d.getDay()
+  d.setDate(d.getDate() + (dow === 0 ? -6 : 1 - dow))
+  return d
+}
+
+function buildSlots(date, today) {
+  const dow = date.getDay()
+  if (dow === 0) return []
+  const endHour = dow === 6 ? 12 : 18
+  const isToday = date.toDateString() === today.toDateString()
+  const nowMins = isToday ? new Date().getHours() * 60 + new Date().getMinutes() : -1
+  const slots = []
+  for (let h = 9; h < endHour; h++) {
+    for (const m of [0, 30]) {
+      if (h * 60 + m > nowMins) {
+        slots.push(`${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`)
+      }
+    }
+  }
+  return slots
+}
+
+function fmtWeekRange(monday) {
+  const sat = new Date(monday)
+  sat.setDate(monday.getDate() + 5)
+  const sm = MONTHS_PT[monday.getMonth()]
+  const em = MONTHS_PT[sat.getMonth()]
+  return monday.getMonth() === sat.getMonth()
+    ? `${monday.getDate()} a ${sat.getDate()} de ${sm}`
+    : `${monday.getDate()} de ${sm} a ${sat.getDate()} de ${em}`
+}
+
+function fmtDayLabel(date, today) {
+  if (date.toDateString() === today.toDateString()) return 'Hoje'
+  const tom = new Date(today)
+  tom.setDate(today.getDate() + 1)
+  if (date.toDateString() === tom.toDateString()) return 'Amanhã'
+  return DAYS_PT[date.getDay()]
+}
+
+/* ─── Appointment widget ─────────────────────────────────────────────── */
+
 function Appointment() {
-  const [slot, setSlot] = useState('')
-  const wa = WHATSAPP.getLink(WHATSAPP.messages.appointment(slot))
+  const [weekOffset, setWeekOffset] = useState(0)
+  const [selDay, setSelDay] = useState(null)
+  const [selTime, setSelTime] = useState(null)
+
+  const today = new Date()
+  today.setHours(0, 0, 0, 0)
+
+  const baseMonday = getThisMonday(today)
+  const displayMonday = new Date(baseMonday)
+  displayMonday.setDate(baseMonday.getDate() + weekOffset * 7)
+
+  const weekDays = Array.from({ length: 6 }, (_, i) => {
+    const d = new Date(displayMonday)
+    d.setDate(displayMonday.getDate() + i)
+    return d
+  })
+  const visibleDays = weekDays.filter(d => d >= today)
+
+  const slots = selDay ? buildSlots(selDay, today) : []
+  const ready = Boolean(selDay && selTime)
+
+  const waMsg = ready
+    ? `Olá! Gostaria de agendar uma prova de traje para o dia ${
+        String(selDay.getDate()).padStart(2, '0')}/${
+        String(selDay.getMonth() + 1).padStart(2, '0')} às ${selTime
+      }. Poderiam confirmar se esse horário está disponível?`
+    : ''
+  const waHref = ready ? WHATSAPP.getLink(waMsg) : undefined
+
+  function pickDay(d) {
+    const same = selDay?.toDateString() === d.toDateString()
+    setSelDay(same ? null : d)
+    setSelTime(null)
+  }
+
+  function navWeek(delta) {
+    setWeekOffset(o => o + delta)
+    setSelDay(null)
+    setSelTime(null)
+  }
 
   return (
     <div className="relative flex h-full flex-col border border-bone/12 bg-graphite/70 p-6 backdrop-blur-xl md:p-8">
+      <div className="pointer-events-none absolute inset-0 border border-gold/0 transition-colors duration-500 hover:border-gold/25" />
+
       <p className="eyebrow text-gold/85">Prova sob medida</p>
       <h3 className="mt-3 font-display text-2xl font-medium leading-tight text-bone md:text-3xl">
         Agende sua prova
       </h3>
       <p className="mt-2 font-body text-[13.5px] leading-relaxed text-bone/55">
-        Horários para prova disponíveis
+        Escolha uma data e horário de preferência. A confirmação é feita pelo WhatsApp.
       </p>
 
-      <div className="mt-6 flex flex-col gap-2.5">
-        {FITTING_SLOTS.map((s) => (
-          <button
-            key={s}
-            type="button"
-            onClick={() => setSlot(s === slot ? '' : s)}
-            aria-pressed={slot === s}
-            className={`flex items-center justify-between border px-4 py-3 text-left font-body text-[13.5px] transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink ${
-              slot === s
-                ? 'border-gold bg-gold/10 text-bone'
-                : 'border-bone/12 text-bone/70 hover:border-bone/30 hover:text-bone'
-            }`}
-          >
-            <span>{s}</span>
-            <span className={`h-1.5 w-1.5 rounded-full ${slot === s ? 'bg-gold' : 'bg-bone/20'}`} />
-          </button>
-        ))}
+      {/* Navegação de semana */}
+      <div className="mt-5 flex items-center justify-between gap-3">
+        <button
+          type="button"
+          onClick={() => navWeek(-1)}
+          disabled={weekOffset === 0}
+          aria-label="Semana anterior"
+          className="flex h-7 w-7 items-center justify-center font-body text-lg leading-none text-bone/40 transition-colors hover:text-bone/80 disabled:cursor-not-allowed disabled:opacity-25"
+        >
+          ‹
+        </button>
+        <span className="font-body text-[12px] tracking-wide text-bone/50">
+          {fmtWeekRange(displayMonday)}
+        </span>
+        <button
+          type="button"
+          onClick={() => navWeek(1)}
+          disabled={weekOffset >= 4}
+          aria-label="Próxima semana"
+          className="flex h-7 w-7 items-center justify-center font-body text-lg leading-none text-bone/40 transition-colors hover:text-bone/80 disabled:cursor-not-allowed disabled:opacity-25"
+        >
+          ›
+        </button>
       </div>
 
+      {/* Cards de dias */}
+      <div className="mt-3 flex gap-1.5 overflow-x-auto pb-1">
+        {visibleDays.length === 0 ? (
+          <p className="font-body text-[12.5px] text-bone/35">
+            Sem dias nesta semana — avance para a próxima.
+          </p>
+        ) : (
+          visibleDays.map(d => {
+            const isSel = selDay?.toDateString() === d.toDateString()
+            const dd = String(d.getDate()).padStart(2, '0')
+            const mm = String(d.getMonth() + 1).padStart(2, '0')
+            return (
+              <button
+                key={d.toDateString()}
+                type="button"
+                aria-pressed={isSel}
+                onClick={() => pickDay(d)}
+                className={`flex shrink-0 flex-col items-center border px-3 py-2 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink ${
+                  isSel
+                    ? 'border-gold bg-gold/10 text-bone'
+                    : 'border-bone/15 text-bone/55 hover:border-bone/35 hover:text-bone'
+                }`}
+              >
+                <span className="font-body text-[10.5px] uppercase tracking-wider">
+                  {fmtDayLabel(d, today)}
+                </span>
+                <span className="mt-0.5 font-body text-[12.5px] font-medium">
+                  {dd}/{mm}
+                </span>
+              </button>
+            )
+          })
+        )}
+      </div>
+
+      {/* Grade de horários */}
+      {selDay && (
+        <div className="mt-5">
+          <p className="mb-2.5 font-body text-[10.5px] uppercase tracking-widest text-bone/35">
+            Horários sugeridos para atendimento
+          </p>
+          {slots.length === 0 ? (
+            <p className="font-body text-[12.5px] text-bone/40">
+              Sem horários disponíveis para esse dia.
+            </p>
+          ) : (
+            <div className="grid grid-cols-4 gap-1.5 sm:grid-cols-5">
+              {slots.map(t => (
+                <button
+                  key={t}
+                  type="button"
+                  aria-pressed={selTime === t}
+                  onClick={() => setSelTime(prev => prev === t ? null : t)}
+                  className={`border py-2 font-body text-[12px] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink ${
+                    selTime === t
+                      ? 'border-gold bg-gold/10 text-bone'
+                      : 'border-bone/15 text-bone/50 hover:border-bone/30 hover:text-bone'
+                  }`}
+                >
+                  {t}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* CTA */}
       <a
-        href={wa}
-        target="_blank"
+        href={waHref}
+        target={ready ? '_blank' : undefined}
         rel="noopener noreferrer"
-        className="btn-ghost mt-7 w-full sm:w-auto"
-        aria-label="Agendar prova pelo WhatsApp"
+        aria-disabled={!ready}
+        className={`btn-gold mt-7 w-full sm:w-auto ${!ready ? 'pointer-events-none opacity-40' : ''}`}
+        aria-label="Solicitar agendamento pelo WhatsApp"
       >
-        <span>Agendar prova</span>
+        <span><WhatsAppIcon size={16} /></span>
+        <span>Solicitar agendamento</span>
       </a>
-      <p className="mt-4 font-body text-[12px] text-bone/40">Confirmação pelo WhatsApp</p>
+      <p className="mt-3 font-body text-[11.5px] text-bone/35">
+        Confirmação sujeita à disponibilidade da loja
+      </p>
     </div>
   )
 }
+
+/* ─── Export ─────────────────────────────────────────────────────────── */
 
 export default function Concierge() {
   return (
