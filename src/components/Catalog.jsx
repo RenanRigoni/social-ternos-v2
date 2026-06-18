@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { SUITS, CATALOG_FILTERS, BADGE_LABEL, WHATSAPP } from '../constants'
+import { SUITS, CATALOG_FILTERS, WHATSAPP } from '../constants'
 import { GALLERY_BY_KEY, SIZES } from '../constants/images'
 import Words from './Words'
 
@@ -81,16 +81,6 @@ function SuitCard({ suit, index }) {
           decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/10 to-transparent" />
-        <div className="absolute left-3 top-3 flex flex-wrap gap-1.5">
-          {suit.availability.map((a) => (
-            <span
-              key={a}
-              className="bg-ink/70 px-2.5 py-1 font-body text-[10px] uppercase tracking-[0.12em] text-bone/85 backdrop-blur-sm"
-            >
-              {BADGE_LABEL[a]}
-            </span>
-          ))}
-        </div>
       </div>
 
       <div className="flex flex-1 flex-col p-5">
