@@ -1,7 +1,10 @@
+import { useState } from 'react'
 import { EXPERIENCE } from '../constants'
 import Words from './Words'
 
 export default function Journey() {
+  const [active, setActive] = useState(null)
+
   return (
     <section className="relative bg-charcoal py-24 md:py-36">
       <div className="mx-auto max-w-6xl px-6 lg:px-10">
@@ -19,20 +22,52 @@ export default function Journey() {
         </div>
 
         <div className="grid gap-px overflow-hidden border border-bone/10 bg-bone/10 sm:grid-cols-2 lg:grid-cols-4">
-          {EXPERIENCE.map((step, i) => (
-            <div
-              key={step.n}
-              data-reveal
-              style={{ transitionDelay: `${i * 90}ms` }}
-              className="r-up group relative flex flex-col gap-4 bg-ink p-7 md:p-8"
-            >
-              <span className="font-display text-3xl italic text-gold/70 transition-colors duration-300 group-hover:text-gold">
-                {step.n}
-              </span>
-              <h3 className="font-display text-xl text-bone md:text-[1.4rem]">{step.title}</h3>
-              <p className="font-body text-[13.5px] leading-relaxed text-bone/55">{step.text}</p>
-            </div>
-          ))}
+          {EXPERIENCE.map((step, i) => {
+            const isActive = active === step.n
+            const revealClass = isActive
+              ? 'grid-rows-[1fr] opacity-100'
+              : 'grid-rows-[0fr] opacity-0 group-hover:grid-rows-[1fr] group-hover:opacity-100'
+            const numClass = isActive
+              ? 'text-gold'
+              : 'text-gold/70 group-hover:text-gold'
+            const ringClass = isActive
+              ? 'ring-1 ring-inset ring-gold/[0.22]'
+              : 'hover:ring-1 hover:ring-inset hover:ring-gold/[0.22]'
+
+            return (
+              <div
+                key={step.n}
+                data-reveal
+                style={{ transitionDelay: `${i * 90}ms` }}
+                className={`r-up group relative flex flex-col gap-4 bg-ink p-7 md:p-8 cursor-pointer select-none ${ringClass}`}
+                onClick={() => setActive(isActive ? null : step.n)}
+              >
+                <span className={`font-display text-3xl italic transition-colors duration-300 ${numClass}`}>
+                  {step.n}
+                </span>
+                <h3 className="font-display text-xl text-bone md:text-[1.4rem]">{step.title}</h3>
+                <p className="font-body text-[13.5px] leading-relaxed text-bone/55">{step.text}</p>
+
+                <div className={`grid transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${revealClass}`}>
+                  <div className="overflow-hidden">
+                    <div className="border-t border-bone/10 pt-4">
+                      <p className="font-body text-[13px] leading-relaxed text-bone/65">
+                        {step.detail}
+                      </p>
+                      <ul className="mt-3 space-y-1.5">
+                        {step.bullets.map(b => (
+                          <li key={b} className="flex items-start gap-2 font-body text-[12px] text-bone/45">
+                            <span className="mt-px shrink-0 select-none text-gold/50">—</span>
+                            {b}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )
+          })}
         </div>
       </div>
     </section>

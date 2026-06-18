@@ -226,21 +226,29 @@ export const EXPERIENCE = [
     n: '01',
     title: 'Atendimento',
     text: 'Você é recebido com atenção individual, sem pressa, para entender o evento e o estilo.',
+    detail: 'Entendemos o tipo de evento, horário, dress code e preferências pessoais para indicar o traje mais adequado.',
+    bullets: ['Atendimento individual', 'Indicação conforme o evento', 'Escolha sem pressa'],
   },
   {
     n: '02',
     title: 'Escolha do traje',
     text: 'Modelos, cores e tecidos selecionados junto com você, de acordo com a ocasião.',
+    detail: 'Você vê opções de blazer, calça, camisa, colete, gravata e acessórios já pensados para combinar entre si.',
+    bullets: ['Modelos alinhados ao evento', 'Cores e tecidos combinados', 'Composição completa do visual'],
   },
   {
     n: '03',
     title: 'Prova e ajuste',
     text: 'Experimente na loja e veja o caimento. Acertamos os detalhes para o seu corpo.',
+    detail: 'Durante a prova, conferimos ombro, manga, barra, cintura e caimento geral para deixar o traje mais alinhado ao seu corpo.',
+    bullets: ['Prova presencial', 'Conferência do caimento', 'Ajustes nos detalhes'],
   },
   {
     n: '04',
     title: 'Orientação',
     text: 'Camisa, gravata, colete e acessórios combinados em um visual completo e coerente.',
+    detail: 'Você recebe orientação para combinar peças, cores e acessórios sem exagero, saindo com um look completo e adequado para a ocasião.',
+    bullets: ['Combinação de peças', 'Acessórios adequados', 'Visual completo e harmônico'],
   },
 ]
 

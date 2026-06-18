@@ -84,7 +84,7 @@ export default function Hero() {
               </a>
             </span>
             <span ref={magB} className="inline-block">
-              <a href="#localizacao" className="btn-ghost w-full sm:w-auto" aria-label="Agendar visita à loja">
+              <a href="#como-chegar" className="btn-ghost w-full sm:w-auto" aria-label="Agendar visita à loja">
                 <span>Agendar visita</span>
               </a>
             </span>
