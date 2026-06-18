@@ -32,6 +32,13 @@ export default function Editorial() {
 function OfferRow({ offer, flip }) {
   const parallax = useParallax(0.08)
   const wa = WHATSAPP.getLink(WHATSAPP.messages.occasion(offer.kicker.toLowerCase()))
+  const fallbackImg = IMAGES[offer.image]
+  const base = import.meta.env.BASE_URL
+
+  function handleImgError(e) {
+    const fb = fallbackImg?.src
+    if (fb && e.target.src !== fb) e.target.src = fb
+  }
 
   return (
     <div className="grid items-center gap-8 md:grid-cols-2 md:gap-16">
@@ -40,13 +47,14 @@ function OfferRow({ offer, flip }) {
         <div className="group relative aspect-[4/5] overflow-hidden bg-graphite">
           <div ref={parallax} className="absolute inset-0 scale-110">
             <img
-              src={IMAGES[offer.image].src}
-              srcSet={IMAGES[offer.image].srcSet}
+              src={`${base}${offer.localImage}`}
+              srcSet={fallbackImg?.srcSet}
               sizes={SIZES.half}
               alt={offer.title}
               className="img-grade h-full w-full object-cover"
               loading="lazy"
               decoding="async"
+              onError={handleImgError}
             />
           </div>
           <span className="pointer-events-none absolute left-5 top-4 font-display text-6xl italic text-bone mix-blend-difference md:text-7xl">

@@ -275,6 +275,7 @@ export const OFFERS = [
     title: 'Ternos para quem ocupa o centro da cena',
     text: 'Venda e aluguel para noivos, padrinhos, formandos e convidados. Caimento, tecido e composição orientados para a sua ocasião.',
     image: 'adulto',
+    localImage: 'images/colecao-adulto.png',
     span: 'wide',
   },
   {
@@ -283,6 +284,7 @@ export const OFFERS = [
     title: 'Pequenos cavalheiros, grandes presenças',
     text: 'Trajes para crianças e pajens em casamentos, batizados e cerimônias de família: conforto e elegância sob medida para eles.',
     image: 'infantil',
+    localImage: 'images/colecao-infantil-pajem.png',
     span: 'narrow',
   },
 ]
