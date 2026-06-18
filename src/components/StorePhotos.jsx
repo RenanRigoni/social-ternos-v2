@@ -41,7 +41,7 @@ export default function StorePhotos() {
               key={n}
               data-reveal
               style={{ transitionDelay: `${i * 60}ms` }}
-              className="r-clip group relative aspect-[4/3] overflow-hidden bg-graphite"
+              className="r-clip group relative aspect-[3/4] overflow-hidden bg-graphite"
             >
               <img
                 src={`${base}images/${n}.png`}
