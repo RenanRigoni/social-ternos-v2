@@ -82,7 +82,7 @@ export default function Location() {
           {/* MAPA INCORPORADO */}
           <div
             data-reveal
-            className="r-clip group relative min-h-[340px] overflow-hidden border border-bone/10"
+            className="r-clip group relative min-h-[340px] overflow-hidden rounded-2xl border border-bone/10"
           >
             <iframe
               title="Localização da Social Ternos no Centro de Patrocínio-MG"
