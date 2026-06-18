@@ -79,7 +79,7 @@ export default function Hero() {
               </a>
             </span>
             <span ref={magB} className="inline-block">
-              <a href="#colecao" className="btn-ghost w-full sm:w-auto" aria-label="Ver modelos de ternos">
+              <a href="#modelos" className="btn-ghost w-full sm:w-auto" aria-label="Ver modelos de ternos">
                 <span>Ver modelos</span>
               </a>
             </span>

@@ -6,7 +6,7 @@ export default function Journey() {
   const [active, setActive] = useState(null)
 
   return (
-    <section className="relative bg-charcoal py-16 md:py-24">
+    <section id="como-funciona" className="relative bg-charcoal py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-6 lg:px-10">
         <div className="mb-14 max-w-2xl md:mb-20">
           <p className="eyebrow mb-5">O caminho até o seu traje</p>

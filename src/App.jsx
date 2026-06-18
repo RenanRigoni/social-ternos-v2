@@ -2,7 +2,6 @@ import { useRevealObserver } from './hooks/useScrollFx'
 import TopNav from './components/TopNav'
 import Hero from './components/Hero'
 import About from './components/About'
-import Kit from './components/Kit'
 import Journey from './components/Journey'
 import Editorial from './components/Editorial'
 import Occasions from './components/Occasions'
@@ -30,7 +29,6 @@ export default function App() {
       <main>
         <Hero />
         <About />
-        <Kit />
         <Journey />
         <Editorial />
         <Occasions />

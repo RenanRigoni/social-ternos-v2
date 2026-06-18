@@ -72,8 +72,8 @@ export const OCCASION_BADGES = {
   formatura: ['aluguel', 'venda'],
   corporativo: ['venda'],
   padrinhos: ['aluguel', 'venda'],
-  'evento-social': ['sob consulta'],
-  batizado: ['aluguel'],
+  noivo: ['sob consulta'],
+  'cerimonia-premium': ['sob consulta'],
 }
 
 export const BADGE_LABEL = {
@@ -83,72 +83,149 @@ export const BADGE_LABEL = {
 }
 
 // Modelos do catálogo interativo ("Modelos em destaque")
+// localImage: path inside /public — swap Unsplash fallback (image key) for real photos
 export const SUITS = [
   {
     id: 'classic-black',
     name: 'Classic Black',
-    occasion: ['casamento', 'gala'],
+    style: 'Clássico',
+    occasion: ['casamento', 'formatura'],
     availability: ['aluguel', 'venda'],
-    style: 'clássico',
     image: 'g1',
+    localImage: 'images/modelo-classic-black.png',
     description: 'Elegância atemporal para cerimônias e eventos formais.',
   },
   {
-    id: 'azul-tres-pecas',
-    name: 'Azul Três-Peças',
-    occasion: ['casamento', 'corporativo'],
-    availability: ['venda'],
-    style: 'premium',
-    image: 'g2',
-    description: 'Blazer, colete e calça em composição completa, acabamento premium.',
-  },
-  {
-    id: 'moderno-black',
-    name: 'Moderno Black',
-    occasion: ['formatura', 'gala'],
-    availability: ['aluguel'],
-    style: 'moderno',
-    image: 'g3',
-    description: 'Corte contemporâneo para quem busca presença sem exagero.',
-  },
-  {
-    id: 'azul-marinho-classico',
-    name: 'Azul Marinho Clássico',
-    occasion: ['padrinho', 'corporativo'],
+    id: 'azul-marinho-premium',
+    name: 'Azul Marinho Premium',
+    style: 'Premium',
+    occasion: ['padrinho', 'casamento', 'premium'],
     availability: ['aluguel', 'venda'],
-    style: 'clássico',
-    image: 'g5',
-    description: 'Terno liso azul marinho com corte clássico, versátil para padrinhos e eventos formais.',
+    image: 'g2',
+    localImage: 'images/modelo-azul-marinho-premium.png',
+    description: 'Blazer, colete e calça em composição completa, com acabamento premium.',
+  },
+  {
+    id: 'black-contemporaneo',
+    name: 'Black Contemporâneo',
+    style: 'Moderno',
+    occasion: ['formatura', 'premium'],
+    availability: ['aluguel'],
+    image: 'g3',
+    localImage: 'images/modelo-black-contemporaneo.png',
+    description: 'Corte contemporâneo para quem busca presença sem exagero.',
   },
   {
     id: 'corporativo-grafite',
     name: 'Corporativo Grafite',
+    style: 'Corporativo',
     occasion: ['corporativo'],
     availability: ['venda'],
-    style: 'clássico',
+    image: 'g4',
+    localImage: 'images/modelo-corporativo-grafite.png',
+    description: 'Sobriedade e caimento para reuniões, apresentações e eventos profissionais.',
+  },
+  {
+    id: 'noivo-claro',
+    name: 'Noivo Claro',
+    style: 'Noivo',
+    occasion: ['noivo', 'casamento', 'premium'],
+    availability: ['sob consulta'],
+    image: 'g5',
+    localImage: 'images/modelo-noivo-claro.png',
+    description: 'Tons claros como off-white, champagne e bege para cerimônias elegantes.',
+  },
+  {
+    id: 'cinza-prata',
+    name: 'Cinza Prata',
+    style: 'Premium',
+    occasion: ['casamento', 'padrinho', 'premium'],
+    availability: ['aluguel', 'venda'],
     image: 'g6',
-    description: 'Sobriedade e caimento perfeito para reuniões e apresentações.',
+    localImage: 'images/modelo-cinza-prata.png',
+    description: 'Cinza sofisticado com presença refinada para cerimônias e eventos marcantes.',
+  },
+  {
+    id: 'verde-oliva',
+    name: 'Verde Oliva Elegante',
+    style: 'Especial',
+    occasion: ['premium', 'formatura'],
+    availability: ['sob consulta'],
+    image: 'g7',
+    localImage: 'images/modelo-verde-oliva.png',
+    description: 'Uma proposta elegante e diferenciada para quem busca estilo com personalidade.',
+  },
+  {
+    id: 'marrom-cafe',
+    name: 'Marrom / Café',
+    style: 'Especial',
+    occasion: ['premium', 'casamento'],
+    availability: ['sob consulta'],
+    image: 'g8',
+    localImage: 'images/modelo-marrom-cafe.png',
+    description: 'Tonalidade marcante e sofisticada para composições sociais e cerimônias especiais.',
+  },
+  {
+    id: 'smoking-marsala',
+    name: 'Smoking Marsala',
+    style: 'Smoking',
+    occasion: ['noivo', 'premium', 'casamento'],
+    availability: ['sob consulta'],
+    image: 'g9',
+    localImage: 'images/modelo-smoking-marsala.png',
+    description: 'Smoking com lapela acetinada e gravata borboleta para cerimônias noturnas e ocasiões especiais.',
+  },
+  {
+    id: 'black-tie',
+    name: 'Cerimônia Black Tie',
+    style: 'Smoking',
+    occasion: ['noivo', 'premium'],
+    availability: ['sob consulta'],
+    image: 'g10',
+    localImage: 'images/modelo-cerimonia-black-tie.png',
+    description: 'Visual black tie com lapela refinada e acabamento de gala para presença impecável.',
+  },
+  {
+    id: 'azul-vivo',
+    name: 'Azul Vivo Cerimônia',
+    style: 'Premium',
+    occasion: ['casamento', 'noivo', 'padrinho'],
+    availability: ['aluguel', 'venda'],
+    image: 'g11',
+    localImage: 'images/modelo-azul-vivo-cerimonia.png',
+    description: 'Azul marcante em composição formal para noivos, padrinhos e cerimônias sociais.',
   },
   {
     id: 'composicao-completa',
     name: 'Composição Completa',
-    occasion: ['noivo', 'gala'],
+    style: 'Completo',
+    occasion: ['noivo', 'premium'],
     availability: ['sob consulta'],
-    style: 'premium',
-    image: 'g7',
-    description: 'Blazer, gravata, sapato e acessórios combinados para o noivo.',
+    image: 'g12',
+    localImage: 'images/loja-acessorios.png',
+    description: 'Blazer, camisa, gravata, sapato e acessórios combinados para sair com o visual pronto.',
+  },
+  {
+    id: 'infantil-pajem',
+    name: 'Infantil / Pajem',
+    style: 'Infantil',
+    occasion: ['infantil'],
+    availability: ['aluguel'],
+    image: 'g13',
+    localImage: 'images/modelo-infantil-pajem.png',
+    description: 'Trajes infantis para pajens, batizados e cerimônias de família.',
   },
 ]
 
 export const CATALOG_FILTERS = [
   { id: 'todos', label: 'Todos' },
   { id: 'casamento', label: 'Casamento' },
+  { id: 'noivo', label: 'Noivo' },
+  { id: 'padrinho', label: 'Padrinho' },
   { id: 'formatura', label: 'Formatura' },
   { id: 'corporativo', label: 'Corporativo' },
-  { id: 'padrinho', label: 'Padrinho' },
-  { id: 'noivo', label: 'Noivo' },
-  { id: 'venda', label: 'Venda' },
-  { id: 'aluguel', label: 'Aluguel' },
+  { id: 'premium', label: 'Premium' },
+  { id: 'infantil', label: 'Infantil' },
 ]
 
 // Aluguel vs compra
@@ -211,13 +288,14 @@ export const OFFERS = [
 ]
 
 // Ocasiões — primeira é destaque (featured), demais formam grid assimétrico
+// localImage: path inside /public — fallback to Unsplash when file missing
 export const OCCASIONS = [
-  { id: 'casamento', label: 'Casamento', note: 'Noivos & padrinhos', featured: true },
-  { id: 'formatura', label: 'Formatura' },
-  { id: 'corporativo', label: 'Corporativo' },
-  { id: 'padrinhos', label: 'Padrinhos' },
-  { id: 'evento-social', label: 'Evento Social' },
-  { id: 'batizado', label: 'Cerimônias' },
+  { id: 'casamento', label: 'Casamento', note: 'Noivos & Padrinhos', description: 'Trajes elegantes para cerimônias, padrinhos e convidados.', localImage: 'images/ocasiao-casamento.png', featured: true },
+  { id: 'formatura', label: 'Formatura', note: 'Presença marcante', description: 'Modelos clássicos e modernos para uma noite especial.', localImage: 'images/ocasiao-formatura.png' },
+  { id: 'corporativo', label: 'Corporativo', note: 'Evento profissional', description: 'Visual sóbrio para reuniões, apresentações e eventos empresariais.', localImage: 'images/ocasiao-corporativo.png' },
+  { id: 'padrinhos', label: 'Padrinhos', note: 'Composição alinhada', description: 'Cores e modelos pensados para harmonizar com a cerimônia.', localImage: 'images/ocasiao-padrinhos.png' },
+  { id: 'noivo', label: 'Noivo', note: 'Destaque da cerimônia', description: 'Opções clássicas, claras e premium para um visual completo e memorável.', localImage: 'images/ocasiao-noivo.png' },
+  { id: 'cerimonia-premium', label: 'Cerimônia Premium', note: 'Black Tie', description: 'Smoking, lapela acetinada, borboleta e composições sofisticadas para ocasiões especiais.', localImage: 'images/ocasiao-smoking-premium.png' },
 ]
 
 // Seção de experiência — atendimento, prova, escolha, orientação
@@ -255,11 +333,11 @@ export const EXPERIENCE = [
 // Navegação do topo — âncoras para as seções
 export const NAV = [
   { label: 'Início', href: '#inicio' },
-  { label: 'Sobre', href: '#sobre' },
+  { label: 'Como funciona', href: '#como-funciona' },
   { label: 'Ternos', href: '#colecao' },
-  { label: 'Ocasiões', href: '#ocasioes' },
+  { label: 'Modelos', href: '#modelos' },
+  { label: 'Agendar', href: '#agendamento' },
   { label: 'Como chegar', href: '#como-chegar' },
-  { label: 'Contato', href: '#contato' },
 ]
 
 // Bloco "Sobre" — momento de marca

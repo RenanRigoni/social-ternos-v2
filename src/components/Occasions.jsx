@@ -1,7 +1,7 @@
 import { OCCASIONS, IMAGES, WHATSAPP, SIZES, OCCASION_BADGES, BADGE_LABEL } from '../constants'
 import Words from './Words'
 
-// Spans por índice — grid editorial assimétrico (mobile 2-col, md 12-col).
+// Asymmetric editorial grid spans — mobile 2-col, md 12-col
 function tileClass(occ, i) {
   if (occ.featured) return 'col-span-2 md:col-span-6 aspect-[4/3] md:aspect-[16/11]'
   if (i === 1 || i === 2) return 'col-span-1 md:col-span-3 aspect-[3/4]'
@@ -28,8 +28,8 @@ export default function Occasions() {
             className="r-blur max-w-xs font-body text-[14px] leading-relaxed text-bone/50"
             style={{ transitionDelay: '120ms' }}
           >
-            Casamentos, formaturas, padrinhos, pajens e eventos corporativos. Trajes
-            pensados para o seu papel no dia.
+            Casamentos, formaturas, padrinhos, noivos, eventos corporativos e cerimônias especiais.
+            Trajes pensados para o seu papel no dia.
           </p>
         </div>
 
@@ -46,6 +46,13 @@ export default function Occasions() {
 function OccasionTile({ occ, index }) {
   const wa = WHATSAPP.getLink(WHATSAPP.messages.occasion(occ.label.toLowerCase()))
   const featured = occ.featured
+  const base = import.meta.env.BASE_URL
+  const fallbackImg = IMAGES.occasions[occ.id]
+
+  function handleImgError(e) {
+    const fb = fallbackImg?.src
+    if (fb && e.target.src !== fb) e.target.src = fb
+  }
 
   return (
     <a
@@ -58,17 +65,19 @@ function OccasionTile({ occ, index }) {
       aria-label={`Traje para ${occ.label} — falar pelo WhatsApp`}
     >
       <img
-        src={IMAGES.occasions[occ.id].src}
-        srcSet={IMAGES.occasions[occ.id].srcSet}
+        src={`${base}${occ.localImage}`}
+        srcSet={fallbackImg?.srcSet}
         sizes={SIZES.tile}
         alt={occ.label}
-        className="img-grade absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
         loading="lazy"
         decoding="async"
+        onError={handleImgError}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/25 to-transparent" />
       <div className="absolute inset-0 border border-transparent transition-colors duration-500 group-hover:border-gold/40" />
 
+      {/* Availability badges — top left */}
       <div className="absolute left-3 top-3 flex flex-wrap gap-1.5 md:left-4 md:top-4">
         {(OCCASION_BADGES[occ.id] || []).map((b) => (
           <span
@@ -81,9 +90,11 @@ function OccasionTile({ occ, index }) {
       </div>
 
       <div className="absolute inset-x-0 bottom-0 p-4 md:p-5">
-        {featured && occ.note && (
+        {/* Note visible on all tiles */}
+        {occ.note && (
           <p className="eyebrow mb-2 text-bone/60">{occ.note}</p>
         )}
+
         <div className="flex items-end justify-between gap-2">
           <h3
             className={`font-display leading-none text-bone ${
@@ -97,6 +108,20 @@ function OccasionTile({ occ, index }) {
             →
           </span>
         </div>
+
+        {/* Description: always visible on featured, hover-reveal on others */}
+        {occ.description && (
+          <p
+            className={`font-body text-[12px] leading-snug text-bone/55 transition-all duration-500 ${
+              featured
+                ? 'mt-2 opacity-100'
+                : 'mt-1.5 max-h-0 overflow-hidden opacity-0 group-hover:max-h-16 group-hover:opacity-100'
+            }`}
+          >
+            {occ.description}
+          </p>
+        )}
+
         <span className="mt-3 block h-px w-6 bg-gold transition-all duration-500 group-hover:w-14" />
       </div>
     </a>

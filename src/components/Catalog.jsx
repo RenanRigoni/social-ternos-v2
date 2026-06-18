@@ -1,11 +1,12 @@
 import { useMemo, useState } from 'react'
-import { SUITS, CATALOG_FILTERS, WHATSAPP } from '../constants'
+import { SUITS, CATALOG_FILTERS, BADGE_LABEL, WHATSAPP } from '../constants'
 import { GALLERY_BY_KEY, SIZES } from '../constants/images'
 import Words from './Words'
 
+// Filter matches only on occasion array — availability is shown as badges, not filters
 function matchesFilter(suit, filter) {
   if (filter === 'todos') return true
-  return suit.occasion.includes(filter) || suit.availability.includes(filter)
+  return suit.occasion.includes(filter)
 }
 
 export default function Catalog() {
@@ -62,8 +63,14 @@ export default function Catalog() {
 }
 
 function SuitCard({ suit, index }) {
-  const img = GALLERY_BY_KEY[suit.image]
+  const fallbackImg = GALLERY_BY_KEY[suit.image]
   const wa = WHATSAPP.getLink(WHATSAPP.messages.suitModel(suit.name, suit.occasion[0]))
+  const base = import.meta.env.BASE_URL
+
+  function handleImgError(e) {
+    const fb = fallbackImg?.src
+    if (fb && e.target.src !== fb) e.target.src = fb
+  }
 
   return (
     <div
@@ -72,15 +79,30 @@ function SuitCard({ suit, index }) {
     >
       <div className="relative aspect-[4/5] overflow-hidden bg-graphite">
         <img
-          src={img.src}
-          srcSet={img.srcSet}
+          src={`${base}${suit.localImage}`}
+          srcSet={fallbackImg?.srcSet}
           sizes={SIZES.tile}
-          alt={`${suit.name} — ${suit.description}`}
-          className="img-grade absolute inset-0 h-full w-full object-cover"
+          alt={`${suit.name} — Social Ternos`}
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
           loading="lazy"
           decoding="async"
+          onError={handleImgError}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/10 to-transparent" />
+
+        {/* Availability badges — top left */}
+        {suit.availability && suit.availability.length > 0 && (
+          <div className="absolute left-3 top-3 flex flex-wrap gap-1.5">
+            {suit.availability.map((b) => (
+              <span
+                key={b}
+                className="bg-ink/70 px-2.5 py-1 font-body text-[10px] uppercase tracking-[0.12em] text-bone/85 backdrop-blur-sm"
+              >
+                {BADGE_LABEL[b] ?? b}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="flex flex-1 flex-col p-5">
