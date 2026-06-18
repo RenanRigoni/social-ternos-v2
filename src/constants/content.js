@@ -112,13 +112,13 @@ export const SUITS = [
     description: 'Corte contemporâneo para quem busca presença sem exagero.',
   },
   {
-    id: 'windowpane-marinho',
-    name: 'Windowpane Marinho',
+    id: 'azul-marinho-classico',
+    name: 'Azul Marinho Clássico',
     occasion: ['padrinho', 'corporativo'],
     availability: ['aluguel', 'venda'],
-    style: 'slim',
+    style: 'clássico',
     image: 'g5',
-    description: 'Padronagem discreta e modelagem slim para o dia a dia profissional.',
+    description: 'Terno liso azul marinho com corte clássico, versátil para padrinhos e eventos formais.',
   },
   {
     id: 'corporativo-grafite',

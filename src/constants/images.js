@@ -19,7 +19,7 @@ const IDS = {
   casamento: '1519085360753-af0119f7cbe7',      // terno preto + gravata vermelha (noivo)
   formatura: '1617127365659-c47fa864d8bc',      // terno preto, estilo formando
   corporativo: '1560250097-0b93528c311a',       // blazer escuro corporativo
-  padrinhos: '1592878904946-b3cd8ae243d0',      // blazer windowpane marinho
+  padrinhos: '1617137968427-85924c800a22',      // terno azul marinho liso
   'evento-social': '1507679799987-c73779587ccf', // homem de terno navy
   batizado: '1594938298603-c8148c4dae35',       // terno azul (cerimônias)
   // Galeria — 7 (todas terno/menswear, distintas entre si)
@@ -27,7 +27,7 @@ const IDS = {
   g2: '1594938298603-c8148c4dae35',             // terno azul 3 peças
   g3: '1617127365659-c47fa864d8bc',             // terno preto moderno
   g4: '1593030103066-0093718efeb9',             // ajuste do punho, terno azul
-  g5: '1592878904946-b3cd8ae243d0',             // blazer windowpane marinho
+  g5: '1617137968427-85924c800a22',             // terno azul marinho liso
   g6: '1560250097-0b93528c311a',                // blazer corporativo
   g7: '1490114538077-0a7f8cb49891',             // composição: paletó, gravata, sapato, relógio
 }
@@ -98,7 +98,7 @@ export const GALLERY_ALT = [
   'Terno azul masculino de três peças com colete',
   'Homem em terno preto de corte moderno',
   'Homem ajustando o punho de um terno azul',
-  'Blazer azul-marinho de padronagem windowpane',
+  'Terno azul marinho liso, corte clássico',
   'Homem de blazer escuro em ambiente corporativo',
   'Composição de blazer, gravata, sapato e relógio',
 ]
