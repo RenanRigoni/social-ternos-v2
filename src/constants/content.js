@@ -165,8 +165,7 @@ export const SUITS = [
     availability: ['sob consulta'],
     image: 'g8',
     localImage: 'images/modelo-marrom-cafe.png',
-    imgPosition: 'center 30%',
-    imgTransform: 'scale(1.25)',
+    imgPosition: 'center 20%',
     description: 'Tonalidade marcante e sofisticada para composições sociais e cerimônias especiais.',
   },
   {
