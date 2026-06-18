@@ -18,12 +18,13 @@ export default function Hero() {
       {/* CAMADA DE IMAGEM — full-bleed, ken-burns + parallax */}
       <div ref={parallax} className="absolute inset-0 -z-0 scale-110">
         <img
-          src={`${import.meta.env.BASE_URL}images/hero-social-ternos.png`}
+          src={IMAGES.hero.src}
+          srcSet={IMAGES.hero.srcSet}
+          sizes={SIZES.full}
           alt="Homem ajustando o blazer de um terno azul-marinho, Social Ternos"
           className="h-full w-full object-cover object-[50%_25%] animate-kenburns"
           loading="eager"
           fetchPriority="high"
-          onError={(e) => { if (e.target.src !== IMAGES.hero.src) e.target.src = IMAGES.hero.src }}
         />
       </div>
 
