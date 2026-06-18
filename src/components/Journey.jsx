@@ -47,8 +47,8 @@ export default function Journey() {
                 >
                   <span
                     aria-hidden="true"
-                    className={`absolute top-5 right-5 font-body text-[18px] leading-none transition-all duration-300 ${
-                      isActive ? 'rotate-45 text-gold' : 'text-gold/50 group-hover:text-gold/80'
+                    className={`sm:hidden absolute top-5 right-5 font-body text-[18px] leading-none transition-all duration-300 ${
+                      isActive ? 'rotate-45 text-gold' : 'text-gold/50'
                     }`}
                   >+</span>
                   <span className={`font-display text-3xl italic transition-colors duration-300 ${numClass}`}>
