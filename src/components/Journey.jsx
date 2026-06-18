@@ -39,23 +39,26 @@ export default function Journey() {
                 key={step.n}
                 data-reveal
                 style={{ transitionDelay: `${i * 90}ms` }}
-                className={`r-up group relative flex flex-col gap-4 bg-ink p-7 md:p-8 cursor-pointer select-none ${ringClass}`}
-                onClick={() => setActive(isActive ? null : step.n)}
+                className="r-up"
               >
-                <span
-                  aria-hidden="true"
-                  className={`absolute top-5 right-5 font-body text-[18px] leading-none transition-all duration-300 ${
-                    isActive ? 'rotate-45 text-gold' : 'text-gold/50 group-hover:text-gold/80'
-                  }`}
-                >+</span>
-                <span className={`font-display text-3xl italic transition-colors duration-300 ${numClass}`}>
-                  {step.n}
-                </span>
-                <h3 className="font-display text-xl text-bone md:text-[1.4rem]">{step.title}</h3>
-                <p className="font-body text-[13.5px] leading-relaxed text-bone/55">{step.text}</p>
+                <div
+                  className={`group relative flex h-full flex-col gap-4 bg-ink p-7 md:p-8 cursor-pointer select-none ${ringClass}`}
+                  onClick={() => setActive(isActive ? null : step.n)}
+                >
+                  <span
+                    aria-hidden="true"
+                    className={`absolute top-5 right-5 font-body text-[18px] leading-none transition-all duration-300 ${
+                      isActive ? 'rotate-45 text-gold' : 'text-gold/50 group-hover:text-gold/80'
+                    }`}
+                  >+</span>
+                  <span className={`font-display text-3xl italic transition-colors duration-300 ${numClass}`}>
+                    {step.n}
+                  </span>
+                  <h3 className="font-display text-xl text-bone md:text-[1.4rem]">{step.title}</h3>
+                  <p className="font-body text-[13.5px] leading-relaxed text-bone/55">{step.text}</p>
 
-                <div className={`overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${revealClass}`}>
-                  <div className="border-t border-bone/10 pt-4">
+                  <div className={`overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${revealClass}`}>
+                    <div className="border-t border-bone/10 pt-4">
                       <p className="font-body text-[13px] leading-relaxed text-bone/65">
                         {step.detail}
                       </p>
@@ -67,6 +70,7 @@ export default function Journey() {
                           </li>
                         ))}
                       </ul>
+                    </div>
                   </div>
                 </div>
               </div>
