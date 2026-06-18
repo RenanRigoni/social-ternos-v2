@@ -80,7 +80,7 @@ export default function Footer() {
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 border border-whatsapp/60 px-4 py-2.5 font-body text-sm text-[#36c172] transition-colors duration-200 hover:border-whatsapp-hover hover:text-[#4dd68a] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-whatsapp-hover"
+              className="inline-flex items-center gap-2.5 border border-whatsapp/60 px-4 py-2.5 font-body text-sm text-whatsapp-text transition-colors duration-200 hover:border-whatsapp-hover hover:text-whatsapp-text-hover focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-whatsapp-hover"
               aria-label="Chamar no WhatsApp"
             >
               <WhatsAppIcon size={15} />

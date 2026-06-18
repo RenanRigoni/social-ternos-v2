@@ -50,7 +50,7 @@ function SuitFinder() {
   return (
     <div className="relative flex h-full flex-col border border-bone/12 bg-graphite/70 p-6 backdrop-blur-xl md:p-8">
       <div className="pointer-events-none absolute inset-0 border border-gold/0 transition-colors duration-500 hover:border-gold/25" />
-      <p className="eyebrow text-gold/85">Concierge digital</p>
+      <p className="eyebrow text-gold/85">Guia de escolha</p>
       <h3 className="mt-3 font-display text-2xl font-medium leading-tight text-bone md:text-3xl">
         Encontre o traje ideal
       </h3>
@@ -180,10 +180,10 @@ function Appointment() {
 
       <p className="eyebrow text-gold/85">Prova sob medida</p>
       <h3 className="mt-3 font-display text-2xl font-medium leading-tight text-bone md:text-3xl">
-        Agende sua prova
+        Escolha um horário
       </h3>
       <p className="mt-2 font-body text-[13.5px] leading-relaxed text-bone/55">
-        Escolha uma data e horário de preferência. A confirmação é feita pelo WhatsApp.
+        Indique sua preferência de data e horário. Vamos confirmar a disponibilidade pelo WhatsApp.
       </p>
 
       {/* Navegação de semana */}
@@ -282,19 +282,38 @@ function Appointment() {
       )}
 
       {/* CTA */}
-      <a
-        href={waHref}
-        target={ready ? '_blank' : undefined}
-        rel="noopener noreferrer"
-        className={`btn-gold mt-7 w-full sm:w-auto ${!ready ? 'pointer-events-none opacity-40' : ''}`}
-        aria-label="Solicitar agendamento pelo WhatsApp"
-      >
-        <span><WhatsAppIcon size={16} /></span>
-        <span>Solicitar agendamento</span>
-      </a>
-      <p className="mt-3 font-body text-[11.5px] text-bone/35">
-        Confirmação sujeita à disponibilidade da loja
-      </p>
+      <div className="mt-5">
+        {!ready && (
+          <p className="mb-3 font-body text-[12px] text-bone/45">
+            {!selDay
+              ? 'Escolha uma data e um horário para solicitar a confirmação.'
+              : 'Agora escolha um horário disponível.'}
+          </p>
+        )}
+        {ready && (
+          <p className="mb-3 font-body text-[12.5px] text-bone/70">
+            {'Selecionado: '}
+            <span className="text-bone/90">
+              {fmtDayLabel(selDay, today)}{' '}
+              {String(selDay.getDate()).padStart(2, '0')}/{String(selDay.getMonth() + 1).padStart(2, '0')}{' '}
+              às {selTime}
+            </span>
+          </p>
+        )}
+        <p className="mb-4 font-body text-[11.5px] text-bone/45">
+          A confirmação é feita pelo WhatsApp e está sujeita à disponibilidade da loja.
+        </p>
+        <a
+          href={waHref}
+          target={ready ? '_blank' : undefined}
+          rel="noopener noreferrer"
+          className={`btn-gold w-full sm:w-auto ${!ready ? 'pointer-events-none opacity-40' : ''}`}
+          aria-label="Solicitar agendamento pelo WhatsApp"
+        >
+          <span><WhatsAppIcon size={16} /></span>
+          <span>Solicitar agendamento</span>
+        </a>
+      </div>
     </div>
   )
 }

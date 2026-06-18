@@ -1,5 +1,6 @@
-import { IMAGES, GALLERY_ALT, SIZES, STORE } from '../constants'
+import { IMAGES, GALLERY_ALT, SIZES, STORE, WHATSAPP } from '../constants'
 import { useTilt } from '../hooks/useInteractive'
+import { WhatsAppIcon } from './Icons'
 import Words from './Words'
 
 // Layout magazine — mobile 2-col, md 12-col com 3 fileiras que fecham em 12.
@@ -55,6 +56,7 @@ export default function Gallery() {
 
 function GalleryTile({ image, alt, span, delay }) {
   const tilt = useTilt(7)
+  const wa = WHATSAPP.getLink(WHATSAPP.messages.gallery(alt))
 
   return (
     <figure
@@ -75,6 +77,29 @@ function GalleryTile({ image, alt, span, delay }) {
       </div>
       <div className="pointer-events-none absolute inset-0 bg-ink/0 transition-colors duration-500 group-hover:bg-ink/15" />
       <div className="pointer-events-none absolute inset-0 border border-transparent transition-colors duration-500 group-hover:border-gold/30" />
+
+      {/* Mobile: badge WhatsApp sempre visível */}
+      <a
+        href={wa}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Gostei deste look — consultar opções pelo WhatsApp"
+        className="sm:hidden absolute bottom-2 right-2 flex h-9 w-9 items-center justify-center bg-ink/75 text-whatsapp focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+      >
+        <WhatsAppIcon size={15} />
+      </a>
+
+      {/* Desktop: barra que sobe no hover */}
+      <a
+        href={wa}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Gostei deste look — consultar opções pelo WhatsApp"
+        className="hidden sm:flex absolute inset-x-0 bottom-0 items-center justify-between px-4 py-3 bg-gradient-to-t from-ink/85 to-transparent translate-y-full transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0 focus-visible:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-inset"
+      >
+        <span className="font-body text-[11px] uppercase tracking-[0.1em] text-bone/80">Gostei deste look</span>
+        <span className="text-whatsapp"><WhatsAppIcon size={14} /></span>
+      </a>
     </figure>
   )
 }

@@ -49,6 +49,12 @@ export const WHATSAPP = {
     decideHelp:
       'Olá! Estou em dúvida entre alugar ou comprar um terno. Pode me ajudar a decidir?',
     fittingFinal: 'Olá! Gostaria de agendar uma prova de terno.',
+    gallery: (alt) => {
+      const name = alt ? alt.replace(/, Social Ternos$/, '') : null
+      return name
+        ? `Olá! Gostei do look "${name}" da galeria do site e gostaria de verificar opções parecidas para prova. Pode me ajudar?`
+        : 'Olá! Gostei de um look da galeria do site e gostaria de verificar opções parecidas para prova. Pode me ajudar?'
+    },
   },
   getLink(message) {
     return `${this.baseUrl}&text=${encodeURIComponent(message)}`

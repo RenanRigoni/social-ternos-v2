@@ -42,6 +42,12 @@ export default function Journey() {
                 className={`r-up group relative flex flex-col gap-4 bg-ink p-7 md:p-8 cursor-pointer select-none ${ringClass}`}
                 onClick={() => setActive(isActive ? null : step.n)}
               >
+                <span
+                  aria-hidden="true"
+                  className={`absolute top-5 right-5 font-body text-[18px] leading-none transition-all duration-300 ${
+                    isActive ? 'rotate-45 text-gold' : 'text-gold/50 group-hover:text-gold/80'
+                  }`}
+                >+</span>
                 <span className={`font-display text-3xl italic transition-colors duration-300 ${numClass}`}>
                   {step.n}
                 </span>
