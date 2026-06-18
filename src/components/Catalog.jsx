@@ -13,7 +13,7 @@ export default function Catalog() {
   const visible = useMemo(() => SUITS.filter((s) => matchesFilter(s, filter)), [filter])
 
   return (
-    <section id="modelos" className="relative bg-charcoal py-24 md:py-36">
+    <section id="modelos" className="relative bg-charcoal py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-6 lg:px-10">
         <div className="mb-10 flex flex-col gap-6 md:mb-12 md:flex-row md:items-end md:justify-between">
           <h2

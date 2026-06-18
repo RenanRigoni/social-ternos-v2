@@ -258,7 +258,6 @@ export const NAV = [
   { label: 'Sobre', href: '#sobre' },
   { label: 'Ternos', href: '#colecao' },
   { label: 'Ocasiões', href: '#ocasioes' },
-  { label: 'Lookbook', href: '#galeria' },
   { label: 'Como chegar', href: '#como-chegar' },
   { label: 'Contato', href: '#contato' },
 ]

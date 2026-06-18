@@ -1,11 +1,9 @@
-import { WHATSAPP, IMAGES, SIZES } from '../constants'
+import { IMAGES, SIZES } from '../constants'
 import { useParallax } from '../hooks/useScrollFx'
 import { usePointerSpotlight, useMagnetic } from '../hooks/useInteractive'
-import { WhatsAppIcon } from './Icons'
 import Words from './Words'
 
 export default function Hero() {
-  const whatsappHero = WHATSAPP.getLink(WHATSAPP.messages.hero)
   const parallax = useParallax(0.12)
   const spotlight = usePointerSpotlight()
   const magA = useMagnetic(0.3)
@@ -73,19 +71,16 @@ export default function Hero() {
           <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
             <span ref={magA} className="inline-block">
               <a
-                href={whatsappHero}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#agendamento"
                 className="btn-gold w-full sm:w-auto"
-                aria-label="Falar no WhatsApp"
+                aria-label="Agendar prova de traje"
               >
-                <span><WhatsAppIcon size={16} /></span>
-                <span>Fale no WhatsApp</span>
+                <span>Agendar prova</span>
               </a>
             </span>
             <span ref={magB} className="inline-block">
-              <a href="#como-chegar" className="btn-ghost w-full sm:w-auto" aria-label="Agendar visita à loja">
-                <span>Agendar visita</span>
+              <a href="#colecao" className="btn-ghost w-full sm:w-auto" aria-label="Ver modelos de ternos">
+                <span>Ver modelos</span>
               </a>
             </span>
           </div>

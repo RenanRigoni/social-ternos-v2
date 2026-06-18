@@ -1,20 +1,16 @@
 import { useRevealObserver } from './hooks/useScrollFx'
 import TopNav from './components/TopNav'
 import Hero from './components/Hero'
-import Concierge from './components/Concierge'
 import About from './components/About'
 import Kit from './components/Kit'
-import Positioning from './components/Positioning'
+import Journey from './components/Journey'
 import Editorial from './components/Editorial'
 import Occasions from './components/Occasions'
-import Journey from './components/Journey'
 import Catalog from './components/Catalog'
-import Comparison from './components/Comparison'
-import StyleGuide from './components/StyleGuide'
-import Gallery from './components/Gallery'
-import Experience from './components/Experience'
-import Location from './components/Location'
+import StorePhotos from './components/StorePhotos'
+import Concierge from './components/Concierge'
 import FinalCTA from './components/FinalCTA'
+import Location from './components/Location'
 import Footer from './components/Footer'
 import WhatsAppFloat from './components/WhatsAppFloat'
 
@@ -32,20 +28,16 @@ export default function App() {
       <TopNav />
       <main>
         <Hero />
-        <Concierge />
         <About />
         <Kit />
-        <Positioning />
+        <Journey />
         <Editorial />
         <Occasions />
-        <Journey />
         <Catalog />
-        <Comparison />
-        <StyleGuide />
-        <Gallery />
-        <Experience />
-        <Location />
+        <StorePhotos />
+        <Concierge />
         <FinalCTA />
+        <Location />
       </main>
       <Footer />
       <WhatsAppFloat />

@@ -303,14 +303,23 @@ function Appointment() {
 
 export default function Concierge() {
   return (
-    <section className="relative z-10 -mt-10 px-6 md:-mt-16 lg:px-10">
-      <div
-        data-reveal
-        className="r-up mx-auto grid max-w-6xl gap-4 md:grid-cols-2"
-        style={{ transitionDelay: '120ms' }}
-      >
-        <SuitFinder />
-        <Appointment />
+    <section id="agendamento" className="relative bg-charcoal py-16 px-6 md:py-24 lg:px-10">
+      <div className="mx-auto max-w-6xl">
+        <div className="mb-10 max-w-2xl md:mb-12">
+          <p className="eyebrow mb-4">Planeje sua visita</p>
+          <h2 className="font-display text-[2.2rem] font-medium leading-[1.05] tracking-tight text-bone sm:text-4xl md:text-[2.8rem]">
+            Encontre o traje ideal ou{' '}
+            <span className="italic text-gold">agende sua prova.</span>
+          </h2>
+        </div>
+        <div
+          data-reveal
+          className="r-up grid gap-4 md:grid-cols-2"
+          style={{ transitionDelay: '120ms' }}
+        >
+          <SuitFinder />
+          <Appointment />
+        </div>
       </div>
     </section>
   )

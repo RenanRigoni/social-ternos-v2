@@ -14,7 +14,7 @@ export default function Location() {
   }, [])
 
   return (
-    <section id="como-chegar" className="relative bg-ink py-24 md:py-36">
+    <section id="como-chegar" className="relative bg-ink py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-6 lg:px-10">
         <div className="grid items-stretch gap-10 md:grid-cols-2 md:gap-14">
 

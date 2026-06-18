@@ -11,7 +11,7 @@ function tileClass(occ, i) {
 
 export default function Occasions() {
   return (
-    <section id="ocasioes" className="relative bg-ink py-24 md:py-36">
+    <section id="ocasioes" className="relative bg-ink py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-6 lg:px-10">
         <div className="mb-14 flex flex-col gap-6 md:mb-20 md:flex-row md:items-end md:justify-between">
           <h2

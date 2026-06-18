@@ -4,7 +4,7 @@ import Words from './Words'
 
 export default function Editorial() {
   return (
-    <section id="colecao" className="relative bg-charcoal py-24 md:py-36">
+    <section id="colecao" className="relative bg-charcoal py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-6 lg:px-10">
         {/* CABEÇALHO EDITORIAL */}
         <div className="mb-16 max-w-3xl md:mb-24">

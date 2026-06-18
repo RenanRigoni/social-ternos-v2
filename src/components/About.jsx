@@ -5,7 +5,7 @@ export default function About() {
   const emblem = `${import.meta.env.BASE_URL}logo/social_ternos.svg`
 
   return (
-    <section id="sobre" className="relative overflow-hidden bg-ink py-24 md:py-36">
+    <section id="sobre" className="relative overflow-hidden bg-ink py-16 md:py-24">
       {/* glow quente de fundo */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_50%_at_22%_45%,rgba(197,162,88,0.07),transparent_70%)]" />
 
