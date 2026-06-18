@@ -154,7 +154,7 @@ export const SUITS = [
     image: 'g7',
     localImage: 'images/modelo-verde-oliva.png',
     overlayClass: 'from-ink/90 via-ink/20 to-ink/5',
-    leftOverlay: true,
+    imgTransform: 'scale(1.12) translateX(5%)',
     description: 'Uma proposta elegante e diferenciada para quem busca estilo com personalidade.',
   },
   {
@@ -165,7 +165,8 @@ export const SUITS = [
     availability: ['sob consulta'],
     image: 'g8',
     localImage: 'images/modelo-marrom-cafe.png',
-    imgPosition: 'center top',
+    imgPosition: 'center 30%',
+    imgTransform: 'scale(1.25)',
     description: 'Tonalidade marcante e sofisticada para composições sociais e cerimônias especiais.',
   },
   {
@@ -177,6 +178,7 @@ export const SUITS = [
     image: 'g9',
     localImage: 'images/modelo-smoking-marsala.png',
     overlayClass: 'from-ink/95 via-ink/55 to-ink/25',
+    imgPosition: 'center 10%',
     description: 'Smoking com lapela acetinada e gravata borboleta para cerimônias noturnas e ocasiões especiais.',
   },
   {
