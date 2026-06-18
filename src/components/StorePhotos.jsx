@@ -9,24 +9,6 @@ const CAPTIONS = [
   'Espaço exclusivo',
 ]
 
-const SPANS = [
-  'md:col-span-2',
-  'md:col-span-1',
-  'md:col-span-1',
-  'md:col-span-1',
-  'md:col-span-1',
-  'md:col-span-2',
-]
-
-const ASPECTS = [
-  'aspect-[16/9]',
-  'aspect-[4/5]',
-  'aspect-[4/5]',
-  'aspect-[4/5]',
-  'aspect-[4/5]',
-  'aspect-[16/9]',
-]
-
 export default function StorePhotos() {
   const base = import.meta.env.BASE_URL
 
@@ -59,7 +41,7 @@ export default function StorePhotos() {
               key={n}
               data-reveal
               style={{ transitionDelay: `${i * 60}ms` }}
-              className={`r-clip group relative overflow-hidden bg-graphite ${SPANS[i]} ${ASPECTS[i]}`}
+              className="r-clip group relative aspect-[4/3] overflow-hidden bg-graphite"
             >
               <img
                 src={`${base}images/${n}.png`}
