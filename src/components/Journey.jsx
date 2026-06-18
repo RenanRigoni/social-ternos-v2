@@ -21,7 +21,7 @@ export default function Journey() {
           </h2>
         </div>
 
-        <div className="grid gap-px overflow-hidden border border-bone/10 bg-bone/10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid items-start gap-px overflow-hidden border border-bone/10 bg-bone/10 sm:grid-cols-2 lg:grid-cols-4">
           {EXPERIENCE.map((step, i) => {
             const isActive = active === step.n
             const revealClass = isActive
