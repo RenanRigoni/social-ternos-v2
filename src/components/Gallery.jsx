@@ -43,9 +43,9 @@ export default function Gallery() {
             target="_blank"
             rel="noopener noreferrer"
             className="btn-ghost"
-            aria-label="Ver mais looks no Instagram"
+            aria-label="Ver mais trajes no Instagram"
           >
-            <span>Ver mais looks</span>
+            <span>Ver mais trajes</span>
             <span>→</span>
           </a>
         </div>
@@ -83,7 +83,7 @@ function GalleryTile({ image, alt, span, delay }) {
         href={wa}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Gostei deste look — consultar opções pelo WhatsApp"
+        aria-label="Gostei deste traje — consultar opções pelo WhatsApp"
         className="sm:hidden absolute bottom-2 right-2 flex h-9 w-9 items-center justify-center bg-ink/75 text-whatsapp focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
       >
         <WhatsAppIcon size={15} />
@@ -94,10 +94,10 @@ function GalleryTile({ image, alt, span, delay }) {
         href={wa}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Gostei deste look — consultar opções pelo WhatsApp"
+        aria-label="Gostei deste traje — consultar opções pelo WhatsApp"
         className="hidden sm:flex absolute inset-x-0 bottom-0 items-center justify-between px-4 py-3 bg-gradient-to-t from-ink/85 to-transparent translate-y-full transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0 focus-visible:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-inset"
       >
-        <span className="font-body text-[11px] uppercase tracking-[0.1em] text-bone/80">Gostei deste look</span>
+        <span className="font-body text-[11px] uppercase tracking-[0.1em] text-bone/80">Gostei deste traje</span>
         <span className="text-whatsapp"><WhatsAppIcon size={14} /></span>
       </a>
     </figure>

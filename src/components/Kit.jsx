@@ -25,7 +25,7 @@ export default function Kit() {
             className="r-blur mt-5 max-w-xl font-body text-[15px] leading-relaxed text-bone/60"
             style={{ transitionDelay: '120ms' }}
           >
-            Você não monta nada por conta. O look já vai completo e combinado para
+            Você não monta nada por conta. O traje já vai completo e combinado para
             a ocasião, do blazer ao sapato.
           </p>
         </div>

@@ -52,8 +52,8 @@ export const WHATSAPP = {
     gallery: (alt) => {
       const name = alt ? alt.replace(/, Social Ternos$/, '') : null
       return name
-        ? `Olá! Gostei do look "${name}" da galeria do site e gostaria de verificar opções parecidas para prova. Pode me ajudar?`
-        : 'Olá! Gostei de um look da galeria do site e gostaria de verificar opções parecidas para prova. Pode me ajudar?'
+        ? `Olá! Gostei do traje "${name}" da galeria do site e gostaria de verificar opções parecidas para prova. Pode me ajudar?`
+        : 'Olá! Gostei de um traje da galeria do site e gostaria de verificar opções parecidas para prova. Pode me ajudar?'
     },
   },
   getLink(message) {
@@ -328,7 +328,7 @@ export const EXPERIENCE = [
     n: '04',
     title: 'Orientação',
     text: 'Camisa, gravata, colete e acessórios combinados em um visual completo e coerente.',
-    detail: 'Você recebe orientação para combinar peças, cores e acessórios sem exagero, saindo com um look completo e adequado para a ocasião.',
+    detail: 'Você recebe orientação para combinar peças, cores e acessórios sem exagero, saindo com um traje completo e adequado para a ocasião.',
     bullets: ['Combinação de peças', 'Acessórios adequados', 'Visual completo e harmônico'],
   },
 ]
@@ -349,7 +349,7 @@ export const ABOUT = {
   title: 'Mais que ternos, criamos experiências.',
   paragraphs: [
     'Loja especializada em trajes masculinos no Centro de Patrocínio-MG, referência em venda e aluguel de ternos adulto e infantil.',
-    'Atendimento personalizado para o seu maior conforto. No nosso acervo você encontra ternos com acabamento premium e caimento impecável, num ambiente agradável e exclusivo.',
+    'Atendimento personalizado para o seu maior conforto. Em nosso acervo você encontra ternos com acabamento premium e caimento impecável, além de um ambiente agradável e exclusivo.',
   ],
 }
 
